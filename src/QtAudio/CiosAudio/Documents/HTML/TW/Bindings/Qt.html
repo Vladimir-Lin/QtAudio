@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>Bindings : Qt</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Qt binding CIOS Audio Core</h1>
+              <br>
+              CIOS Audio Core原始版本是在Qt上面開發的，因此它的各項接口都跟Qt非常容易吻合。開發CIOS
+              Audio Core的原因是由於Qt Multimedia的Audio元件，由於跟QObject綁住，導致Qt
+              signal發出的時候，受到Main thread處理程序的影響，因而音訊播放時，無法解決斷斷續續的問題，這是Qt
+              Audio的致命缺點，導致它無法被使用於真的實用的音訊處理程序。<br>
+              <br>
+              CIOS當中，有數量龐大的接口與CIOS Audio
+              Core泊接，原作者抽出了一部分作為基礎的Qt功能綁定樣板。有需要與Qt泊接的用戶，可以使用這個部分的功能，作為開發Qt的基礎類別。<br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

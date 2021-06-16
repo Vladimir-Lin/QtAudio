@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS音訊核心：如何撰寫自有的音訊驅動介面</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content"> </div>
+            <h1>如何撰寫自有的音訊驅動介面</h1>
+            <br>
+            當您需要撰寫自有的音訊驅動介面時，盡可能採取複製Skeleton Host API作為基本樣版。<br>
+            <br>
+            要自己撰寫音訊驅動介面，需要繼承以下四個類別：<br>
+            <br>
+            <ol>
+              <li>Stream<br>
+              </li>
+              <li>HostApiInfo</li>
+              <li>DeviceInfo</li>
+              <li>HostApi<br>
+              </li>
+            </ol>
+            <br>
+            同時必須處理Initializer，每個平台都有一個列表：<br>
+            <br>
+            <span style=" color:#800080;">HostApiInitializer</span><span
+              style=" color:#c0c0c0;"> </span><span style="
+              color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>caHostApiInitializers
+
+            ;<br>
+            <br>
+            您必須將您的Host API新增到列表當中。<br>
+            <br>
+            caHostApiInitializers在各平台的檔案分別為：<br>
+            <br>
+            <ul>
+              <li>CiosAudio/Platforms/Windows/CaWindows.cpp</li>
+              <li>CiosAudio/Platforms/MacOSX/CaMacOSX.cpp</li>
+              <li>CiosAudio/Platforms/Linux/CaLinux.cpp</li>
+              <li>CiosAudio/Platforms/FreeBSD/CaFreeBSD.cpp</li>
+              <li>CiosAudio/Platforms/Android/CaAndroid.cpp</li>
+              <li>CiosAudio/Platforms/iPhoneOS/CaiPhoneOS.cpp</li>
+            </ul>
+            <br>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Compilation : Android</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../documents.html">Documents</a></li>
+          <li><a href="../downloads.html">Download</a></li>
+          <li><a href="../status.html">Status</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../mail.html">Mailing list</a></li>
+          <li><a href="../apps.html">Applications</a></li>
+          <li><a href="../links.html">Links</a></li>
+          <li><a href="../license.html">License</a></li>
+          <li><a href="../volunteer.html">Volunteer</a></li>
+          <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Compilation on Android</h1>
+            <br>
+            <h2>Install Android Studio</h2>
+            <br>
+            We need to create an Android System Root for compilation,
+            therefore, the suggested platform is Linux.
+            We describe the environment settings in Linux only.
+            <br>
+            <h2>Android environment settings in Linux</h2>
+            <br>
+            .bashrc requires the following settings:
+            <br>
+            <p>
+            export ANDROID_NDK_ROOT=/CIOS/Android/NDK<br>
+            export ANDROID_SDK_ROOT=/CIOS/Android/SDK<br>
+            export ANDROID_SYS_ROOT=/CIOS/Android/SYS<br>
+            </p>
+            <br>
+            <h2>Preparation for Android compilation environment</h2>
+            <h3>Create an Android System Root</h3>
+            <br>
+            Script to create an Android System Root as following:
+            <br>
+            <p>
+            #!/bin/sh<br>
+            <br>
+            export ANDROID_SYS=/CIOS/Android/SYS<br>
+            export ANDROID_PLATFORM=android-15<br>
+            export ANDROID_TOOLCHAIN=arm-linux-androideabi-4.9<br>
+            <br>
+            $ANDROID_NDK_ROOT/build/tools/make-standalone-toolchain.sh \<br>
+            --platform=$ANDROID_PLATFORM \<br>
+            --toolchain=$ANDROID_TOOLCHAIN \<br>
+            --install-dir=$ANDROID_SYS<br>
+            </p>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

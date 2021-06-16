@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS音讯核心：Core Audio</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下载</a></li>
+            <li><a href="../status.html">状态</a></li>
+            <li><a href="../faq.html">常见问题</a></li>
+            <li><a href="../mail.html">邮件列表</a></li>
+            <li><a href="../apps.html">应用程序</a></li>
+            <li><a href="../links.html">外部链结</a></li>
+            <li><a href="../license.html">版权</a></li>
+            <li><a href="../volunteer.html">志愿者</a></li>
+            <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Core Audio</h1>
+              <br>
+              <br>
+              Core Audio的官方网站位址：<a
+href="https://developer.apple.com/library/mac/documentation/MusicAudio/Conceptual/CoreAudioOverview/Introduction/Introduction.html">https://developer.apple.com/library/mac/documentation/MusicAudio/Conceptual/CoreAudioOverview/Introduction/Introduction.html</a>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h2>启用Core Audio模组</h2>
+              <h4>定义</h4>
+              如果您想要启用Core Audio模组，您的C++编译必须定义以下：<br>
+              <br>
+              ENABLE_HOST_COREAUDIO
+              <h4>程序原始档</h4>
+              C++文件必须包含以下两个：<br>
+              <br>
+              <ol>
+                <li>CiosAudio/Platforms/MacOSX/CaCoreAudio.hpp</li>
+                <li>CiosAudio/Platforms/MacOSX/CaCoreAudio.cpp</li>
+              </ol>
+              <br>
+              <h4> Qt</h4>
+              如果您使用Qt，在以下设定档内：<br>
+              <p><i>CiosAudio/Platforms/MacOSX/HostAPIs.pri</i></p>
+              将以下设定打开即可：<br>
+              <br>
+              HostAPIs<span style=" color:#c0c0c0;"> </span>+=<span
+                style=" color:#c0c0c0;"> </span>CoreAudio
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <br>
+              <h4> 链结</h4>
+              Core Audio必须与以下四个Framework链结： <br>
+              <br>
+              <ol>
+                <li>CoreAudio<br>
+                </li>
+                <li> CoreServices</li>
+                <li>AudioUnit</li>
+                <li>AudioToolBox<br>
+                </li>
+              </ol>
+              <br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

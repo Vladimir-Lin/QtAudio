@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS音讯核心：文件</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../index.html">首页</a></li>
+            <li class="first active">文件</li>
+            <li><a href="downloads.html">下载</a></li>
+            <li><a href="status.html">状态</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="mail.html">邮件列表</a></li>
+            <li><a href="apps.html">应用程序</a></li>
+            <li><a href="links.html">外部链结</a></li>
+            <li><a href="license.html">版权</a></li>
+            <li><a href="volunteer.html">志愿者</a></li>
+            <li><a href="contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>文件</h1>
+              每一份下载的源代码当中，都有一份说明文件，使用者可以选择在本地或是线上观看。大部分的使用状况下，我们建议您直接取用所需要的源代码，与您的程序结合在一起编译，尽可能避免使用函式库分离编译的形式。
+              <br>
+              <ul>
+              <li>使用示范</li>
+              <ul>
+              <li><a href="Examples/Play.html">播放音讯档（FFmpeg）</a></li>
+              <li><a href="Examples/Record.html">录音并储存音讯档（FFmpeg）</a></li>
+              <li><a href="Examples/FeedAudio.html">播放（Feed Audio）</a></li>
+              <li><a href="Examples/AudioCapture.html">录音（Audio Capture）</a></li>
+              <li><a href="Examples/FullDuplex.html">全双工（Full Duplex）</a></li>
+              <li><a href="Examples/Redirect.html">音讯转向（Redirect）</a></li>
+              <li><a href="Examples/Volume.html">控制音量（Volume Control）</a></li>
+              </ul>
+              <li>编译</li>
+              <ul>
+              <li><a href="Compile/CMake.html">CMake安装</a></li>
+              <li><a href="Compile/Common.html">一般编译须知</a></li>
+              <li><a href="Compile/FFmpeg.html">FFmpeg函式库编译</a></li>
+              <li><a href="Compile/Linux.html">Linux x64/x86</a></li>
+              <li><a href="Compile/BananaPi.html">Linux ARMv7/32（Banana Pi）</a></li>
+              <li><a href="Compile/Solaris.html">Solaris</a></li>
+              <li><a href="Compile/FreeBSD.html">FreeBSD</a></li>
+              <li><a href="Compile/MacOSX.html">Mac OS X</a></li>
+              <li><a href="Compile/Windows.html">Windows 7</a></li>
+              <li><a href="Compile/Android.html">Android ARMv7</a></li>
+              <li><a href="Compile/iPhoneOS.html">iPhone OS ARMv7</a></li>
+              </ul>
+              <li>开发文件</li>
+              <ul>
+              <li><a href="Develop/Conduit.html">导流管的继承处理</a></li>
+              <li><a href="Develop/HostAPI.html">如何撰写自有的音讯驱动介面</a></li>
+              <li><a href="Develop/WithQt.html">配合Qt使用</a></li>
+              <li><a href="Develop/Embeddable.html">箝入您的程序内合併使用</a></li>
+              </ul>
+              </ul>
+              <!--
+              <h1>架构</h1>
+              <ul>
+              <li><a href="Architecture/index.html">设计原理</a></li>
+              <li><a href="Architecture/Architectures.html">架构图</a></li>
+              <li><a href="Architecture/FlowCharts.html">流程图</a></li>
+              <li><a href="Architecture/DataFlows.html">资料流</a></li>
+              </ul>
+              -->
+              <h1>平台支持状况</h1>
+              <p>「CIOS音讯核心」使用「音讯驱动介面」（Host API）作为跨平台下的音讯设备支持方式。每个作业系统平台都有相对应的音讯驱动介面，使用者仅需要使用上层统一的类别，便可以进行跨平台的音讯设备操作。</p>
+              <br>
+              <a href="hostapi.html">音讯驱动介面支持状态列表</a>。
+              <br>
+              <p>平台支持</p>
+              <ul>
+              <li><a href="Platforms/Linux.html">Linux</a></li>
+              <li><a href="Platforms/Solaris.html">Solaris</a></li>
+              <li><a href="Platforms/FreeBSD.html">FreeBSD</a></li>
+              <li><a href="Platforms/MacOSX.html">Mac OS X</a></li>
+              <li><a href="Platforms/Windows.html">Windows</a></li>
+              <li><a href="Platforms/Android.html">Android</a></li>
+              <li><a href="Platforms/iPhoneOS.html">iPhone OS</a></li>
+              <li><a href="Platforms/BananaPi.html">Banana Pi</a></li>
+              </ul>
+              <p>音讯驱动介面</p>
+              <ul>
+              <li><a href="Platforms/DirectSound.html">Direct Sound</a></li>
+              <li><a href="Platforms/WMME.html">Windows Multimedia Extensions</a></li>
+              <li><a href="Platforms/WASAPI.html">Windows Audio Session API</a></li>
+              <li><a href="Platforms/WDMKS.html">Windows Driver Model - Kernel Streaming</a></li>
+              <li><a href="Platforms/ALSA.html">Advanced Linux Sound Architecture</a></li>
+              <li><a href="Platforms/OSS.html">Open Sound System</a></li>
+              <li><a href="Platforms/JACK.html">JACK Audio Connection Kit</a></li>
+              <li><a href="Platforms/CoreAudio.html">Apple Core Audio</a></li>
+              <li><a href="Platforms/FFmpeg.html">FFmpeg</a></li>
+              <li><a href="Platforms/Skeleton.html">Skeleton</a></li>
+              </ul>
+              <p>实验版音讯驱动介面</p>
+              <ul>
+              <li><a href="Platforms/OpenAL.html">OpenAL</a></li>
+              <li><a href="Platforms/PulseAudio.html">Pulse Audio</a></li>
+              <li><a href="Platforms/VLC.html">VideoLAN VLC media player</a></li>
+              <li><a href="Platforms/ASIHPI.html">AudioScience HPI API</a></li>
+              </ul>
+              <h1>应用程序介面</h1>
+              <p>类别表</p>
+              <ul>
+              <li>记忆体管理
+              <ul>
+              <li><a href="API/Allocator.html">Allocator</a></li>
+              <li><a href="API/AllocationLink.html">AllocationLink</a></li>
+              <li><a href="API/AllocationGroup.html">AllocationGroup</a></li>
+              </ul>
+              <li>系统管理
+              <ul>
+              <li><a href="API/Timer.html">Timer</a></li>
+              <li><a href="API/CpuLoad.html">CpuLoad</a></li>
+              <li><a href="API/Debugger.html">Debugger</a></li>
+              </ul>
+              <li>缓冲区及格式管理
+              <ul>
+              <li><a href="API/Dither.html">Dither</a></li>
+              <li><a href="API/RingBuffer.html">RingBuffer</a></li>
+              <li><a href="API/LoopBuffer.html">LoopBuffer</a></li>
+              <li><a href="API/BufferProcessor.html">BufferProcessor</a></li>
+              </ul>
+              <li>导流管系统
+              <ul>
+              <li><a href="API/StreamIO.html">StreamIO</a></li>
+              <li><a href="API/Conduit.html">Conduit</a></li>
+              <li><a href="API/LinearConduit.html">LinearConduit</a></li>
+              <li><a href="API/ConduitFunction.html">ConduitFunction</a></li>
+              </ul>
+              <li>音讯驱动介面
+              <ul>
+              <li><a href="API/StreamParameters.html">StreamParameters</a></li>
+              <li><a href="API/HostApiInfo.html">HostApiInfo</a></li>
+              <li><a href="API/DeviceInfo.html">DeviceInfo</a></li>
+              <li><a href="API/MediaCodec.html">MediaCodec</a></li>
+              <li><a href="API/Stream.html">Stream</a></li>
+              <li><a href="API/HostApi.html">HostApi</a></li>
+              <li><a href="API/Core.html">Core</a></li>
+              </ul>
+              <li>杂项工具
+              <ul>
+              <li><a href="API/Mutex.html">Mutex</a></li>
+              <li><a href="API/ThreadData.html">ThreadData</a></li>
+              <li><a href="API/Thread.html">Thread</a></li>
+              <li><a href="API/BridgeConduit.html">BridgeConduit</a></li>
+              </ul>
+              <li>FFmpeg相关工具
+              <ul>
+              <li><a href="API/CaResampler.html">CaResampler</a></li>
+              </ul>
+              </ul>
+              <p>列举型态</p>
+              <ul>
+              <li><a href="API/CaErrorCode.html">CaErrorCode</a></li>
+              <li><a href="API/CaHostApiTypeId.html">CaHostApiTypeId</a></li>
+              <li><a href="API/CaSampleFormat.html">CaSampleFormat</a></li>
+              <li><a href="API/CaStreamAllFlags.html">CaStreamAllFlags</a></li>
+              <li><a href="API/CaHostBufferSizeMode.html">CaHostBufferSizeMode</a></li>
+              </ul>
+              <p>资料结构</p>
+              <ul>
+              <li><a href="API/CaChannelDescriptor.html">CaChannelDescriptor</a></li>
+              <li><a href="API/StreamInfoHeader.html">StreamInfoHeader</a></li>
+              <li><a href="API/FFmpegEncodePacket.html">FFmpegEncodePacket</a></li>
+              </ul>
+              <p>其他</p>
+              <ul>
+              <li><a href="API/Typedefs.html">自定型态</a></li>
+              <li><a href="API/Macros.html">宏集</a></li>
+              <li><a href="API/Functions.html">函式集</a></li>
+              <li><a href="API/Variables.html">总体变数</a></li>
+              </ul>
+              <h1>其他程序语言</h1>
+              与其他程序语言的混和使用：
+              <ul>
+              <li><a href="Bindings/C.html">C Wrapper</a></li>
+              <li><a href="Bindings/Qt.html">Qt</a></li>
+              <li><a href="Bindings/Java.html">Java</a></li>
+              <li><a href="Bindings/Python.html">Python</a></li>
+              <li><a href="Bindings/Ruby.html">Ruby</a></li>
+              <li><a href="Bindings/PERL.html">PERL</a></li>
+              <li><a href="Bindings/Lua.html">Lua</a></li>
+              <li><a href="Bindings/Prolog.html">Prolog</a></li>
+              <li><a href="Bindings/LISP.html">LISP</a></li>
+              <li><a href="Bindings/Scheme.html">Scheme</a></li>
+              <li><a href="Bindings/CLIPS.html">CLIPS</a></li>
+              <li><a href="Bindings/ADA.html">ADA</a></li>
+              <li><a href="Bindings/Go.html">GNU Go</a></li>
+              <li><a href="Bindings/FORTRAN.html">FORTRAN</a></li>
+              <li><a href="Bindings/R.html">R</a></li>
+              <li><a href="http://nkml.sourceforge.net">N（内建使用CIOS Audio Core）</a></li>
+              <li><a href="Bindings/FORTH.html">FORTH</a></li>
+              <li><a href="Bindings/Haskell.html">Haskell</a></li>
+              <li><a href="Bindings/Erlang.html">Erlang</a></li>
+              <li><a href="Bindings/Scilab.html">Scilab</a></li>
+              <li><a href="Bindings/MetaTrader.html">MetaTrader</a></li>
+              </ul>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

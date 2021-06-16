@@ -1,0 +1,1 @@
+OTHER_FILES += $${PWD}/README.txt

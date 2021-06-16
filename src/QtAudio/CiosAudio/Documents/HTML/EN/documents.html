@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>CIOS Audio Core : Documents</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li class="first active">Documents</li>
+            <li><a href="downloads.html">Download</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="mail.html">Mailing list</a></li>
+            <li><a href="apps.html">Applications</a></li>
+            <li><a href="links.html">Links</a></li>
+            <li><a href="license.html">License</a></li>
+            <li><a href="volunteer.html">Volunteers</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Documents</h1>
+              All source code packages have a copy of documents,
+              users can read locally or on this website.
+              In most cases, we strongly suggest you pick the code fragments for your own needs,
+              compile them with your applications.
+              Try not to use library as the major form of using CIOS Audio Core.
+              <br>
+              <ul>
+              <li>Examples</li>
+              <ul>
+              <li><a href="Examples/Play.html">Play audio files with FFmpeg</a></li>
+              <li><a href="Examples/Record.html">Record audio files with FFmpeg</a></li>
+              <li><a href="Examples/FeedAudio.html">Audio feeding</a></li>
+              <li><a href="Examples/AudioCapture.html">Audio capture</a></li>
+              <li><a href="Examples/FullDuplex.html">Full Duplex</a></li>
+              <li><a href="Examples/Redirect.html">Audio streaming redirect</a></li>
+              <li><a href="Examples/Volume.html">Volume Control</a></li>
+              </ul>
+              <li>Compilation</li>
+              <ul>
+              <li><a href="Compile/CMake.html">Install CMake</a></li>
+              <li><a href="Compile/Common.html">Things to know about the compilation</a></li>
+              <li><a href="Compile/FFmpeg.html">Compiling FFmpeg</a></li>
+              <li><a href="Compile/Linux.html">Linux x64/x86</a></li>
+              <li><a href="Compile/BananaPi.html">Linux ARMv7/32（Banana Pi）</a></li>
+              <li><a href="Compile/Solaris.html">Solaris</a></li>
+              <li><a href="Compile/FreeBSD.html">FreeBSD</a></li>
+              <li><a href="Compile/MacOSX.html">Mac OS X</a></li>
+              <li><a href="Compile/Windows.html">Windows 7</a></li>
+              <li><a href="Compile/Android.html">Android ARMv7</a></li>
+              <li><a href="Compile/iPhoneOS.html">iPhone OS ARMv7</a></li>
+              </ul>
+              <li>Development documents</li>
+              <ul>
+              <li><a href="Develop/Conduit.html">Creating your own audio conduit</a></li>
+              <li><a href="Develop/HostAPI.html">Creating your own Host APIs</a></li>
+              <li><a href="Develop/WithQt.html">Embed into Qt</a></li>
+              <li><a href="Develop/Embeddable.html">Embed into your own C++ programs</a></li>
+              </ul>
+              </ul>
+              <!--
+              <h1>Architectures</h1>
+              <ul>
+              <li><a href="Architecture/index.html">Schema</a></li>
+              <li><a href="Architecture/Architectures.html">Architecture</a></li>
+              <li><a href="Architecture/FlowCharts.html">Flow charts</a></li>
+              <li><a href="Architecture/DataFlows.html">Data flows</a></li>
+              </ul>
+              -->
+              <h1>Support status</h1>
+              <p>CIOS Audio Core uses Host API as a method to archieve cross-platform audio device supports.
+              Each OS platforms have its own corresponding audio HostAPIs.
+              Normal users just use the classes of abstract layer interfaces,
+              and you can write audio applications very easily.
+              </p>
+              <br>
+              <a href="hostapi.html">Host APIs support status</a>
+              <br>
+              <p>Platform supports</p>
+              <ul>
+              <li><a href="Platforms/Linux.html">Linux</a></li>
+              <li><a href="Platforms/Solaris.html">Solaris</a></li>
+              <li><a href="Platforms/FreeBSD.html">FreeBSD</a></li>
+              <li><a href="Platforms/MacOSX.html">Mac OS X</a></li>
+              <li><a href="Platforms/Windows.html">Windows</a></li>
+              <li><a href="Platforms/Android.html">Android</a></li>
+              <li><a href="Platforms/iPhoneOS.html">iPhone OS</a></li>
+              <li><a href="Platforms/BananaPi.html">Banana Pi</a></li>
+              </ul>
+              <p>Host APIs</p>
+              <ul>
+              <li><a href="Platforms/DirectSound.html">Direct Sound</a></li>
+              <li><a href="Platforms/WMME.html">Windows Multimedia Extensions</a></li>
+              <li><a href="Platforms/WASAPI.html">Windows Audio Session API</a></li>
+              <li><a href="Platforms/WDMKS.html">Windows Driver Model - Kernel Streaming</a></li>
+              <li><a href="Platforms/ALSA.html">Advanced Linux Sound Architecture</a></li>
+              <li><a href="Platforms/OSS.html">Open Sound System</a></li>
+              <li><a href="Platforms/JACK.html">JACK Audio Connection Kit</a></li>
+              <li><a href="Platforms/CoreAudio.html">Apple Core Audio</a></li>
+              <li><a href="Platforms/FFmpeg.html">FFmpeg</a></li>
+              <li><a href="Platforms/Skeleton.html">Skeleton</a></li>
+              </ul>
+              <p>Expertimental Host APIs</p>
+              <ul>
+              <li><a href="Platforms/OpenAL.html">OpenAL</a></li>
+              <li><a href="Platforms/PulseAudio.html">Pulse Audio</a></li>
+              <li><a href="Platforms/VLC.html">VideoLAN VLC media player</a></li>
+              <li><a href="Platforms/ASIHPI.html">AudioScience HPI API</a></li>
+              </ul>
+              <h1>Application Interfaces(APIs)</h1>
+              <p>Classes</p>
+              <ul>
+              <li>Memory managements
+              <ul>
+              <li><a href="API/Allocator.html">Allocator</a></li>
+              <li><a href="API/AllocationLink.html">AllocationLink</a></li>
+              <li><a href="API/AllocationGroup.html">AllocationGroup</a></li>
+              </ul>
+              <li>System functions
+              <ul>
+              <li><a href="API/Timer.html">Timer</a></li>
+              <li><a href="API/CpuLoad.html">CpuLoad</a></li>
+              <li><a href="API/Debugger.html">Debugger</a></li>
+              </ul>
+              <li>Buffers and formats management
+              <ul>
+              <li><a href="API/Dither.html">Dither</a></li>
+              <li><a href="API/RingBuffer.html">RingBuffer</a></li>
+              <li><a href="API/LoopBuffer.html">LoopBuffer</a></li>
+              <li><a href="API/BufferProcessor.html">BufferProcessor</a></li>
+              </ul>
+              <li>Conduit system
+              <ul>
+              <li><a href="API/StreamIO.html">StreamIO</a></li>
+              <li><a href="API/Conduit.html">Conduit</a></li>
+              <li><a href="API/LinearConduit.html">LinearConduit</a></li>
+              <li><a href="API/ConduitFunction.html">ConduitFunction</a></li>
+              </ul>
+              <li>Host APIs
+              <ul>
+              <li><a href="API/StreamParameters.html">StreamParameters</a></li>
+              <li><a href="API/HostApiInfo.html">HostApiInfo</a></li>
+              <li><a href="API/DeviceInfo.html">DeviceInfo</a></li>
+              <li><a href="API/MediaCodec.html">MediaCodec</a></li>
+              <li><a href="API/Stream.html">Stream</a></li>
+              <li><a href="API/HostApi.html">HostApi</a></li>
+              <li><a href="API/Core.html">Core</a></li>
+              </ul>
+              <li>Utilities
+              <ul>
+              <li><a href="API/Mutex.html">Mutex</a></li>
+              <li><a href="API/ThreadData.html">ThreadData</a></li>
+              <li><a href="API/Thread.html">Thread</a></li>
+              <li><a href="API/BridgeConduit.html">BridgeConduit</a></li>
+              </ul>
+              <li>FFmpeg related tools
+              <ul>
+              <li><a href="API/CaResampler.html">CaResampler</a></li>
+              </ul>
+              </ul>
+              <p>Enumations</p>
+              <ul>
+              <li><a href="API/CaErrorCode.html">CaErrorCode</a></li>
+              <li><a href="API/CaHostApiTypeId.html">CaHostApiTypeId</a></li>
+              <li><a href="API/CaSampleFormat.html">CaSampleFormat</a></li>
+              <li><a href="API/CaStreamAllFlags.html">CaStreamAllFlags</a></li>
+              <li><a href="API/CaHostBufferSizeMode.html">CaHostBufferSizeMode</a></li>
+              </ul>
+              <p>Data structures</p>
+              <ul>
+              <li><a href="API/CaChannelDescriptor.html">CaChannelDescriptor</a></li>
+              <li><a href="API/StreamInfoHeader.html">StreamInfoHeader</a></li>
+              <li><a href="API/FFmpegEncodePacket.html">FFmpegEncodePacket</a></li>
+              </ul>
+              <p>Others</p>
+              <ul>
+              <li><a href="API/Typedefs.html">Typedefs</a></li>
+              <li><a href="API/Macros.html">Macros</a></li>
+              <li><a href="API/Functions.html">Functions</a></li>
+              <li><a href="API/Variables.html">Global variables</a></li>
+              </ul>
+              <h1>Bindings</h1>
+              Language bindings other than C++:
+              <ul>
+              <li><a href="Bindings/C.html">C Wrapper</a></li>
+              <li><a href="Bindings/Qt.html">Qt</a></li>
+              <li><a href="Bindings/Java.html">Java</a></li>
+              <li><a href="Bindings/Python.html">Python</a></li>
+              <li><a href="Bindings/Ruby.html">Ruby</a></li>
+              <li><a href="Bindings/PERL.html">PERL</a></li>
+              <li><a href="Bindings/Lua.html">Lua</a></li>
+              <li><a href="Bindings/Prolog.html">Prolog</a></li>
+              <li><a href="Bindings/LISP.html">LISP</a></li>
+              <li><a href="Bindings/Scheme.html">Scheme</a></li>
+              <li><a href="Bindings/CLIPS.html">CLIPS</a></li>
+              <li><a href="Bindings/ADA.html">ADA</a></li>
+              <li><a href="Bindings/Go.html">GNU Go</a></li>
+              <li><a href="Bindings/FORTRAN.html">FORTRAN</a></li>
+              <li><a href="Bindings/R.html">R</a></li>
+              <li><a href="http://nkml.sourceforge.net">N(built-in using CIOS Audio Core)</a></li>
+              <li><a href="Bindings/FORTH.html">FORTH</a></li>
+              <li><a href="Bindings/Haskell.html">Haskell</a></li>
+              <li><a href="Bindings/Erlang.html">Erlang</a></li>
+              <li><a href="Bindings/Scilab.html">Scilab</a></li>
+              <li><a href="Bindings/MetaTrader.html">MetaTrader</a></li>
+              </ul>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

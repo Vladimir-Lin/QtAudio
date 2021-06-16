@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>編譯：Android</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首頁</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下載</a></li>
+          <li><a href="../status.html">狀態</a></li>
+          <li><a href="../faq.html">常見問題</a></li>
+          <li><a href="../mail.html">郵件列表</a></li>
+          <li><a href="../apps.html">應用程式</a></li>
+          <li><a href="../links.html">外部鏈結</a></li>
+          <li><a href="../license.html">版權</a></li>
+          <li><a href="../volunteer.html">志願者</a></li>
+          <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Android平台編譯</h1>
+            <br>
+            <h2>安裝Android Studio</h2>
+            <br>
+            編譯時期由於需要建立Android System Root，因此建議使用的平台是Linux。
+            此處只介紹Linux下的編譯環境設定。
+            <br>
+            <h2>Linux下的Android環境設定</h2>
+            <br>
+            .bashrc檔案當中需要設定如下：
+            <br>
+            <p>
+            export ANDROID_NDK_ROOT=/CIOS/Android/NDK<br>
+            export ANDROID_SDK_ROOT=/CIOS/Android/SDK<br>
+            export ANDROID_SYS_ROOT=/CIOS/Android/SYS<br>
+            </p>
+            <br>
+            <h2>準備Android編譯環境</h2>
+            <h3>建立Android System Root</h3>
+            <br>
+            Android System Root的建立Script如下：
+            <br>
+            <p>
+            #!/bin/sh<br>
+            <br>
+            export ANDROID_SYS=/CIOS/Android/SYS<br>
+            export ANDROID_PLATFORM=android-15<br>
+            export ANDROID_TOOLCHAIN=arm-linux-androideabi-4.9<br>
+            <br>
+            $ANDROID_NDK_ROOT/build/tools/make-standalone-toolchain.sh \<br>
+            --platform=$ANDROID_PLATFORM \<br>
+            --toolchain=$ANDROID_TOOLCHAIN \<br>
+            --install-dir=$ANDROID_SYS<br>
+            </p>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

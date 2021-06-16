@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CAB369CE-7CAF-4016-B5C1-54B490F24DB2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CaAudio</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CAAUDIO_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SkeletonAPI;FFMPEGLIB;CAUTILITIES;ENABLE_HOST_DIRECTSOUND;ENABLE_HOST_WASAPI;ENABLE_HOST_WDMKS;ENABLE_HOST_WMME;ENABLE_HOST_FFMPEG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>.\..\..\..\;.\..\..\..\Platforms\Skeleton;.\..\..\..\Platforms\Windows\;.\..\..\..\Platforms\Windows\FFmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>..\MT4\MQL4\Libraries\$(TargetName)$(TargetExt)</OutputFile>
+      <ModuleDefinitionFile>CaAudio.def</ModuleDefinitionFile>
+      <AdditionalDependencies>ws2_32.lib;Advapi32.lib;ole32.lib;dsound.lib;setupapi.lib;winmm.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;postproc.lib;swresample.lib;swscale.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\..\..\..\Platforms\Windows\FFmpeg\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\CiosAudio.hpp" />
+    <ClInclude Include="..\..\..\CiosAudioPrivate.hpp" />
+    <ClInclude Include="..\..\..\Platforms\Skeleton\CaSkeleton.hpp" />
+    <ClInclude Include="..\..\..\Platforms\Windows\CaDirectSound.hpp" />
+    <ClInclude Include="..\..\..\Platforms\Windows\CaFFmpeg.hpp" />
+    <ClInclude Include="..\..\..\Platforms\Windows\CaWaSAPI.hpp" />
+    <ClInclude Include="..\..\..\Platforms\Windows\CaWdmks.hpp" />
+    <ClInclude Include="..\..\..\Platforms\Windows\CaWindows.hpp" />
+    <ClInclude Include="..\..\..\Platforms\Windows\CaWmme.hpp" />
+    <ClInclude Include="CaAudio.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\CaAllocationGroup.cpp" />
+    <ClCompile Include="..\..\..\CaAllocationLink.cpp" />
+    <ClCompile Include="..\..\..\CaBuffer.cpp" />
+    <ClCompile Include="..\..\..\CaConduit.cpp" />
+    <ClCompile Include="..\..\..\CaConduitFunction.cpp" />
+    <ClCompile Include="..\..\..\CaConverters.cpp" />
+    <ClCompile Include="..\..\..\CaCpuLoad.cpp" />
+    <ClCompile Include="..\..\..\CaDebug.cpp" />
+    <ClCompile Include="..\..\..\CaDeviceInfo.cpp" />
+    <ClCompile Include="..\..\..\CaDither.cpp" />
+    <ClCompile Include="..\..\..\CaHostApi.cpp" />
+    <ClCompile Include="..\..\..\CaHostApiInfo.cpp" />
+    <ClCompile Include="..\..\..\CaLinearConduit.cpp" />
+    <ClCompile Include="..\..\..\CaLoopBuffer.cpp" />
+    <ClCompile Include="..\..\..\CaMediaCodec.cpp" />
+    <ClCompile Include="..\..\..\CaRingBuffer.cpp" />
+    <ClCompile Include="..\..\..\CaStream.cpp" />
+    <ClCompile Include="..\..\..\CaStreamIO.cpp" />
+    <ClCompile Include="..\..\..\CaStreamParameters.cpp" />
+    <ClCompile Include="..\..\..\CiosAudio.cpp" />
+    <ClCompile Include="..\..\..\Platforms\CaPlatforms.cpp" />
+    <ClCompile Include="..\..\..\Platforms\CiosMachine.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Skeleton\CaSkeleton.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaAllocator.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaDirectSound.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaFFmpeg.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaTimer.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaWaSAPI.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaWdmks.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaWindows.cpp" />
+    <ClCompile Include="..\..\..\Platforms\Windows\CaWmme.cpp" />
+    <ClCompile Include="..\..\..\Utilities\BridgeConduit.cpp" />
+    <ClCompile Include="..\..\..\Utilities\RunMedia.cpp" />
+    <ClCompile Include="..\..\..\Utilities\Windows\nMutex.cpp" />
+    <ClCompile Include="..\..\..\Utilities\Windows\nThread.cpp" />
+    <ClCompile Include="..\..\..\Utilities\Windows\nThreadData.cpp" />
+    <ClCompile Include="CaAudio.cpp" />
+    <ClCompile Include="CaDLL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CaAudio.def" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Examples : Audio capture</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../documents.html">Documents</a></li>
+            <li><a href="../downloads.html">Download</a></li>
+            <li><a href="../status.html">Status</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../mail.html">Mailing list</a></li>
+            <li><a href="../apps.html">Applications</a></li>
+            <li><a href="../links.html">Links</a></li>
+            <li><a href="../license.html">License</a></li>
+            <li><a href="../volunteer.html">Volunteers</a></li>
+            <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Examples : Audio capture</h1>
+              <br>
+              Voice activity detection, speech recognition, recording,
+              environment detection, or sound source detection in CIOS,
+              the functionalities are all provided by this audio capture
+              section.。<br>
+              <br>
+              If you want to handle all the processes, in order to use
+              record function in CIOS Audio Core, you will need to
+              handle the following five major sections:<br>
+              <ol>
+                <li>Create your own audio conduit</li>
+                <li>Select audio device</li>
+                <li>Audio parameters setting</li>
+                <li>Start the Host API interface</li>
+                <li>Stream activities handling </li>
+              </ol>
+              If you don't want to handle the stream process and Host
+              API by yourself, you can simply use Record function in the
+              Core and create an audio conduit of your own.<br>
+              <br>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;"></span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Record </span><span style=" color:#c0c0c0;"></span><span style=" color:#000000;">(</span><span style=" color:#800080;">Conduit</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>conduit<span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                     </span><span style=" color:#800080;">CaDeviceIndex</span><span style=" color:#c0c0c0;">  </span>deviceId<span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                     </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span>channelCount<span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                     </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;"> </span>sampleFormat<span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                     </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span>sampleRate<span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                     </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span>frameCount<span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                     </span><span style=" color:#800080;">CaStreamFlags</span><span style=" color:#c0c0c0;">  </span>streamFlags<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                     </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span>sleepInterval<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">50</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              </pre>
+              <table border="1" cellpadding="2" cellspacing="2"
+                width="100%">
+                <tbody>
+                  <tr>
+                    <td align="center" valign="top">Parameter<br>
+                    </td>
+                    <td align="center" valign="top">Explain<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="top">conduit<br>
+                    </td>
+                    <td valign="top"><a href="../Develop/Conduit.html">Conduit</a><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="top">deviceId<br>
+                    </td>
+                    <td valign="top">Audio device ID</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">channelCount<br>
+                    </td>
+                    <td valign="top">Audio channel numbers</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">sampleFormat<br>
+                    </td>
+                    <td valign="top">Sampling format.&nbsp; Please read
+                      &lt;<a
+href="file:///D:/CIOS/Development/ZOS/Applications/Linguistics/CiosAudio/Documents/HTML/EN/API/CaSampleFormat.html">CaSampleFormat</a>&gt;.</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">sampleRate<br>
+                    </td>
+                    <td valign="top">Sampling rate.&nbsp; CIOS Audio
+                      Core supports range from 8000 to 192000.&nbsp;
+                      Some devices might not support specific sampling
+                      rates.</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">frameCount<br>
+                    </td>
+                    <td valign="top">The block number of each sampling
+                      interval.&nbsp; Suggested values are 0.1 ~ 0.2
+                      second.<br>
+                      If your sampling rate is 44100 or 48000, then
+                      frameCount is suggested to be 4410, 8820 or 4800,
+                      9600.</td>
+                  </tr>
+                  <tr>
+                    <td valign="top">streamFlags<br>
+                    </td>
+                    <td valign="top">Stream flags, normally it is
+                      0.&nbsp; Except for specific Host API
+                      functionalities, you don't need to care about this
+                      flag. </td>
+                  </tr>
+                  <tr>
+                    <td valign="top">sleepInterval<br>
+                    </td>
+                    <td valign="top">Interval to detect the status of
+                      stream.&nbsp; Suggested values are 50~250 ms, not
+                      to set a big value if possible.<br>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <h4>Example</h4>
+              <i><b><font color="#ff0000">Core</font></b></i> core ;<br>
+              MyOwnConduit * conduit = new MyOwnConduit () ;<br>
+              ...<br>
+              core . <i><b><font color="#3333ff">Record</font></b></i>
+              ( conduit , 1 , 2 , cafInt16 , 44100 , 4410 , 0 , 100 ) ;<br>
+              ...<br>
+              <br>
+              If you need a non-blocking recording, please read &lt;<a
+                href="Play.html">Play audio files with FFmpeg</a>&gt;
+              for thread implementation.<br>
+              <br>
+              <h3>Create your own audio conduit</h3>
+              A complete details about creating audio conduit, please
+              read &lt;<a href="../Develop/Conduit.html">Create an
+                inherit audio conduit</a>&gt;, &lt;<a
+                href="../API/LinearConduit.html">LinearConduit</a>&gt;,
+              or &lt;<a href="../API/BridgeConduit.html">BridgeConduit</a>&gt;.<br>
+              <br>
+              If you want to handle audio input stream, what you need is
+              to inherit two functions, obtain function just return <font
+                color="#800080">Complete</font>:<br>
+              <br>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">put</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">finish</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#800080;">ConduitDirection</span><span style=" color:#c0c0c0;"> </span>direction<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">NoDirection</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#800080;">FinishCondition</span><span style=" color:#c0c0c0;"> </span>condition<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">Correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br>put function handles <font color="#800080">StreamIO</font> Input, the way it does as following:<br></pre>
+              <br>
+              <span style=" color:#c0c0c0;"></span><span style="
+                color:#808000;">int</span><span style=" color:#c0c0c0;">
+              </span><span style=" font-style:italic; color:#000000;">MyOwnConduit::put</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#808000;">void</span><span
+                style=" color:#000000;">)<br>
+                {<br>
+                &nbsp; if ( <i><b>... condition is ready for audio
+                    input ...</b></i> ) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp; <i><b>... copy your audio
+                    input into Input.Buffer ...<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp; // example code in
+                    BridgeConduit.cpp :&nbsp;</b></i></span><span
+                style=" color:#000000;"><i><b><span style="
+                      color:#800000;"> Buffer</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#000000;">.</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#000000;">put</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#000000;">(</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#800000;">Input</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#000000;">.</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#800000;">Buffer</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#000000;">,</span><span style="
+                      color:#c0c0c0;"> </span></b></i></span><span
+                style=" color:#000000;"><i><b><span style="
+                      color:#c0c0c0;"><span style=" color:#800000;">Input</span><span
+                        style=" color:#c0c0c0;"> </span><span style="
+                        color:#000000;">.</span><span style="
+                        color:#c0c0c0;"> </span><span style="
+                        color:#000000;">Total</span><span style="
+                        color:#c0c0c0;"> </span><span style="
+                        color:#000000;">(</span><span style="
+                        color:#c0c0c0;"> </span><span style="
+                        color:#000000;">)</span></span><span style="
+                      color:#000000;"></span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#000000;">)</span><span style="
+                      color:#c0c0c0;"> </span><span style="
+                      color:#000000;">;<br>
+                    </span></b></i>&nbsp;&nbsp;&nbsp;&nbsp; return <font
+                  color="#800080">Continue</font> ;<br>
+                &nbsp; }<br>
+                &nbsp; if ( <i><b>... condition is audio input is
+                    completely empty ...</b></i> ) {<br>
+                &nbsp;&nbsp;&nbsp; return <font color="#800080">Complete</font>
+                ;<br>
+                &nbsp; }<br>
+                &nbsp; if ( <i><b>... condition has something
+                    unexpected ...</b></i> ) {<br>
+                &nbsp;&nbsp;&nbsp; return <font color="#800080">Abort</font>
+                ;<br>
+                &nbsp; }<br>
+                &nbsp; return <font color="#800080">Postpone</font> ;<br>
+                }<br>
+              </span><br>
+              When the whole stream is completely stopped, stream wiil
+              give a shot to call finish.<br>
+              <br>
+              <span style=" color:#808000;">void</span><span style="
+                color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">MyOwnConduit::finish</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">ConduitDirection</span><span
+                style=" color:#c0c0c0;"> </span>direction<span style="
+                color:#000000;">,</span><span style=" color:#800080;">FinishCondition</span><span
+                style=" color:#c0c0c0;"> </span>condition<span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#800080;">Correct</span><span style="
+                color:#000000;">)</span><br>
+              {<br>
+              &nbsp; if ( InputDirection != direction ) return ;<br>
+              &nbsp; <b><i>... handle your own finishing conditions
+                  here ...</i></b><br>
+              }<br>
+              <br>
+              <h3>Select audio device</h3>
+              You will have to obtain the information inside <font
+                color="#800080">DeviceInfo</font> to know about the
+              details of the audio device.&nbsp; Please read &lt;<a
+                href="../API/DeviceInfo.html">DeviceInfo</a>&gt; for
+              details.<br>
+              <h4>Example in CaPlay.cpp</h4>
+              <meta name="qrichtext" content="1">
+              <meta name="qrichtext" content="1">
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">ListInputDevices</span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">Core</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">core</span><span style=" color:#c0c0c0;">                                      </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">core</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">.</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Initialize</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                          </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">for</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">i</span><span style=" color:#000000;">=</span><span style=" color:#000080;">0</span><span style=" color:#000000;">;</span><span style=" color:#000000;">i</span><span style=" color:#000000;">&lt;</span><span style=" color:#000000;">core</span><span style=" color:#000000;">.</span><span style=" font-style:italic; color:#000000;">DeviceCount</span><span style=" color:#000000;">();</span><span style=" color:#000000;">i</span><span style=" color:#000000;">++)</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">DeviceInfo</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">dev</span><span style=" color:#c0c0c0;">                             </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">dev</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">core</span><span style=" color:#000000;">.</span><span style=" font-style:italic; color:#000000;">GetDeviceInfo</span><span style=" color:#000000;">((</span><span style=" color:#800080;">CaDeviceIndex</span><span style=" color:#000000;">)</span><span style=" color:#000000;">i</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">dev</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;&amp;</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">dev</span><span style=" color:#000000;">-&gt;</span><span style=" color:#800000;">maxInputChannels</span><span style=" color:#000000;">&gt;</span><span style=" color:#000080;">0</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">printf</span><span style=" color:#000000;">(</span><span style=" color:#008000;">"%4d</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">:</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">%s\n"</span><span style=" color:#000000;">,</span><span style=" color:#000000;">i</span><span style=" color:#000000;">,</span><span style=" color:#000000;">dev</span><span style=" color:#000000;">-&gt;</span><span style=" color:#800000;">name</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">                                            </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">                                              </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">core</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">.</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Terminate</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                          </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">}</span></pre>
+              <style type="text/css">
+p, li { white-space: pre-wrap; }
+</style>
+              <style type="text/css">p, li { white-space: pre-wrap; }
+</style><br>
+              Normally, you have to know the recording audio device ID
+              before you use it.&nbsp; If you did not set up audio
+              device ID, the system will select by using the following
+              function:<br>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaDeviceIndex</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">DefaultInputDevice</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#808000;">void</span><span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <br>
+              <br>
+              Due to the underlying implementation, this device might
+              possibly not work properly. Because CIOS Audio Core is
+              using these underlying audio drivers, if the recording
+              device can not work properly, looking for a solution
+              inside CIOS Audio Core is useless. <br>
+              <h3>Audio parameters setting</h3>
+              Set up audio parameters requires to set the values within
+              <span style=" color:#800080;">StreamParameters</span>,
+              please read &lt;<a href="../API/StreamParameters.html">StreamParameters</a>&gt;
+
+
+              for details.<br>
+              <br>
+              Normally, use the following declaration to set up the
+              parameters:<br>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#800080;">StreamParameters</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">inputParameters</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">deviceId</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">channelCount</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">sampleFormat</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">;</span>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              Set up sampling rate can be done only when you open a
+              stream, please read &lt;Start the Host API interface&gt;.<br>
+              <br>
+              <h3>Start the Host API interface</h3>
+              <br>
+              Start and stop a Host API interface require the following
+              steps:<br>
+              <br>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;"><span style=" font-style:italic; color:#000000;">Core core              </span><span style=" color:#c0c0c0;">                                                    </span><span style=" color:#000000;">;</span><br></span><span style=" color:#000000;"><span style=" color:#000000;"><span style=" font-style:italic; color:#000000;">...<br>core . Initialize</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                      </span><span style=" color:#000000;">;<br></span></span><span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+... configure input paraments here ...
+<span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">core . Open</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;">                                                 </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">inputParameters</span><span style=" color:#c0c0c0;">                                      </span><span style=" color:#000000;"> ,</span>
+<span style=" color:#c0c0c0;"></span></span><span style=" color:#000000;"><span style=" color:#c0c0c0;"><span style=" color:#000000;"><span style=" color:#c0c0c0;">                    </span><span style=" color:#000000;">NULL      </span><span style=" color:#c0c0c0;">                                             </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;"></span></span>                    </span><span style=" color:#000000;">sampleRate</span><span style=" color:#c0c0c0;">                                             </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#000000;">frameCount</span><span style=" color:#c0c0c0;">                                             </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#000000;">streamFlags</span><span style=" color:#c0c0c0;">                                            </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#000000;">conduit</span><span style=" color:#c0c0c0;">                                              </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+<span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">NoError</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">||</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">false</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">  ;</span>
+<span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                             </span><span style=" color:#000000;">{</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">core . Start</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                             </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">NoError</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">false</span><span style=" color:#c0c0c0;">                                     </span><span style=" color:#000000;">;</span><br><span style=" color:#c0c0c0;"></span></span><span style=" color:#000000;"><span style=" color:#c0c0c0;"><span style=" color:#000000;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">//////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;"></span></span></span></span><span style=" color:#000000;"><span style=" color:#c0c0c0;"><span style=" color:#000000;"><span style=" color:#c0c0c0;"><span style=" color:#000000;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">... handle your stream process here ...</span></span></span>
+<span style=" color:#c0c0c0;"></span></span>  </span><span style=" color:#000080;">//////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;&amp;</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">core.IsStopped</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">core.Stop</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+<span style=" color:#000000;">}</span>
+<span style=" font-style:italic; color:#000000;">core . Close</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+<span style=" font-style:italic; color:#000000;">core . Terminate</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;<br>...<br></span></span></pre>
+              <br>
+              <h3>Stream activities handling</h3>
+              <br>
+              After audio stream are started, you will have to detect
+              its status.&nbsp; The following two Core functions are
+              what your need:<br>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaError</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">IsStopped</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;<br>
+              </span><span style=" color:#c0c0c0;"> </span><span
+                style=" color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaError</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">IsActive</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span><br>
+              <br>
+              Example : <br>
+              <br>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;"><span style=" color:#808000;">while</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#c0c0c0;"></span><span style=" color:#000080;">1</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">core . IsActive</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#c0c0c0;"></span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">{</span>
+<span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">Timer</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">::</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">Sleep</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">sleepInterval</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+<span style=" color:#000000;">}</span><span style=" color:#000000;"></span>
+<span style=" color:#c0c0c0;"></span></span></pre>
+              <br>
+              <h3>Example codes</h3>
+              <span style=" color:#008000;"></span><br>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;"><span style=" color:#008000;"><span style=" color:#008000;"><span style=" color:#008000;">/*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">Record</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">specific</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">device</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">into</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">conduit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">*/</span>
+<span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">Core</span><span style=" color:#000000;">::</span><span style=" font-style:italic; color:#000000;">Record</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">Conduit</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">conduit</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#800080;">CaDeviceIndex</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">deviceId</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">channelCount</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">sampleFormat</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">sampleRate</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">frameCount</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#800080;">CaStreamFlags</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">streamFlags</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">                    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">sleepInterval</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span>
+<span style=" color:#000000;">{</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">conduit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">return</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">false</span><span style=" color:#c0c0c0;">                                        </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">StreamParameters</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">INSP</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">deviceId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">channelCount</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">sampleFormat</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">Stream</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;">                                            </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">CaError</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;">                                                        </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">true</span><span style=" color:#c0c0c0;">                                            </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">  </span><span style=" font-style:italic; color:#000000;">Initialize</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                             </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">INSP</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">.</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">suggestedLatency</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">GetDeviceInfo</span><span style=" color:#000000;">(</span><span style=" color:#000000;">deviceId</span><span style=" color:#000000;">)-&gt;</span><span style=" color:#800000;">defaultLowInputLatency</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Open</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;">                                                        </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">INSP</span><span style=" color:#c0c0c0;">                                                          </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">              </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;">                                                           </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">sampleRate</span><span style=" color:#c0c0c0;">                                                     </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">frameCount</span><span style=" color:#c0c0c0;">                                                     </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">streamFlags</span><span style=" color:#c0c0c0;">                                                    </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">conduit</span><span style=" color:#c0c0c0;">                                                      </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">NoError</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">||</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">false</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                             </span><span style=" color:#000000;">{</span>
+<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Start</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                    </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">NoError</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">false</span><span style=" color:#c0c0c0;">                                     </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000080;">////////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">while</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;&amp;</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">1</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">IsActive</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                       </span><span style=" color:#000000;">{</span>
+<span style=" color:#c0c0c0;">      </span><span style=" color:#800080;">Timer</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">::</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">Sleep</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">sleepInterval</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                       </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">                                                                        </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">    </span><span style=" color:#000080;">//////////////////////////////////////////////////////////////////////////</span>
+<span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;&amp;</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">IsStopped</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Stop</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">                                                                          </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" font-style:italic; color:#000000;">Close</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                       </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" font-style:italic; color:#000000;">Terminate</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                       </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">return</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">correct</span><span style=" color:#c0c0c0;">                                                             </span><span style=" color:#000000;">;</span>
+<span style=" color:#000000;">}</span></span><span style=" color:#000000;"></span></span><span style=" color:#000000;"></span>
+</span><span style=" color:#c0c0c0;"></span>       </pre>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

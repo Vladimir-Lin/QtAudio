@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS Audio Core API : CaResampler</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>類別：CaResampler</h1>
+              <p>音訊數據重新取樣。</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td align="center">類型</td>
+                    <td align="center">使用</td>
+                    <td align="center">成員</td>
+                    <td align="center">說明</td>
+                  </tr>
+                  <tr>
+                    <td>建構子</td>
+                    <td>public</td>
+                    <td><nobr>CaResampler(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>解構子</td>
+                    <td>public</td>
+                    <td><nobr>~CaResampler(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>SwrContext * Resample</nobr></td>
+                    <td>樣本轉換內容。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>unsigned char * inputBuffer</nobr></td>
+                    <td>音訊轉換輸入。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>unsigned char * outputBuffer</nobr></td>
+                    <td>轉換音訊輸出。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>double InputSampleRate</nobr></td>
+                    <td>輸入取樣率。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>double OutputSampleRate</nobr></td>
+                    <td>輸出取樣率。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>bool autoDeletion</nobr></td>
+                    <td>自動刪除配置的相關記憶體。 </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr> bool Setup (<br>
+                        double inputSampleRate ,<br>
+                        int inputChannels ,<br>
+                        CaSampleFormat inputFormat ,<br>
+                        double outputSampleRate ,<br>
+                        int outputChannels ,<br>
+                        CaSampleFormat outputFormat )</nobr></td>
+                    <td>設定轉換格式。 </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>int Convert (int frames)</nobr></td>
+                    <td>轉換音訊數據。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>int ToFrames (int frames)</nobr></td>
+                    <td>轉換成輸出取樣數。 </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>protected</td>
+                    <td><nobr>static int Format (CaSampleFormat format)</nobr></td>
+                    <td>音訊格式轉換。 </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>protected</td>
+                    <td><nobr>static int Channel (int channels)</nobr></td>
+                    <td>聲道格式轉換。<br>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3>說明</h3>
+              音訊數據重新取樣。外部程式盡可能不要使用這個類別，這是供應音訊驅動介面內部進行音訊排列格式轉換的類別。如果您需要音訊
+              排列格式轉換，您可以透過抄襲這個類別，自己設計另外一個獨立的類別來處理會比較好。<br>
+              <br>
+              <h3>C/C++定義</h3>
+              <br>
+              <span style=" color:#808000;">class</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaResampler</span>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">public</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">SwrContext</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">Resample</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">unsigned</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">char</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">inputBuffer</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">unsigned</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">char</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">outputBuffer</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">InputSampleRate</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">OutputSampleRate</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;">            </span><span style=" color:#800000;">autoDeletion</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">explicit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaResampler</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">~</span><span style=" font-style:italic; color:#000000;">CaResampler</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">Setup</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">(</span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">         </span>inputSampleRate<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                          </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span>inputChannels<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                          </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;"> </span>inputFormat<span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                          </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">         </span>outputSampleRate<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                          </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">            </span>outputChannels<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                          </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;"> </span>outputFormat<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">Convert</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span>frames<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">ToFrames</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span>frames<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">static</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">Format</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;"> </span>format<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">static</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">Channel</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span>channels<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

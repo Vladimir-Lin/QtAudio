@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>編譯：FFmpeg函式庫</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首頁</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下載</a></li>
+          <li><a href="../status.html">狀態</a></li>
+          <li><a href="../faq.html">常見問題</a></li>
+          <li><a href="../mail.html">郵件列表</a></li>
+          <li><a href="../apps.html">應用程式</a></li>
+          <li><a href="../links.html">外部鏈結</a></li>
+          <li><a href="../license.html">版權</a></li>
+          <li><a href="../volunteer.html">志願者</a></li>
+          <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>FFmpeg函式庫編譯</h1>
+            <p>FFmpeg的官方網站：<a href="http://www.ffmpeg.org">http://www.ffmpeg.org</a></p>
+            <p>編譯任何平台的FFmpeg事實上都是一項相當大的挑戰，因為相關連的函式庫數量相當多，而組合狀態也相當多，相依函式庫變動率也十分高。這裡說明的只是一般的設定及建議，如果您想要自行編譯FFmpeg，可能要多花一點時間來嘗試適合自己的組態。</p>
+            <h1>FFmpeg on Windows</h1>
+            預先編譯好的FFmpeg on Windows的函式庫在：<a href="http://ffmpeg.zeranoe.com/builds">http://ffmpeg.zeranoe.com/builds</a>可以找到。
+            我們建議您使用這個版本。<br>
+            <br>
+            下載完成後，我們建議您執行下列指令，用以保證產生的.lib檔是可以鏈結的：<br>
+            <p><b>x64架構</b></p>
+            <table><tr><td>
+            <p><i>
+            LIB /machine:x64 /def:avcodec-56.def /OUT:avcodec.lib<br>
+            LIB /machine:x64 /def:avdevice-56.def /OUT:avdevice.lib<br>
+            LIB /machine:x64 /def:avfilter-5.def /OUT:avfilter.lib<br>
+            LIB /machine:x64 /def:avformat-56.def /OUT:avformat.lib<br>
+            LIB /machine:x64 /def:avutil-54.def /OUT:avutil.lib<br>
+            LIB /machine:x64 /def:postproc-53.def /OUT:postproc.lib<br>
+            LIB /machine:x64 /def:swresample-1.def /OUT:swresample.lib<br>
+            LIB /machine:x64 /def:swscale-3.def /OUT:swscale.lib
+            </i></p>
+            </td></tr></table>
+            <br>
+            重建完成以後，include內的檔案請複製到<br>
+            <i>CiosAudio/Platforms/Windows/FFmpeg/include</i><br>
+            <br>
+            *.lib請複製到<br>
+            <i>CiosAudio/Platforms/Windows/FFmpeg/lib/x64</i><br>
+            <br>
+            <p><b>x86架構</b></p>
+            <table><tr><td>
+            <p><i>
+            LIB /machine:x86 /def:avcodec-56.def /OUT:avcodec.lib<br>
+            LIB /machine:x86 /def:avdevice-56.def /OUT:avdevice.lib<br>
+            LIB /machine:x86 /def:avfilter-5.def /OUT:avfilter.lib<br>
+            LIB /machine:x86 /def:avformat-56.def /OUT:avformat.lib<br>
+            LIB /machine:x86 /def:avutil-54.def /OUT:avutil.lib<br>
+            LIB /machine:x86 /def:postproc-53.def /OUT:postproc.lib<br>
+            LIB /machine:x86 /def:swresample-1.def /OUT:swresample.lib<br>
+            LIB /machine:x86 /def:swscale-3.def /OUT:swscale.lib
+            </i></p>
+            </td></tr></table>
+            <br>
+            重建完成以後，include內的檔案請複製到<br>
+            <i>CiosAudio/Platforms/Windows/FFmpeg/include</i><br>
+            <br>
+            *.lib請複製到<br>
+            <i>CiosAudio/Platforms/Windows/FFmpeg/lib/x86</i><br>
+            <br>
+            <br>
+            <h1>FFmpeg on Mac OS X</h1>
+            Mac OS X平台上，我們建議您全部都編譯成靜態函式庫。
+            <br>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            export ARENA=/usr/local<br>
+            ./configure \<br>
+            --cc=clang \<br>
+            --prefix=$ARENA \<br>
+            --extra-cflags="-I$ARENA/include" \<br>
+            --extra-ldflags="-L$ARENA/lib" \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --enable-gpl \<br>
+            --enable-nonfree \<br>
+            --enable-version3 \<br>
+            --disable-ssse3 \<br>
+            --disable-programs \<br>
+            --disable-ffplay \<br>
+            --disable-ffprobe \<br>
+            --disable-ffserver \<br>
+            --disable-network \<br>
+            --disable-sdl \<br>
+            --disable-indev=qtkit \<br>
+            --disable-indev=x11grab_xcb \<br>
+            --enable-hardcoded-tables \<br>
+            --enable-runtime-cpudetect \<br>
+            --enable-pthreads \<br>
+            --enable-postproc \<br>
+            --enable-filters \<br>
+            --enable-mdct \<br>
+            --enable-rdft \<br>
+            --enable-fft \<br>
+            --enable-bzlib \<br>
+            --enable-zlib \<br>
+            --enable-libtwolame \<br>
+            --enable-libmp3lame \<br>
+            --enable-libgsm \<br>
+            --enable-libwavpack \<br>
+            --enable-libvorbis \<br>
+            --enable-libfaac<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            由於每台編譯的機器環境均不相同，編譯成應用程式時，如果缺少了某個函式庫，通常都出現許多錯誤訊息，您必須自行尋找缺少的項目，一般而言，詢問其他人的幫助並不太大。<br>
+            <br>
+            這個版本編譯出來需要與以下的函式庫鏈結：
+            <ul>
+            <li>CaCore</li>
+            <li>avcodec</li>
+            <li>avdevice</li>
+            <li>avfilter</li>
+            <li>avformat</li>
+            <li>avutil</li>
+            <li>swresample</li>
+            <li>swscale</li>
+            <li>postproc</li>
+            <li>iconv</li>
+            <li>z</li>
+            <li>bz2</li>
+            <li>pthread</li>
+            <li>twolame</li>
+            <li>mp3lame</li>
+            <li>gsm</li>
+            <li>wavpack</li>
+            <li>ogg</li>
+            <li>vorbis</li>
+            <li>vorbisenc</li>
+            <li>vorbisfile</li>
+            <li>faac</li>
+            </ul>
+            <br>
+            Framework需要以下列表：
+            <ul>
+            <li>CoreAudio</li>
+            <li>CoreServices</li>
+            <li>AudioUnit</li>
+            <li>AudioToolBox</li>
+            <li>CoreFoundation</li>
+            <li>CoreVideo</li>
+            <li>VideoDecodeAcceleration</li>
+            <li>Accelerate</li>
+            </ul>
+            <br>
+            <h4>Two LAME</h4>
+            Two LAME的官方網址位於：<a href="http://www.twolame.org">http://www.twolame.org</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            ./configure --disable-shared --enable-static --prefix=/usr/local<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>LAME</h4>
+            LAME的官方網址位於：<a href="http://lame.sourceforge.net">http://lame.sourceforge.net</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            ./configure --disable-shared --enable-static --prefix=/usr/local<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>GSM</h4>
+            GSM的官方網址位於：<a href="http://libgsm.sourcearchive.com">http://libgsm.sourcearchive.com</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            make<br>
+            <br>
+            sudo cp -f inc/gsm.h /usr/local/include<br>
+            <br>
+            sudo cp -f lib/libgsm.a /usr/local/lib<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>Wav Pack</h4>
+            Wav Pack的官方網址位於：<a href="http://www.wavpack.com">http://www.wavpack.com</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            ./configure --disable-shared --enable-static --prefix=/usr/local<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>ogg</h4>
+            ogg的官方網址位於：<a href="http://xiph.org/ogg">http://xiph.org/ogg</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            ./configure --disable-shared --enable-static --prefix=/usr/local<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>vorbis</h4>
+            vorbis的官方網址位於：<a href="http://xiph.org/vorbis">http://xiph.org/vorbis</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            ./configure --disable-shared --enable-static --prefix=/usr/local<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>FAAC</h4>
+            FAAC的官方網址位於：<a href="http://www.audiocoding.com/faac.html">http://www.audiocoding.com/faac.html</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            ./configure --disable-shared --enable-static --prefix=/usr/local<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h1>FFmpeg on Linux</h1>
+            <h2>Debian</h2>
+            <br>
+            尚未測試。
+            <br>
+            <h2>Fedora</h2>
+            <br>
+            尚未測試。
+            <br>
+            <h2>Ubuntu</h2>
+            <p>Ubuntu 14.10</p>
+            <table>
+            <tr><td>
+            <p><i>
+            sudo apt-get remove ffmpeg<br>
+            <br>
+            sudo apt-get update<br>
+            <br>
+            sudo apt-get install build-essential subversion git-core checkinstall yasm texi2html libfaac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libsdl1.2-dev libtheora-dev libvorbis-dev libvpx-dev libx11-dev libxfixes-dev libxvidcore-dev zlib1g-dev libx264-dev<br>
+            <br>
+            cd<br>
+            <br>
+            svn checkout svn://svn.ffmpeg.org/ffmpeg/trunk ffmpeg<br>
+            <br>
+            cd ffmpeg<br>
+            <br>
+            ./configure --enable-gpl --enable-version3 --enable-nonfree --enable-postproc --enable-libfaac --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libxvid --enable-x11grab<br>
+            <br>
+            make<br>
+            <br>
+            sudo checkinstall --pkgname=ffmpeg --pkgversion "4:SVN-r`LANG=C svn info | grep Revision | awk '{ print $NF }'`" --backup=no --deldoc=yes --fstrans=no --default<br>
+            <br>
+            hash x264 ffmpeg ffplay<br>
+            </i></p>
+            </td></tr>
+            </table>
+            <h2>Arch Linux</h2>
+            <br>
+            尚未測試。
+            <br>
+            <h1>FFmpeg on FreeBSD</h1>
+            <br>
+            尚未測試。
+            <br>
+            <h1>FFmpeg on Solaris</h1>
+            Solaris(11.2)平台上，我們建議您全部都編譯成靜態函式庫。此外您必須先編譯YASM，安裝到Solaris系統當中。
+            <br>
+            <br>
+            編譯的方式：
+            <br>
+            <h4>YASM</h4>
+            YASM的官方網址位於：<a href="http://yasm.tortall.net/">http://yasm.tortall.net/</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            ./configure --prefix=/usr<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <br>
+            <h4>Two LAME</h4>
+            Two LAME的編譯方式與Mac OS X相同。
+            <br>
+            <h4>LAME</h4>
+            LAME的官方網址位於：<a href="http://lame.sourceforge.net">http://lame.sourceforge.net</a>
+            <br>
+            編譯的方式：
+            <br>
+            Solaris編譯之前，必須先修改掉libmp3lame/i386/Makefile.in當中的一個錯誤語法：
+            <br>
+            <p>ECHO ?= echo</p>
+            修改成
+            <br>
+            <p>ECHO = echo</p>
+            <br>
+            然後依照以下方式編譯：
+            <br>
+            <table><tr><td>
+            <p><i>
+            ./configure --disable-shared --enable-static --prefix=/usr/local<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>GSM</h4>
+            GSM的編譯方式與Mac OS X相同。
+            <br>
+            <h4>Wav Pack</h4>
+            Wav Pack的編譯方式與Mac OS X相同。
+            <br>
+            <br>
+            <h4>ogg</h4>
+            ogg的編譯方式與Mac OS X相同。
+            <br>
+            <br>
+            <h4>vorbis</h4>
+            vorbis的編譯方式與Mac OS X相同。
+            <br>
+            <br>
+            <h4>FAAC</h4>
+            FAAC的編譯方式與Mac OS X相同。
+            <br>
+            <br>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            export ARENA=/usr/local<br>
+            ./configure \<br>
+            --cc=clang \<br>
+            --prefix=$ARENA \<br>
+            --extra-cflags="-I$ARENA/include" \<br>
+            --extra-ldflags="-L$ARENA/lib" \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --enable-gpl \<br>
+            --enable-nonfree \<br>
+            --enable-version3 \<br>
+            --disable-programs \<br>
+            --disable-ffplay \<br>
+            --disable-ffprobe \<br>
+            --disable-ffserver \<br>
+            --disable-network \<br>
+            --disable-sdl \<br>
+            --disable-indev=qtkit \<br>
+            --disable-indev=x11grab_xcb \<br>
+            --enable-hardcoded-tables \<br>
+            --enable-runtime-cpudetect \<br>
+            --enable-pthreads \<br>
+            --enable-postproc \<br>
+            --enable-filters \<br>
+            --enable-mdct \<br>
+            --enable-rdft \<br>
+            --enable-fft \<br>
+            --enable-bzlib \<br>
+            --enable-zlib \<br>
+            --enable-libtwolame \<br>
+            --enable-libmp3lame \<br>
+            --enable-libgsm \<br>
+            --enable-libwavpack \<br>
+            --enable-libvorbis \<br>
+            --enable-libfaac<br>
+            <br>
+            gmake<br>
+            <br>
+            gmake install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            由於每台編譯的機器環境均不相同，編譯成應用程式時，如果缺少了某個函式庫，通常都出現許多錯誤訊息，您必須自行尋找缺少的項目，一般而言，詢問其他人的幫助並不太大。<br>
+            <br>
+            <br>
+            <h1>FFmpeg on iPhone OS</h1>
+            <br>
+            尚未測試。
+            <br>
+            <h1>FFmpeg on Android</h1>
+            <br>
+            在您編譯Android平台之前，您必須先建立基本環境，請參考《<a href= "Android.html">Android平台編譯</a>》。<br>
+            <br>
+            <h4>Two LAME</h4>
+            Two LAME的官方網址位於：<a href="http://www.twolame.org">http://www.twolame.org</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export TWOLAMEVER=0.3.13<br>
+            <br>
+            tar xvf $DEPOT/twolame-$TWOLAMEVER.tar.gz<br>
+            <br>
+            cd twolame-$TWOLAMEVER<br>
+            <br>
+            echo "Compile Two LAME $TWOLAMEVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            <br>
+            ./configure \<br>
+            --host=arm-linux \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --with-sysroot=$SYSROOT \<br>
+            --prefix=$ARENA<br>
+            <br>
+            make<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>LAME</h4>
+            LAME的官方網址位於：<a href="http://lame.sourceforge.net">http://lame.sourceforge.net</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export LAMEVER=3.99.5<br>
+            <br>
+            tar xvf $DEPOT/lame-$LAMEVER.tar.gz<br>
+            <br>
+            cd lame-$LAMEVER<br>
+            <br>
+            echo "Compile LAME $LAMEVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            <br>
+            ./configure \<br>
+            --host=arm-linux \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --with-sysroot=$SYSROOT \<br>
+            --prefix=$ARENA<br>
+            <br>
+            make<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>GSM</h4>
+            GSM的官方網址位於：<a href="http://libgsm.sourcearchive.com">http://libgsm.sourcearchive.com</a>
+            <br>
+            我們使用專為Android修改過Makefile的GSM版本，下載處《<a href="https://sourceforge.net/projects/ciosaudio/files/lib/libgsm_1.0.13.android.tar.gz">GSM 1.0.13 For Android</a>》，原始版本的下載處《<a href="https://sourceforge.net/projects/ciosaudio/files/lib/libgsm_1.0.13.orig.tar.gz">GSM 1.0.13</a>》。
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export GSMVER=1.0.13<br>
+            <br>
+            tar xvf $DEPOT/libgsm_$GSMVER.android.tar.gz<br>
+            <br>
+            cd gsm-1.0-pl13<br>
+            <br>
+            echo "Compile GSM $GSMVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            export GSM_INSTALL_ROOT=$ARENA<br>
+            <br>
+            make<br>
+            sudo cp -f inc/gsm.h $ARENA/include<br>
+            sudo cp -f lib/libgsm.a $ARENA/lib<br>
+            <br>
+            echo "Done"<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>iconv</h4>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export ICONVVER=1.14<br>
+            <br>
+            tar xvf $DEPOT/libiconv-$ICONVVER.tar.gz<br>
+            <br>
+            cd libiconv-$ICONVVER<br>
+            <br>
+            echo "Compile iconv $ICONVVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            export ACC=arm-linux<br>
+            <br>
+            ./configure \<br>
+            --host=$ACC \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --with-sysroot=$SYSROOT \<br>
+            --prefix=$ARENA<br>
+            <br>
+            make<br>
+            sudo cp -f include/iconv.h $ARENA/include<br>
+            sudo cp -f lib/.libs/libiconv.a $ARENA/lib<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>Wav Pack</h4>
+            Wav Pack的官方網址位於：<a href="http://www.wavpack.com">http://www.wavpack.com</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export WAVPACKVER=4.70.0<br>
+            <br>
+            tar xvf $DEPOT/wavpack-$WAVPACKVER.tar.bz2<br>
+            <br>
+            cd wavpack-$WAVPACKVER<br>
+            <br>
+            echo "Compile Wav Pack $WAVPACKVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            export CFLAGS="-I$ARENA/include"<br>
+            export LDFLAGS="-L$ARENA/lib"<br>
+            export ACC=arm-linux<br>
+            <br>
+            ./configure \<br>
+            --host=$ACC \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --with-sysroot=$SYSROOT \<br>
+            --prefix=$ARENA<br>
+            <br>
+            make<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>ogg</h4>
+            ogg的官方網址位於：<a href="http://xiph.org/ogg">http://xiph.org/ogg</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export OGGVER=1.3.1<br>
+            <br>
+            tar xvf $DEPOT/libogg-$OGGVER.tar.gz<br>
+            <br>
+            cd libogg-$OGGVER<br>
+            <br>
+            echo "Compile OGG $TWOLAMEVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            export ACC=arm-linux<br>
+            <br>
+            ./configure \<br>
+            --host=$ACC \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --with-sysroot=$SYSROOT \<br>
+            --prefix=$ARENA<br>
+            <br>
+            make<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>vorbis</h4>
+            vorbis的官方網址位於：<a href="http://xiph.org/vorbis">http://xiph.org/vorbis</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export VORBISVER=1.3.4<br>
+            <br>
+            tar xvf $DEPOT/libvorbis-$VORBISVER.tar.gz<br>
+            <br>
+            cd libvorbis-$VORBISVER<br>
+            <br>
+            echo "Compile Vorbis $VORBISVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            export CFLAGS="-I$ARENA/include"<br>
+            export LDFLAGS="-L$ARENA/lib"<br>
+            export ACC=arm-linux<br>
+            <br>
+            ./configure \<br>
+            --host=$ACC \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --with-sysroot=$SYSROOT \<br>
+            --prefix=$ARENA<br>
+            <br>
+            make<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h4>FAAC</h4>
+            FAAC的官方網址位於：<a href="http://www.audiocoding.com/faac.html">http://www.audiocoding.com/faac.html</a>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export FAACVER=1.28<br>
+            <br>
+            tar xvf $DEPOT/faac-$FAACVER.tar.gz<br>
+            <br>
+            cd faac-$FAACVER<br>
+            <br>
+            echo "Compile FAAC $FAACVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            export ACC=arm-linux<br>
+            <br>
+            ./configure \<br>
+            --host=$ACC \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --with-sysroot=$SYSROOT \<br>
+            --prefix=$ARENA<br>
+            <br>
+            make<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <br>
+            <h3>FFmpeg</h3>
+            <br>
+            編譯的方式：
+            <table><tr><td>
+            <p><i>
+            #!/bin/sh<br>
+            # one step compilation for android armv7<br>
+            <br>
+            export DEPOT=/CIOS/Qt/Android/Depot<br>
+            export ARENA=/CIOS/Android/Arena<br>
+            export SROOT=/CIOS/Qt/Android/Scripts/armv7<br>
+            export BUILD=/home/Linkers/Android<br>
+            <br>
+            cd $BUILD<br>
+            <br>
+            export FFMPEGVER=2.5<br>
+            <br>
+            tar xvf $DEPOT/ffmpeg-$FFMPEGVER.tar.bz2<br>
+            <br>
+            cd ffmpeg-$FFMPEGVER<br>
+            <br>
+            echo "Compile FFmpeg $FFMPEGVER"<br>
+            <br>
+            export CC="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-gcc --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export CXX="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-g++ --sysroot=$ANDROID_SYS_ROOT/sysroot"<br>
+            export AR="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ar"<br>
+            export LD="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ld"<br>
+            export NM="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-nm"<br>
+            export RANLIB="$ANDROID_SYS_ROOT/bin/arm-linux-androideabi-ranlib"<br>
+            export SYSROOT="$ANDROID_SYS_ROOT/sysroot"<br>
+            export PATH="$ANDROID_SYS_ROOT/bin":$PATH<br>
+            <br>
+            ./configure \<br>
+            --target-os=linux \<br>
+            --prefix=$ARENA \<br>
+            --sysinclude=$SYSROOT/usr/include \<br>
+            --enable-cross-compile \<br>
+            --extra-libs="-lgcc" \<br>
+            --arch=arm \<br>
+            --cc=arm-linux-androideabi-gcc \<br>
+            --cross-prefix=arm-linux-androideabi- \<br>
+            --nm=$NM \<br>
+            --ranlib=$RANLIB \<br>
+            --sysroot=$SYSROOT \<br>
+            --extra-cflags=" -O3 -Wall -mthumb -pipe -fpic -DANDROID -DNDEBUG -DHAVE_SYS_UIO_H=1 -Dipv6mr_interface=ipv6mr_ifindex -Wa,--noexecstack -fasm -Wno-psabi -fno-short-enums -fstrict-aliasing  -Werror=strict-aliasing -finline-limit=300 -ffast-math -fmodulo-sched -fmodulo-sched-allow-regmoves -mfloat-abi=softfp -mfpu=vfp -march=armv7 -I$ARENA/include" \<br>
+            --disable-shared \<br>
+            --enable-static \<br>
+            --extra-ldflags="-Wl,-rpath-link=$SYSROOT/usr/lib -L$SYSROOT/usr/lib -L$ARENA/lib -nostdlib -lc -lm -ldl -llog" \<br>
+            --disable-everything \<br>
+            --disable-symver \<br>
+            --disable-doc \<br>
+            --disable-ffplay \<br>
+            --disable-ffmpeg \<br>
+            --disable-ffprobe \<br>
+            --disable-ffserver \<br>
+            --disable-network \<br>
+            --disable-iconv \<br>
+            --enable-nonfree \<br>
+            --enable-protocol=file \<br>
+            --enable-libwavpack \<br>
+            --enable-libtwolame \<br>
+            --enable-libmp3lame \<br>
+            --enable-libgsm \<br>
+            --enable-libwavpack \<br>
+            --enable-libfaac \<br>
+            --enable-libvorbis \<br>
+            --enable-zlib \<br>
+            --enable-avformat \<br>
+            --enable-avutil \<br>
+            --enable-avcodec \<br>
+            --enable-avfilter \<br>
+            --enable-avdevice \<br>
+            --enable-swresample \<br>
+            --enable-swscale \<br>
+            --enable-postproc \<br>
+            --enable-demuxers \<br>
+            --enable-muxers \<br>
+            --enable-decoders \<br>
+            --enable-encoders \<br>
+            --enable-parsers \<br>
+            --enable-asm<br>
+            <br>
+            make<br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

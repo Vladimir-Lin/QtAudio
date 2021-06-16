@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>编译：Windows平台</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首页</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下载</a></li>
+          <li><a href="../status.html">状态</a></li>
+          <li><a href="../faq.html">常见问题</a></li>
+          <li><a href="../mail.html">邮件列表</a></li>
+          <li><a href="../apps.html">应用程序</a></li>
+          <li><a href="../links.html">外部链结</a></li>
+          <li><a href="../license.html">版权</a></li>
+          <li><a href="../volunteer.html">志愿者</a></li>
+          <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Windows平台编译</h1>
+            在环境已经配置好的状况下，编译CIOS Audio Core是相当简单的：<br>
+            <br>
+            <table><tr><td>
+            <p><i>
+            mkdir BuildCiosAudioCore<br>
+            cd BuildCiosAudioCore<br>
+            cmake $CIOSAUDIOROOTDIR\Compile\Windows<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            如此即可产生CiosAudio.sln<br>
+            <br>
+            <h3>x64</h3>
+            <br>
+            <table><tr><td>
+            <p><i>
+            cmake -G "Visual Studio 10 Win64" $CIOSAUDIOROOTDIR\Compile\Windows<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <br>
+            打开Visual Studio编译CiosAudio.sln即可产生CaCore.lib。
+            <br>
+            <br>
+            <h2>修改设定</h2>
+            <br>
+            <table><tr><td>
+            <p><i>
+            mkdir BuildCiosAudioCore<br>
+            cd BuildCiosAudioCore<br>
+            cmake $CIOSAUDIOROOTDIR\Compile\Windows<br>
+            cd ..<br>
+            cmake-gui BuildCiosAudioCore<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <img src="../images/Windows-cmake-gui-1.png">
+            <br>
+            <br>
+            Configure<br>
+            <br>
+            <img src="../images/Windows-cmake-gui-2.png">
+            <br>
+            <br>
+            Generate<br>
+            <br>
+            <img src="../images/Windows-cmake-gui-3.png">
+            <br>
+            <br>
+            <br>
+            打开Visual Studio编译修改设定后的CiosAudio.sln即可产生CaCore.lib。
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

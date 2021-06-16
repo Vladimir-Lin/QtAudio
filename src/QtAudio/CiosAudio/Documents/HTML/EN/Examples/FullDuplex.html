@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Examples : Full duplex</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../documents.html">Documents</a></li>
+            <li><a href="../downloads.html">Download</a></li>
+            <li><a href="../status.html">Status</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../mail.html">Mailing list</a></li>
+            <li><a href="../apps.html">Applications</a></li>
+            <li><a href="../links.html">Links</a></li>
+            <li><a href="../license.html">License</a></li>
+            <li><a href="../volunteer.html">Volunteers</a></li>
+            <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Examples : Full duplex</h1>
+              Full duplex is to direct input device into output device on
+              the same Host API.&nbsp; Some Host APIs do not support
+              such function.&nbsp; Full duplex works only between input
+              device and output device on the same Host API.&nbsp; If
+              you want to redirect between different devices on
+              different Host APIs, you will have to use "Redirect"
+              function.<br>
+              <br>
+              Because redirect function is a good candidate for full
+              duplex, and full duplex results in the codes of underlying
+              Host API very complicated and hard to maintain its
+              consistency.&nbsp; In the near future, full duplex may
+              highly possible to be depreciated.&nbsp; We suggest you
+              not to use this function if possible.<br>
+              <br>
+              To enable full duplex, just set up inputParameter and
+              outputParameter at the same time you open a stream.&nbsp;
+              Keep this in mind, a full duplex must use the same Host
+              API, and not all Host API support full duplex.<br>
+              <br>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;"></span><span style=" color:#c0c0c0;"><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Open</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">inputParameters</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;"></span></span><span style=" color:#c0c0c0;"><span style=" color:#c0c0c0;"><span style=" color:#c0c0c0;"><span style=" color:#c0c0c0;">            </span></span></span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">outputParameters </span><span style=" color:#c0c0c0;"></span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">sampleRate</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">frameCount</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">streamFlags</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">conduit</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+</span><br></pre>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

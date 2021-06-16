@@ -1,0 +1,250 @@
+body { background: #fff; color: #000; margin: 10px; padding: 0; }
+body, th, td {
+ font: normal 13px Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;
+}
+
+
+
+.larger { font-size: 15px; }
+
+h1, h2, h3, h4 {
+ font-family: Arial,Verdana,'Bitstream Vera Sans',Helvetica,sans-serif;
+ font-weight: bold;
+ letter-spacing: -0.018em;
+ page-break-after: avoid;
+}
+h1 { font-size: 19px; margin: .15em 1em 0.5em 0 }
+h2 { font-size: 16px }
+h3 { font-size: 14px }
+hr { border: none;  border-top: 1px solid #ccb; margin: 2em 0 }
+address { font-style: normal }
+img { border: none }
+
+li { padding: 0.35em 0 0.35em 0; }
+
+table {
+	border-width: 1;
+	border-spacing: 0;
+	border-style: solid;
+	border-color: #BBB;
+	border-collapse: collapse;
+}
+
+td
+{
+    padding: .35em;
+}
+
+.underline { text-decoration: underline }
+ol.loweralpha { list-style-type: lower-alpha }
+ol.upperalpha { list-style-type: upper-alpha }
+ol.lowerroman { list-style-type: lower-roman }
+ol.upperroman { list-style-type: upper-roman }
+ol.arabic     { list-style-type: decimal }
+
+/* Link styles */
+:link, :visited {
+ text-decoration: none;
+ color: #246AAA;
+ border-bottom: 1px dotted #bbb;
+}
+:link:hover, :visited:hover { background-color: #eee; color: #555 }
+h1 :link, h1 :visited ,h2 :link, h2 :visited, h3 :link, h3 :visited,
+h4 :link, h4 :visited, h5 :link, h5 :visited, h6 :link, h6 :visited {
+ color: inherit;
+}
+.trac-rawlink { border-bottom: none }
+
+/* Header */
+
+#header_left { text-align: right; }
+#header_left img { border: none; margin: 0; padding: 0; width:77px; height: 73px;}
+
+#header_right { text-align: left; }
+#header_right img { border: none; margin: 0; padding: 0; width:166px; height: 73px; }
+
+#header_left :link, #header_left :visited, #header_left :link:hover, #header_left :visited:hover,
+#header_right :link, #header_right :visited, #header_right :link:hover, #header_right :visited:hover 
+{
+ background: transparent;
+ color: #555;
+ margin: 0;
+ border: none;
+ padding: 0;
+}
+
+#license {
+	background-color:#FFF8F0;
+}
+
+#license_inner{
+	margin: 10 px;
+}
+
+/* Heading anchors */
+.anchor:link, .anchor:visited {
+ border: none;
+ color: #d7d7d7;
+ font-size: .8em;
+ vertical-align: text-top;
+}
+* > .anchor:link, * > .anchor:visited {
+ visibility: hidden;
+}
+h1:hover .anchor, h2:hover .anchor, h3:hover .anchor,
+h4:hover .anchor, h5:hover .anchor, h6:hover .anchor,
+span:hover .anchor {
+ visibility: visible;
+}
+
+/* Quick search */
+#search 
+{
+ float: right;
+ font-size: 10px;
+ height: 2.2em;
+ margin: 0 0 1em;
+ text-align: right;
+}
+#search input { font-size: 10px }
+#search label { display: none }
+
+/* Forms */
+input, textarea, select { margin: 2px }
+input, select { vertical-align: middle }
+input[type=button], input[type=submit], input[type=reset] {
+ background: #eee;
+ color: #222;
+ border: 1px outset #ccc;
+ padding: .1em .5em;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+ background: #ccb;
+}
+input[type=button][disabled], input[type=submit][disabled],
+input[type=reset][disabled] {
+ background: #f6f6f6;
+ border-style: solid;
+ color: #999;
+}
+input[type=text], input.textwidget, textarea { border: 1px solid #BBB }
+input[type=text], input.textwidget { padding: .25em .5em }
+input[type=text]:focus, input.textwidget:focus, textarea:focus {
+ border: 1px solid #886;
+}
+option { border-bottom: 1px dotted #d7d7d7 }
+fieldset { border: 1px solid #d7d7d7; padding: .5em; margin: 1em 0 }
+p.hint, span.hint { color: #666; font-size: 85%; font-style: italic; margin: .5em 0;
+  padding-left: 1em;
+}
+fieldset.iefix {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+* html fieldset.iefix { width: 98% }
+fieldset.iefix p { margin: 0 }
+legend { color: #999; padding: 0 .25em; font-size: 90%; font-weight: bold }
+label.disabled { color: #d7d7d7 }
+.buttons { margin: .5em .5em .5em 0 }
+.buttons form, .buttons form div { display: inline }
+.buttons input { margin: 1em .5em .1em 0 }
+.inlinebuttons input { 
+ font-size: 70%;
+ border-width: 1px;
+ border-style: dotted;
+ margin: 0 .1em;
+ padding: 0.1em;
+ background: none;
+}
+
+
+/* the page is broken into two columns so that the logo can be aligned around the menu/content split */
+
+#wrap 
+{
+    width: 960px;
+}
+
+.column
+{
+    padding: 0;
+    margin: 1.5em 0;
+}
+
+#leftcol
+{
+    float: left;
+}
+
+#rightcol
+{
+    float: left;
+    width: 800px;
+}
+
+/* main nav panel */
+
+#mainnav
+{
+ float:left;
+ padding: 0 1.5em 0 1.5em;
+ margin: 1.5em 0 2em 0;
+ border-style: solid;
+ border-width: 0 1px 0 0 ;
+ border-color: #BBB
+}
+
+#mainnav ul
+{
+ list-style-type: none;
+ padding: 0;
+ margin: 0;
+ text-align: right;
+}
+
+#mainnav li
+{
+ font-weight: bold;
+ padding: 0;
+ margin: 0 0 .5em 0;
+}
+
+#mainnav :link, #mainnav :visited, #mainnav :link:hover, #mainnav :visited:hover {
+ background: transparent;
+ margin-bottom: 2px;
+ border: none;
+ padding: 0;
+}
+
+/* main div */
+
+.clearfloat { 
+/* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+#main
+{
+ float:left;
+ padding: 0 1.5em 0 1.5em;
+ margin: 0 0 0 0;
+}
+
+#content
+{
+ margin: 0;
+ padding: 1 0 0 0;
+}
+
+.center { text-align: center; }
+
+#footer
+{
+    margin: 2.5em 0 0 0;
+    color: #999;
+}

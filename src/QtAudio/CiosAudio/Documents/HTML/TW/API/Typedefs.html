@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS Audio Core API : 自定型態</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首頁</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下載</a></li>
+          <li><a href="../status.html">狀態</a></li>
+          <li><a href="../faq.html">常見問題</a></li>
+          <li><a href="../mail.html">郵件列表</a></li>
+          <li><a href="../apps.html">應用程式</a></li>
+          <li><a href="../links.html">外部鏈結</a></li>
+          <li><a href="../license.html">版權</a></li>
+          <li><a href="../volunteer.html">志願者</a></li>
+          <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>自定型態</h1>
+            <table>
+            <tr><td>原有型態</td><td>自定型態</td><td>說明</td></tr>
+            <tr><td>signed char</td><td>CaInt8</td><td></td></tr>
+            <tr><td>unsigned char</td><td>CaUint8</td><td></td></tr>
+            <tr><td>signed short</td><td>CaInt16</td><td>成立條件：( CIOS_SHORT == 2 )</td></tr>
+            <tr><td>unsigned short</td><td>CaUint16</td><td>成立條件：( CIOS_SHORT == 2 )</td></tr>
+            <tr><td>signed int</td><td>CaInt16</td><td>成立條件：( CIOS_INT   == 2 )</td></tr>
+            <tr><td>unsigned int</td><td>CaUint16</td><td>成立條件：( CIOS_INT   == 2 )</td></tr>
+            <tr><td>signed short</td><td>CaInt32</td><td>成立條件：( CIOS_SHORT == 4 )</td></tr>
+            <tr><td>unsigned short</td><td>CaUint32</td><td>成立條件：( CIOS_SHORT == 4 )</td></tr>
+            <tr><td>signed int</td><td>CaInt32</td><td>成立條件：( CIOS_INT == 4 )</td></tr>
+            <tr><td>unsigned int</td><td>CaUint32</td><td>成立條件：( CIOS_INT == 4 )</td></tr>
+            <tr><td>signed long</td><td>CaInt32</td><td>成立條件：( CIOS_LONG == 4 )</td></tr>
+            <tr><td>unsigned long</td><td>CaUint32</td><td>成立條件：( CIOS_LONG == 4 )</td></tr>
+            <tr><td>signed long long</td><td>CaInt64</td><td></td></tr>
+            <tr><td>unsigned long long</td><td>CaUint64</td><td></td></tr>
+            <tr><td>float</td><td>CaFloat32</td><td></td></tr>
+            <tr><td>double</td><td>CaFloat64</td><td></td></tr>
+            <tr><td>char *</td><td>CaString</td><td></td></tr>
+            <tr><td>const char *</td><td>CaConstString</td><td></td></tr>
+            <tr><td>double</td><td>CaTime</td><td></td></tr>
+            <tr><td>double</td><td>CaVolume</td><td></td></tr>
+            <tr><td>int</td><td>CaDeviceIndex</td><td></td></tr>
+            <tr><td>int</td><td>CaHostApiIndex</td><td></td></tr>
+            <tr><td>int</td><td>CaError</td><td></td></tr>
+            </table>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

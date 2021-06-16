@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>CIOS Audio Core : FFmpeg Host API</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../documents.html">Documents</a></li>
+            <li><a href="../downloads.html">Download</a></li>
+            <li><a href="../status.html">Status</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../mail.html">Mailing list</a></li>
+            <li><a href="../apps.html">Applications</a></li>
+            <li><a href="../links.html">Links</a></li>
+            <li><a href="../license.html">License</a></li>
+            <li><a href="../volunteer.html">Volunteer</a></li>
+            <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>FFmpeg Host API</h1>
+              <br>
+              <br>
+              Official FFmpeg site : <a href="http://www.ffmpeg.org">http://www.ffmpeg.org</a>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h2>Enable FFMPEG module</h2>
+              <h4>DEFINEs</h4>
+              If you want to enable FFmpeg module, your C++ compiler must add the following DEFINEs:<br>
+              FFMPEGLIB<br>
+              CAUTILITIES <br>
+              ENABLE_HOST_FFMPEG <br>
+              <h4>Source files</h4>
+              C++ files must include the following two:<br>
+              <br>
+              <ol>
+                <li>CiosAudio/Platforms/Windows/CaFFmpeg.hpp</li>
+                <li>CiosAudio/Platforms/Windows/CaFFmpeg.cpp</li>
+              </ol>
+              <br>
+              If you are using another platform, such as Android or FreeBSD, just replace Windows into platform name.<br>
+              <h4> Qt</h4>
+              If you are using Qt, in the following file:<br>
+              <p><i>CiosAudio/CiosAudio.pri</i></p>
+              <ol>
+                <li> DEFINES +=FFMPEGLIB</li>
+                <li>DEFINES <span style=" color:#c0c0c0;"></span>+=<span
+                    style=" color:#c0c0c0;"> </span>CAUTILITIES<br>
+                </li>
+              </ol>
+              <br>
+              <p><i>CiosAudio/Platforms/Windows/HostAPIs.pri</i></p>
+              Enable the following setting:<br>
+              <br>
+              HostAPIs<span style=" color:#c0c0c0;"> </span>+=<span
+                style=" color:#c0c0c0;"> </span>FFMPEG
+              <br>
+              If you are using another platform, such as Android or FreeBSD, just replace Windows into platform name.<br>
+              <h4>Libraries</h4>
+              Libraries with FFmpeg are actually very complex, please refer to <a href="../Compile/FFmpeg.html">Compiling FFmpeg</a>.<br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS音訊核心：Windows Direct Sound</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Windows Direct Sound</h1>
+              DirectSound是微軟所開發DirectX的組件之一，在Windows平台上，目前是使用最頻繁的一個。CIOS
+              音訊核心在Windows平台上，內定使用Direct Sound音訊驅動介面。<br>
+              <br>
+              官方程式設計參考網址：<a
+href="http://msdn.microsoft.com/en-us/library/windows/desktop/ee416964%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/windows/desktop/ee416964(v=vs.85).aspx</a>
+              <br>
+              <br>
+              <h2>啟用Direct Sound模組</h2>
+              <h4>定義</h4>
+              如果您想要啟用Direct Sound模組，您的C++編譯必須定義以下：<br>
+              <br>
+              ENABLE_HOST_DIRECTSOUND<br>
+              <h4>程式原始檔</h4>
+              C++檔案必須包含以下兩個：<br>
+              <br>
+              <ol>
+                <li>CiosAudio/Platforms/Windows/CaDirectSound.hpp</li>
+                <li>CiosAudio/Platforms/Windows/CaDirectSound.cpp</li>
+              </ol>
+              <h4> Qt</h4>
+              如果您使用Qt，在以下設定檔內：<br>
+              <p><i>CiosAudio/Platforms/Windows/HostAPIs.pri</i></p>
+              將以下設定打開即可：<br>
+              <br>
+              HostAPIs<span style=" color:#c0c0c0;"> </span>+=<span
+                style=" color:#c0c0c0;"> </span>DirectSound
+              <h4> 鏈結</h4>
+              Windows Direct Sound必須與dsound.lib鏈結，如果您的系統當中沒有dsound.lib，那
+              麼您必須到微軟官方網站下載Direct X SDK來安裝。<br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

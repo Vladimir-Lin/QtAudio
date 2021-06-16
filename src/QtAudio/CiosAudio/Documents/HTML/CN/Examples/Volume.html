@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>示范程序：控制音量</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下载</a></li>
+            <li><a href="../status.html">状态</a></li>
+            <li><a href="../faq.html">常见问题</a></li>
+            <li><a href="../mail.html">邮件列表</a></li>
+            <li><a href="../apps.html">应用程序</a></li>
+            <li><a href="../links.html">外部链结</a></li>
+            <li><a href="../license.html">版权</a></li>
+            <li><a href="../volunteer.html">志愿者</a></li>
+            <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>示范程序：控制音量</h1>
+              <br>
+              音量控制其实有不少种层次，系统层次、独佔层次及应用程序层次，CIOS音讯核心的音量控制基本上是应用程序层次，其他层次
+              的音量控制是不处理的，请不要使用CIOS音讯核心作为系统的音量控制元件。<br>
+              <br>
+              并非所有的音讯驱动介面都支持「音讯输出音量控制」及「音讯输入音量控制」，某些驱动介面只支持「音讯输出音量控制」。<br>
+              <br>
+              <h2>判断是否可以控制音量</h2>
+              由于实际上许多音讯驱动介面是不支持音量控制的，因此必须要有判断的函式：<br>
+              <h4>Stream类别</h4>
+              <span style=" color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#808000;">bool</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">hasVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#808000;">void</span><span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">;</span><br>
+              <br>
+              Stream类别是音讯驱动介面当中实际实作音量控制的函式，所有的音讯驱动介面都必须继承并实作这个函式，但是我们并不建
+              议您直接使用它。 <br>
+              <h4>Core类别</h4>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#808000;">bool</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">hasVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              我们建议您使用这个函式来判断是否有音量控制功能的存在。<br>
+              <br>
+              <h2> 音量控制函式</h2>
+              音量控制一共有四个函式：<br>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">MinVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">MaxVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">Volume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">,</span><span style="
+                color:#808000;">int</span><span style=" color:#c0c0c0;">
+              </span>atChannel<span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">=</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">-</span><span
+                style=" color:#000080;">1</span><span style="
+                color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">;</span><br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">setVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">,</span><span style="
+                color:#c0c0c0;"></span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span>volume<span style="
+                color:#000000;">,</span><span style=" color:#c0c0c0;"></span><span
+                style=" color:#808000;">int</span><span style="
+                color:#c0c0c0;"> </span>atChannel<span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">-</span><span style=" color:#000080;">1</span><span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              CIOS Audio Core的音量控制是线性的，某些底层的音讯驱动介面本身是以分贝作为音量单位，例如Core
+              Audio。在CIOS Audio
+              Core当中已经全部都转换成线性的音量单位。一般而言，音量单位介于0.0~10000.0，双精度浮点数，但是您不应该假设这一定是完全正确的，原作
+              者会尽量控制所有的音讯驱动介面的音量都是0.0~10000.0之间，但是并不保证其他人的实作会依照这个范围来实践。<br>
+              <br>
+              <h2>示范程序</h2>
+              音量控制必须在音讯串流开始启动以后才会真的有效，音讯串流启动之前，所有对音量的控制都是无效的。<br>
+              <br>
+              Core * core ;<br>
+              Stream * stream ;<br>
+              ...<br>
+              Initialize core<br>
+              Inialize stream<br>
+              Start stream<br>
+              ....<br>
+              if ( <i>core-&gt;hasVolume ( stream )</i> ) {<br>
+              &nbsp; double minv = core-&gt;MinVolume(stream) ;<br>
+              &nbsp; double maxv = core-&gt;MaxVolume(stream) ;<br>
+              &nbsp; double volume = core-&gt;Volume(stream) ; // 平均音量<br>
+              &nbsp; double v1 = core-&gt;Volume(stream,0) ; // 左声道音量<br>
+              &nbsp; double v2 = core-&gt;Volume(stream,1) ; // 右声道音量<br>
+              &nbsp; ...<br>
+              &nbsp; convert into your own volume measurement<br>
+              &nbsp; ...<br>
+              &nbsp; core-&gt;setVolume(stream,volume) ; // 设定所有声道的音量<br>
+              &nbsp; core-&gt;setVolume(stream,v1,0) ; // 设定左声道的音量<br>
+              &nbsp; core-&gt;setVolume(stream,v2,1) ; // 设定右声道的音量<br>
+              &nbsp; ...<br>
+              }<br>
+              ....<br>
+              Stop stream<br>
+              Close stream<br>
+              Terminate core<br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS,
+      ">
+    <title>CIOS Audio Core : Open Audio Library</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../documents.html">Documents</a></li>
+            <li><a href="../downloads.html">Download</a></li>
+            <li><a href="../status.html">Status</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../mail.html">Mailing list</a></li>
+            <li><a href="../apps.html">Applications</a></li>
+            <li><a href="../links.html">Links</a></li>
+            <li><a href="../license.html">License</a></li>
+            <li><a href="../volunteer.html">Volunteer</a></li>
+            <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Open Audio Library</h1>
+              <br>
+              Official Open Audio Library site : <a href="http://www.openal.org">http://www.openal.org</a>
+              <br>
+              <br>
+              <br>
+              <br>
+              Official OpenAL Soft site : <a
+                href="http://kcat.strangesoft.net/openal.html">http://kcat.strangesoft.net/openal.html</a>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h2>Enable Open Audio Library module</h2>
+              <h4>DEFINEs</h4>
+              If you want to enable Open Audio Library module, your C++ compiler must add the following DEFINEs:<br>
+              <br>
+              ENABLE_HOST_OPENAL
+              <h4>Source files</h4>
+              C++ files must include the following two:<br>
+              <br>
+              <ol>
+                <li>CiosAudio/Platforms/Linux/CaOpenAL.hpp</li>
+                <li>CiosAudio/Platforms/Linux/CaOpenAL.cpp</li>
+              </ol>
+              <br>
+              If you are using another platform, such as Linux, Windows, Android or FreeBSD, just replace Linux into platform name.<br>
+              <br>
+              <h4> Qt</h4>
+              If you are using Qt, in the following file:<br>
+              <p><i>CiosAudio/Platforms/Linux/HostAPIs.pri</i></p>
+              Enable the following setting:<br>
+              <br>
+              HostAPIs<span style=" color:#c0c0c0;"> </span>+=<span
+                style=" color:#c0c0c0;"> </span>OpenAL
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <br>
+              If you are using another platform, such as Linux, Windows, Android or FreeBSD, just replace MacOSX into platform name.<br>
+              <br>
+              <h4>Libraries</h4>
+              Open Audio
+              Layer need to link with different library in different platforms.
+              If your audio card vendor do supply OpenAL library,
+              please refer to the document vendor supplied.<br>
+              <br>
+              If you are using OpenAL Soft verion of OpenAL implementation:<br>
+              <h4> Windows</h4>
+              OpenAL32.lib<br>
+              <br>
+              <h4>Mac OS X</h4>
+              libopenal.a<br>
+              <br>
+              On Mac OS X, only Core Audio is recommented.
+              We do not suggest you to use OpenAL in Mac OS X.
+              Actually OpenAL uses Core Audio as underlying mechanism.<br>
+              <br>
+              <h4>Other platforms</h4>
+              libopenal.a<br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

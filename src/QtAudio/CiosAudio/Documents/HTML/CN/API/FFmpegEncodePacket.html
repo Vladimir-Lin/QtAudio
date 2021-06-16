@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<!-- saved from url=(0025)http://www.portaudio.com/ -->
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS Audio Core API : FFmpegEncodePacket</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下载</a></li>
+            <li><a href="../status.html">状态</a></li>
+            <li><a href="../faq.html">常见问题</a></li>
+            <li><a href="../mail.html">邮件列表</a></li>
+            <li><a href="../apps.html">应用程序</a></li>
+            <li><a href="../links.html">外部链结</a></li>
+            <li><a href="../license.html">版权</a></li>
+            <li><a href="../volunteer.html">志愿者</a></li>
+            <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>资料结构：FFmpegEncodePacket</h1>
+              <p>声道资料记录区块</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>类型</td>
+                    <td>成员</td>
+                    <td>说明</td>
+                  </tr>
+                  <tr>
+                    <td>unsigned long</td>
+                    <td><nobr>size</nobr></td>
+                    <td>资料结构封包大小。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CaHostApiTypeId</td>
+                    <td><nobr>hostApiType</nobr></td>
+                    <td>音讯驱动介面类型。</td>
+                  </tr>
+                  <tr>
+                    <td>unsigned long</td>
+                    <td><nobr>version</nobr></td>
+                    <td>结构版本。</td>
+                  </tr>
+                  <tr>
+                    <td>AVCodecContext *</td>
+                    <td><nobr>AudioCtx</nobr></td>
+                    <td>FFmpeg音讯内容。</td>
+                  </tr>
+                  <tr>
+                    <td>AVCodec *</td>
+                    <td><nobr>AudioCodec</nobr></td>
+                    <td>FFmpeg音讯编码解码器。</td>
+                  </tr>
+                  <tr>
+                    <td>AVStream *</td>
+                    <td><nobr>AudioStream</nobr></td>
+                    <td>FFmpeg音讯串流。</td>
+                  </tr>
+                  <tr>
+                    <td>struct SwsContext *</td>
+                    <td><nobr>ConvertCtx</nobr></td>
+                    <td>FFmpeg重新取样内容。</td>
+                  </tr>
+                  <tr>
+                    <td>SwrContext *</td>
+                    <td><nobr>Resample</nobr></td>
+                    <td>FFmpeg实际重新取样。</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>C/C++定义</p>
+              <p><i><span style=" color:#808000;"><br>
+                  </span><span style=" color:#000000;"></span> </i></p>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;"></span><span style=" color:#808000;">typedef</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">struct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">FFmpegEncodePacket</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">{</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">unsigned</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">long</span><span style=" color:#c0c0c0;">        </span><span style=" color:#800000;">size</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">CaHostApiTypeId</span><span style=" color:#c0c0c0;">      </span><span style=" color:#800000;">hostApiType</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">unsigned</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">long</span><span style=" color:#c0c0c0;">        </span><span style=" color:#800000;">version</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">AVCodecContext</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">AudioCtx</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">AVCodec</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">AudioCodec</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">AVStream</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">AudioStream</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">struct</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">SwsContext</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">ConvertCtx</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span>
+<span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">SwrContext</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">Resample</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">;</span>
+<span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800080;">FFmpegEncodePacket</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span>
+<br></pre>
+              <br>
+              <p><i> </i></p>
+              <p>初始化的方式</p>
+              <br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

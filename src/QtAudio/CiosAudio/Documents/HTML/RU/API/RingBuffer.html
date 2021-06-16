@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS Audio Core API : RingBuffer</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>類別：RingBuffer</h1>
+              <p>環狀緩衝區</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>類型</td>
+                    <td>使用</td>
+                    <td>成員</td>
+                    <td>說明</td>
+                  </tr>
+                  <tr>
+                    <td>建構子</td>
+                    <td>public</td>
+                    <td><nobr>RingBuffer(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>建構子</td>
+                    <td>public</td>
+                    <td><nobr>RingBuffer(<br>
+                        CaInt32 elementSizeBytes,<br>
+                        CaInt32 elementCount,<br>
+                        void * dataPtr)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>解構子</td>
+                    <td>public</td>
+                    <td><nobr>~RingBuffer(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaInt32 bufferSize</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>volatile CaInt32 writeIndex</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>volatile CaInt32 readIndex</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaInt32 bigMask</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaInt32 smallMask</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaInt32 elementSizeBytes</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>char * buffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 Initialize (CaInt32
+                        elementSizeBytes ,<br>
+                        CaInt32 elementCount ,<br>
+                        void * dataPtr )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 ReadAvailable (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 WriteAvailable (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void Flush (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 WriteRegions (CaInt32
+                        elementCount ,<br>
+                        void ** dataPtr1 ,<br>
+                        CaInt32 * sizePtr1 ,<br>
+                        void ** dataPtr2 ,<br>
+                        CaInt32 * sizePtr2 )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 AdvanceWriteIndex (CaInt32
+                        elementCount)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 ReadRegions (CaInt32
+                        elementCount ,<br>
+                        void ** dataPtr1 ,<br>
+                        CaInt32 * sizePtr1 ,<br>
+                        void ** dataPtr2 ,<br>
+                        CaInt32 * sizePtr2 )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 AdvanceReadIndex (CaInt32
+                        elementCount)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 Write (const void *
+                        data,CaInt32 elementCount)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaInt32 Read (void * data,CaInt32
+                        elementCount)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>C/C++定義</p>
+              <p><i>
+                  <meta name="qrichtext" content="1">
+                </i></p>
+              <p><i> </i></p>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><i><span style=" color:#808000;">class</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">RingBuffer</span></i></pre>
+              <i>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">{</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">public</span><span style=" color:#000000;">:</span></pre>
+                <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">bufferSize</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">volatile</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">writeIndex</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">volatile</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">readIndex</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">bigMask</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">smallMask</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">elementSizeBytes</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">char</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">buffer</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">;</span></pre>
+                <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">explicit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">RingBuffer</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">             </span><span style=" color:#800080;">RingBuffer</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementSizeBytes<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementCount<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>dataPtr<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">~</span><span style=" font-style:italic; color:#000000;">RingBuffer</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Initialize</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementSizeBytes<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementCount<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>dataPtr<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">ReadAvailable</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">WriteAvailable</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">    </span><span style=" font-style:italic; color:#000000;">Flush</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">WriteRegions</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">    </span>elementCount<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>dataPtr1<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>sizePtr1<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>dataPtr2<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>sizePtr2<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">AdvanceWriteIndex</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementCount<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">ReadRegions</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">    </span>elementCount<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>dataPtr1<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>sizePtr1<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>dataPtr2<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>sizePtr2<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">AdvanceReadIndex</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementCount<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Write</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">(</span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#000000;">,</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementCount<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Read</span><span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#000000;">,</span><span style=" color:#800080;">CaInt32</span><span style=" color:#c0c0c0;"> </span>elementCount<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+                <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+                <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">};</span></pre>
+              </i> </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

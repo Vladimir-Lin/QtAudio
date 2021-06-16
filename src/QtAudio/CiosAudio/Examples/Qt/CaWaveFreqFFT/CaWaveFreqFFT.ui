@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CaWaveFreqFFT</class>
+ <widget class="QMainWindow" name="CaWaveFreqFFT">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CIOS Audio Core Wave Frequency FFT</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="CaWaveFreqFFT.qrc">
+    <normaloff>:/images/CiosAudio.png</normaloff>:/images/CiosAudio.png</iconset>
+  </property>
+  <property name="toolTip">
+   <string>CIOS Audio Core Wave Frequency FFT</string>
+  </property>
+  <property name="statusTip">
+   <string>CIOS Audio Core Wave Frequency FFT</string>
+  </property>
+  <property name="whatsThis">
+   <string>CIOS Audio Core Wave Frequency FFT</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="Menu">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>480</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="Tools">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionQuit"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSpeaker"/>
+   <addaction name="actionRecord"/>
+   <addaction name="actionWave"/>
+   <addaction name="actionDisplay"/>
+  </widget>
+  <widget class="QStatusBar" name="Status"/>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset resource="CaWaveFreqFFT.qrc">
+     <normaloff>:/images/close.png</normaloff>:/images/close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="CaWaveFreqFFT.qrc">
+     <normaloff>:/images/folder.png</normaloff>:/images/folder.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSpeaker">
+   <property name="icon">
+    <iconset resource="CaWaveFreqFFT.qrc">
+     <normaloff>:/images/audio.png</normaloff>:/images/audio.png</iconset>
+   </property>
+   <property name="text">
+    <string>Speaker</string>
+   </property>
+  </action>
+  <action name="actionRecord">
+   <property name="icon">
+    <iconset resource="CaWaveFreqFFT.qrc">
+     <normaloff>:/images/microphone.png</normaloff>:/images/microphone.png</iconset>
+   </property>
+   <property name="text">
+    <string>Record</string>
+   </property>
+  </action>
+  <action name="actionWave">
+   <property name="icon">
+    <iconset resource="CaWaveFreqFFT.qrc">
+     <normaloff>:/images/waves.png</normaloff>:/images/waves.png</iconset>
+   </property>
+   <property name="text">
+    <string>Wave</string>
+   </property>
+  </action>
+  <action name="actionDisplay">
+   <property name="icon">
+    <iconset resource="CaWaveFreqFFT.qrc">
+     <normaloff>:/images/display.png</normaloff>:/images/display.png</iconset>
+   </property>
+   <property name="text">
+    <string>Display</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="CaWaveFreqFFT.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionOpen</sender>
+   <signal>triggered()</signal>
+   <receiver>CaWaveFreqFFT</receiver>
+   <slot>Open()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>CaWaveFreqFFT</receiver>
+   <slot>Quit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDisplay</sender>
+   <signal>triggered()</signal>
+   <receiver>CaWaveFreqFFT</receiver>
+   <slot>Display()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRecord</sender>
+   <signal>triggered()</signal>
+   <receiver>CaWaveFreqFFT</receiver>
+   <slot>Record()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionWave</sender>
+   <signal>triggered()</signal>
+   <receiver>CaWaveFreqFFT</receiver>
+   <slot>Wave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSpeaker</sender>
+   <signal>triggered()</signal>
+   <receiver>CaWaveFreqFFT</receiver>
+   <slot>Speaker()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

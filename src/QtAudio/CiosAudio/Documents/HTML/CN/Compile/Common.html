@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>编译：一般编译须知</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首页</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下载</a></li>
+          <li><a href="../status.html">状态</a></li>
+          <li><a href="../faq.html">常见问题</a></li>
+          <li><a href="../mail.html">邮件列表</a></li>
+          <li><a href="../apps.html">应用程序</a></li>
+          <li><a href="../links.html">外部链结</a></li>
+          <li><a href="../license.html">版权</a></li>
+          <li><a href="../volunteer.html">志愿者</a></li>
+          <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>一般编译须知</h1>
+            <br>
+            <br>
+            <h2>命名空间的设定</h2>
+            <br>
+            CIOS Audio Core的内定namespace为CiosAudio。
+            <br>
+            <br>
+            需要修改这个设定时，有以下两个定义：
+            <br>
+            <ul>
+            <li>DONT_USE_NAMESPACE</li>
+            <li>CAC_NAMESPACE</li>
+            </ul>
+            <br>
+            如果您不希望使用namespace，那麽增加以下的定义：
+            <p><i>#define DONT_USE_NAMESPACE</i></p>
+            <br>
+            如果您希望使用CiosAudio以外的namespace，那麽增加以下的定义：
+            <br>
+            <p><i>#define CAC_NAMESPACE MyOwnNameSpace</i></p>
+            <br>
+            <h2>除错设定</h2>
+            <br>
+            由于音讯实际上并不太消耗CPU的效能，CIOS Audio Core当中的除错码并不会影响效能，
+            我们建议您保留这些除错码，因此内定是打开除错讯息的处理。
+            <br>
+            <br>
+            如果您出于某些原因，不希望任何除错讯息出现，那麽只要增加下面的设定即可：
+            <br>
+            <p><i>#define REMOVE_DEBUG_MESSAGE</i></p>
+            <br>
+            <h2>辅助工具设定</h2>
+            <br>
+            CIOS Audio Core当中有设定基本的辅助工具，主要是Thread及Mutex，
+            如果您有自己的Thread及Mutex系统，同时您不需要FFmpeg的支持，
+            您可以选择关闭掉。
+            <br>
+            <br>
+            要打开辅助工具及FFmpeg支持功能，您必须增加以下设定：
+            <br>
+            <p><i>#define CAUTILITIES</i></p>
+            <br>
+            <h2>FFmpeg设定</h2>
+            <br>
+            要打开FFmpeg支持功能，您必须增加以下设定：
+            <br>
+            <p><i>#define FFMPEGLIB</i></p>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

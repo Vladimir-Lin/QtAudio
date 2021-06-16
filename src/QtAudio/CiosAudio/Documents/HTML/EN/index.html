@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>CIOS Audio Core : A cross platform abstract audio streaming
+      interface</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li class="first active"><a href="../index.html">Home</a></li>
+            <li><a href="documents.html">Documents</a></li>
+            <li><a href="downloads.html">Download</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="mail.html">Mailing list</a></li>
+            <li><a href="apps.html">Applications</a></li>
+            <li><a href="links.html">Links</a></li>
+            <li><a href="license.html">License</a></li>
+            <li><a href="volunteer.html">Volunteers</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <p class="larger">CIOS Audio Core is a free, cross
+                platform and embeddable C++ abstract audio streaming
+                interface.&nbsp; It enables you to use simple C++
+                program to access audio streamings.&nbsp; The same code
+                can run on many platforms, including Windows,
+                Unix(ALSA/OSS/Jack), Mac OS X, Android and iPhone OS.</p>
+              <p>CIOS Audio Core adapts a pretty simple interface to play or
+                record audio.&nbsp; It uses 'Host API' to write the
+                underlying audio API on multiple platforms.&nbsp;
+                Applications can write the same code and run on all
+                platforms, makes handling audio a very easy task.</p>
+              <p>Besides regular library(Unix libCaCore.a, Windows
+                CaCore.lib),CIOS Audio Core can be embedded into C++
+                applications, which is the most encouraged form of CIOS
+                Audio Core.&nbsp; There are special no-brainer settings
+                for Qt, makes Qt programmers extremely easy to write an
+                audio applications.&nbsp; The whole library contains
+                only two files(CiosAudio.hpp and CaCore.lib or
+                libCaCore.a in Unix).&nbsp; For most audio application
+                programmers, CIOS Audio Core is one of the best choices and
+                simplest audio interface options.</p>
+              <p>CIOS Audio Core was originally designed for
+                CIOS Sensor Grid(Collective Intelligence Operating System),
+                specifically for audio streaming system.&nbsp; The
+                original scheme is rather complicated.&nbsp; The open
+                source version of CIOS Audio Core is considered very
+                simple and easy, complexity and dependency was greatly
+                reduced.&nbsp; The goal is make most of audio code
+                completed in 1~10 C++ code.</p>
+              <p>Supports FFmpeg.&nbsp; CIOS Audio Core treats
+                FFmpeg(and VideoLAN VLC) as an audio input/output
+                device, therefore we can use the concept of audio device
+                to read and write audio streaming from files.&nbsp; The
+                mechanism greatly reduced the complexity of an audio
+                file decoding and encoding process.&nbsp; Normal audio
+                application programmers do not need to have a great deal of knowledge
+                about FFmpeg or VideoLAN VLC to read and write audio
+                file formats.<br>
+              </p>
+              <p>It is strongly encouraged to embed the source code into
+                your program rather than using a compiled library(such
+                as libCaCore.a and CaCore.lib).&nbsp; All you need to do
+                is to pick what you need, and include them into your
+                program.&nbsp; Most components are carefully separated
+                at the beginning of the design.&nbsp; Most 'Host API'
+                will not affect each other, what you need to do is find
+                out what need to be included into your C++
+                program.&nbsp; If you do not require FFmpeg support, or
+                you have your own code on FFmpeg or VLC, just disable
+                FFMPEGLIB.&nbsp; The code are very carefully separated.<br>
+              </p>
+              <p>Also, there are some other programming language
+                bindings.&nbsp; Read the documents and find out which
+                one is what your need.<br>
+              </p>
+              <p><br>
+              </p>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

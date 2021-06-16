@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS Audio Core API : AllocationGroup</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下载</a></li>
+            <li><a href="../status.html">状态</a></li>
+            <li><a href="../faq.html">常见问题</a></li>
+            <li><a href="../mail.html">邮件列表</a></li>
+            <li><a href="../apps.html">应用程序</a></li>
+            <li><a href="../links.html">外部链结</a></li>
+            <li><a href="../license.html">版权</a></li>
+            <li><a href="../volunteer.html">志愿者</a></li>
+            <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main"> <br>
+            <div id="content">
+              <h1>类别：AllocationGroup</h1>
+              <p>记忆体配置统一管理</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td align="center">类型</td>
+                    <td align="center">使用</td>
+                    <td align="center">成员</td>
+                    <td align="center">说明</td>
+                  </tr>
+                  <tr>
+                    <td>建构子</td>
+                    <td>public</td>
+                    <td><nobr>AllocationGroup(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>解构子</td>
+                    <td>public</td>
+                    <td><nobr>~AllocationGroup(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>protected</td>
+                    <td><nobr>long linkCount</nobr></td>
+                    <td>记忆体区块数量。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>protected</td>
+                    <td><nobr>AllocationLink * linkBlocks</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>protected</td>
+                    <td><nobr>AllocationLink * spareLinks</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>protected</td>
+                    <td><nobr>AllocationLink * allocations</nobr></td>
+                    <td>所有配置的记忆体。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void * alloc (int size)</nobr></td>
+                    <td>配置一块新的记忆体。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void free (void * memory)</nobr></td>
+                    <td>将一个区块的记忆体从本群当中释放。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void release (void)</nobr></td>
+                    <td>将全部配置的记忆体释放掉。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>protected</td>
+                    <td><nobr>virtual AllocationLink * allocate (int
+                        count = 16 ,<br>
+                        AllocationLink * nextBlock = NULL ,<br>
+                        AllocationLink * nextSpare = NULL ) ;<br>
+                      </nobr></td>
+                    <td>仅供内部使用的函式。<br>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <p><b>建议</b></p>
+              外部程序不应使用这个类别，这是专门为了「音讯驱动介面」内部使用的类别，使用于整群记忆体配置的纪录功能。每次配置一个新
+              的记忆体区块，这个类别就会记录下来，释放的时候，整群记忆体均会一起释放，如此可以减少错误及降低需要记录的变数数量。<br>
+              <br>
+              <p><b>C/C++定义</b></p>
+              <span style=" color:#808000;">class</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">AllocationGroup</span>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">public</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">explicit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">AllocationGroup</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">~</span><span style=" font-style:italic; color:#000000;">AllocationGroup</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">alloc</span><span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span>size<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" font-style:italic; color:#000000;">free</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>memory<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" font-style:italic; color:#000000;">release</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">//</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">Free</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">all</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">protected</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">long</span><span style=" color:#c0c0c0;">             </span><span style=" color:#800000;">linkCount</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">AllocationLink</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">linkBlocks</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">AllocationLink</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">spareLinks</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">AllocationLink</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">allocations</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">AllocationLink</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">allocate</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">              </span>count<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">16</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">AllocationLink</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>nextBlock<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                       </span><span style=" color:#800080;">AllocationLink</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>nextSpare<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">};</span></pre>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

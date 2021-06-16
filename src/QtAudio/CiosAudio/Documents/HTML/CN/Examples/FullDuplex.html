@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>示范程序：全双工</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下载</a></li>
+            <li><a href="../status.html">状态</a></li>
+            <li><a href="../faq.html">常见问题</a></li>
+            <li><a href="../mail.html">邮件列表</a></li>
+            <li><a href="../apps.html">应用程序</a></li>
+            <li><a href="../links.html">外部链结</a></li>
+            <li><a href="../license.html">版权</a></li>
+            <li><a href="../volunteer.html">志愿者</a></li>
+            <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>示范程序：全双工</h1>
+              全双工是在音讯设备上，将音讯输入直接转到音讯输出，某些音讯驱动介面是不支持这个功能的。全双工的功能仅在同一个音讯驱动
+              介面上的音讯设备才可以使用。如果您想要使用不同音讯驱动介面的音讯设备进行音讯转向，您必须使用Redirect函式。<br>
+              <br>
+              由于Redirect功能可以替代全双工功能，而全双工功能导致底层音讯驱动介面过度複杂而难以撰写并维护，全双工功能在未
+              来有可能被全面废弃掉，我们建议您尽可能不要使用这个功能。<br>
+              <br>
+              全双工的功能只要在开启串流的时候，同时将输入及输出参数都设定即可，请记住，全双工必须使用同一个音讯驱动介面，同时并非
+              所有的设备都支持全双工功能。<br>
+              <br>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;"></span><span style=" color:#c0c0c0;"><span style=" color:#000000;">rt</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Open</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">stream</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">inputParameters</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;"></span></span><span style=" color:#c0c0c0;"><span style=" color:#c0c0c0;"><span style=" color:#c0c0c0;"><span style=" color:#c0c0c0;">            </span></span></span><span style=" color:#000000;">&amp;</span><span style=" color:#000000;">outputParameters </span><span style=" color:#c0c0c0;"></span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">sampleRate</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">frameCount</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">streamFlags</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">,</span>
+<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">conduit</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+</span><br></pre>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS Audio Core API : BufferProcessor</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>類別：BufferProcessor</h1>
+              <p>緩衝區處理器</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td align="center">類型</td>
+                    <td align="center">使用</td>
+                    <td align="center">成員</td>
+                    <td align="center">說明</td>
+                  </tr>
+                  <tr>
+                    <td>建構子</td>
+                    <td>public</td>
+                    <td><nobr>BufferProcessor(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>解構子</td>
+                    <td>public</td>
+                    <td><nobr>~BufferProcessor(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 framesPerUserBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 framesPerHostBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaHostBufferSizeMode hostBufferSizeMode</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int useNonAdaptingProcess</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int userOutputSampleFormatIsEqualToHost</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int userInputSampleFormatIsEqualToHost</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 framesPerTempBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 inputChannelCount</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 bytesPerHostInputSample</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 bytesPerUserInputSample</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int userInputIsInterleaved</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>Converter * inputConverter</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>ZeroCopier * inputZeroer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 outputChannelCount</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 bytesPerHostOutputSample</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 bytesPerUserOutputSample</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int userOutputIsInterleaved</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>Converter * outputConverter</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>ZeroCopier * outputZeroer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 initialFramesInTempInputBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 initialFramesInTempOutputBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>void * tempInputBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>void ** tempInputBufferPtrs</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 framesInTempInputBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>void * tempOutputBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>void ** tempOutputBufferPtrs</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 framesInTempOutputBuffer</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int hostInputIsInterleaved</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 hostInputFrameCount [ 2 ]</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaChannelDescriptor * hostInputChannels [
+                        2 ]</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int hostOutputIsInterleaved</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaUint32 hostOutputFrameCount [ 2 ]</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaChannelDescriptor * hostOutputChannels [
+                        2 ]</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>double samplePeriod</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>Dither dither</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>Conduit * conduit</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaError Initialize (<br>
+                        int inputChannelCount ,<br>
+                        CaSampleFormat userInputSampleFormat ,<br>
+                        CaSampleFormat hostInputSampleFormat ,<br>
+                        int outputChannelCount ,<br>
+                        CaSampleFormat userOutputSampleFormat ,<br>
+                        CaSampleFormat hostOutputSampleFormat ,<br>
+                        double sampleRate ,<br>
+                        CaStreamFlags streamFlags ,<br>
+                        CaUint32 framesPerUserBuffer ,<br>
+                        CaUint32 framesPerHostBuffer ,<br>
+                        CaHostBufferSizeMode hostBufferSizeMode ,<br>
+                        Conduit * conduit )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void Terminate (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void Reset (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void Begin (Conduit * conduit)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaUint32 End (int * callbackResult
+                        = NULL)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaUint32 InputLatencyFrames (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaUint32 OutputLatencyFrames
+                        (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual bool isOutputEmpty (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setNoInput (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setInputFrameCount (int index
+                        ,<br>
+                        CaUint32 frameCount)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setInputChannel (int index,<br>
+                        CaUint32 channel,<br>
+                        void * data ,<br>
+                        CaUint32 stride)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setInterleavedInputChannels (<br>
+                        int index ,<br>
+                        CaUint32 firstChannel ,<br>
+                        void * data ,<br>
+                        CaUint32 channelCount )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void
+                        setNonInterleavedInputChannels (<br>
+                        int index ,<br>
+                        CaUint32 channel ,<br>
+                        void * data )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setNoOutput (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setOutputFrameCount (int
+                        index ,<br>
+                        CaUint32 frameCount )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setOutputChannel (int index ,<br>
+                        CaUint32 channel ,<br>
+                        void * data ,<br>
+                        CaUint32 stride )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void setInterleavedOutputChannels
+                        (<br>
+                        int index ,<br>
+                        CaUint32 firstChannel ,<br>
+                        void * data ,<br>
+                        CaUint32 channelCount )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void
+                        setNonInterleavedOutputChannel (<br>
+                        int index ,<br>
+                        CaUint32 channel ,<br>
+                        void * data )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaUint32 CopyInput (void ** buffer
+                        ,<br>
+                        CaUint32 frameCount )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaUint32 CopyOutput (const void **
+                        buffer ,<br>
+                        CaUint32 frameCount )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaUint32 ZeroOutput (CaUint32
+                        frameCount )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>protected</td>
+                    <td><nobr>inline void Delete (void * memory)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>protected</td>
+                    <td><nobr>inline CaUint32 GCD (CaUint32 a,CaUint32
+                        b)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>protected</td>
+                    <td><nobr>inline CaUint32 LCM (CaUint32 a,CaUint32
+                        b)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>protected</td>
+                    <td><nobr>CaUint32 FrameShift ( CaUint32 M ,
+                        CaUint32 N )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>private</td>
+                    <td><nobr>void TempToHost (void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>private</td>
+                    <td><nobr>CaUint32 NonAdapting (int *
+                        streamCallbackResult ,<br>
+                        CaChannelDescriptor * hic ,<br>
+                        CaChannelDescriptor * hoc ,<br>
+                        CaUint32 framesToProcess )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>private</td>
+                    <td><nobr>CaUint32 AdaptingInputOnly (int *
+                        streamCallbackResult ,<br>
+                        CaChannelDescriptor * hostInputChannels ,<br>
+                        CaUint32 framesToProcess )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>private</td>
+                    <td><nobr>CaUint32 AdaptingOutputOnly (int *
+                        streamCallbackResult ,<br>
+                        CaChannelDescriptor * hostOutputChannels ,<br>
+                        CaUint32 framesToProcess )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>private</td>
+                    <td><nobr>CaUint32 Adapting (int *
+                        streamCallbackResult ,<br>
+                        int processPartialUserBuffers )</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              <p><b>建議</b></p>
+              外部程式不應使用這個類別，這是供應音訊底層的緩衝區處理器。<br>
+              <br>
+              <br>
+              <p><b>C/C++定義</b></p>
+              <br>
+              <p><span style=" color:#808000;">class</span><span style="
+                  color:#c0c0c0;"> </span><span style=" color:#800080;">BufferProcessor</span></p>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">public</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">framesPerUserBuffer</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">framesPerHostBuffer</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaHostBufferSizeMode</span><span style=" color:#c0c0c0;">  </span><span style=" color:#800000;">hostBufferSizeMode</span><span style=" color:#c0c0c0;">                  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#800000;">useNonAdaptingProcess</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#800000;">userOutputSampleFormatIsEqualToHost</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#800000;">userInputSampleFormatIsEqualToHost</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">framesPerTempBuffer</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">inputChannelCount</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">bytesPerHostInputSample</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">bytesPerUserInputSample</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#800000;">userInputIsInterleaved</span><span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">Converter</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">inputConverter</span><span style=" color:#c0c0c0;">                      </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">ZeroCopier</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">inputZeroer</span><span style=" color:#c0c0c0;">                         </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">outputChannelCount</span><span style=" color:#c0c0c0;">                  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">bytesPerHostOutputSample</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">bytesPerUserOutputSample</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#800000;">userOutputIsInterleaved</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">Converter</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">outputConverter</span><span style=" color:#c0c0c0;">                     </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">ZeroCopier</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">outputZeroer</span><span style=" color:#c0c0c0;">                        </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">initialFramesInTempInputBuffer</span><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">initialFramesInTempOutputBuffer</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">                </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">tempInputBuffer</span><span style=" color:#c0c0c0;">                     </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">tempInputBufferPtrs</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">framesInTempInputBuffer</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">                </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">tempOutputBuffer</span><span style=" color:#c0c0c0;">                    </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">tempOutputBufferPtrs</span><span style=" color:#c0c0c0;">                </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">framesInTempOutputBuffer</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#800000;">hostInputIsInterleaved</span><span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">hostInputFrameCount</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">[</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">2</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">]</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaChannelDescriptor</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">hostInputChannels</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">[</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">2</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">]</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#800000;">hostOutputIsInterleaved</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span><span style=" color:#800000;">hostOutputFrameCount</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">[</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">2</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">]</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaChannelDescriptor</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">hostOutputChannels</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">[</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">2</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">]</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">                </span><span style=" color:#800000;">samplePeriod</span><span style=" color:#c0c0c0;">                        </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">Dither</span><span style=" color:#c0c0c0;">                </span><span style=" color:#800000;">dither</span><span style=" color:#c0c0c0;">                              </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">Conduit</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">conduit</span><span style=" color:#c0c0c0;">                             </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">explicit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">BufferProcessor</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">~</span><span style=" font-style:italic; color:#000000;">BufferProcessor</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaError</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">Initialize</span><span style=" color:#c0c0c0;">                                    </span><span style=" color:#000000;">(</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                  </span>inputChannelCount<span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;">       </span>userInputSampleFormat<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;">       </span>hostInputSampleFormat<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                  </span>outputChannelCount<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;">       </span>userOutputSampleFormat<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaSampleFormat</span><span style=" color:#c0c0c0;">       </span>hostOutputSampleFormat<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">               </span>sampleRate<span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaStreamFlags</span><span style=" color:#c0c0c0;">        </span>streamFlags<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">             </span>framesPerUserBuffer<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">             </span>framesPerHostBuffer<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">CaHostBufferSizeMode</span><span style=" color:#c0c0c0;"> </span>hostBufferSizeMode<span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                      </span><span style=" color:#800080;">Conduit</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>conduit<span style=" color:#c0c0c0;">              </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">Terminate</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">Reset</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">Begin</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span><span style=" color:#800080;">Conduit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>conduit<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">End</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>callbackResult<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">InputLatencyFrames</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">OutputLatencyFrames</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">isOutputEmpty</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setNoInput</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setInputFrameCount</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>frameCount<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setInputChannel</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>channel<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>stride<span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setInterleavedInputChannels</span><span style=" color:#c0c0c0;">                  </span><span style=" color:#000000;">(</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>firstChannel<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>channelCount<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setNonInterleavedInputChannels</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>channel<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setNoOutput</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setOutputFrameCount</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>frameCount<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setOutputChannel</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>channel<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>stride<span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setInterleavedOutputChannels</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">(</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>firstChannel<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>channelCount<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">setNonInterleavedOutputChannel</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">      </span>index<span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>channel<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>data<span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">CopyInput</span><span style=" color:#c0c0c0;">           </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>buffer<span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">      </span>frameCount<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">CopyOutput</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">(</span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>buffer<span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">      </span>frameCount<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">ZeroOutput</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">(</span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">      </span>frameCount<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">protected</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">inline</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">Delete</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">memory</span><span style=" color:#000000;">)</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">!=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">memory</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">Allocator</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">::</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">free</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">memory</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">}</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#008000;">/*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">greatest</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">common</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">divisor</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">-</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">PGCD</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">in</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">French</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">*/</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">inline</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">GCD</span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">a</span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">b</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#808000;">return</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">b</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">?</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">a</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">:</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">GCD</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">b</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">a</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">%</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">b</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">}</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#008000;">/*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">least</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">common</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">multiple</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">-</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">PPCM</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">in</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">French</span><span style=" color:#c0c0c0;"> </span><span style=" color:#008000;">*/</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">inline</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">LCM</span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">a</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">b</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#808000;">return</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">a</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">b</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">/</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">GCD</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">a</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">b</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">}</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">FrameShift</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>M<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;"> </span>N<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">private</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">TempToHost</span><span style=" color:#c0c0c0;">          </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">NonAdapting</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>streamCallbackResult<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaChannelDescriptor</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>hic<span style=" color:#c0c0c0;">                  </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaChannelDescriptor</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>hoc<span style=" color:#c0c0c0;">                  </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span>framesToProcess<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">AdaptingInputOnly</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>streamCallbackResult<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaChannelDescriptor</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>hostInputChannels<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span>framesToProcess<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">AdaptingOutputOnly</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>streamCallbackResult<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaChannelDescriptor</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>hostOutputChannels<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">              </span>framesToProcess<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">Adapting</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">(</span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>streamCallbackResult<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                          </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">   </span>processPartialUserBuffers<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">};</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>編譯：Apple Mac OS X</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首頁</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下載</a></li>
+          <li><a href="../status.html">狀態</a></li>
+          <li><a href="../faq.html">常見問題</a></li>
+          <li><a href="../mail.html">郵件列表</a></li>
+          <li><a href="../apps.html">應用程式</a></li>
+          <li><a href="../links.html">外部鏈結</a></li>
+          <li><a href="../license.html">版權</a></li>
+          <li><a href="../volunteer.html">志願者</a></li>
+          <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Apple Mac OS X平台編譯</h1>
+            <h2>編譯CIOS Audio Core函式庫</h2>
+            在環境已經配置好的狀況下，編譯CIOS Audio Core是相當簡單的：<br>
+            <table><tr><td>
+            <p><i>
+            mkdir BuildCiosAudioCore<br>
+            <br>
+            cd BuildCiosAudioCore<br>
+            <br>
+            cmake $CIOSAUDIOROOTDIR/Compile/MacOSX<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            如此即可將CiosAudio.hpp安裝至/usr/local/include，libCaCore.a安裝至/usr/local/lib。<br>
+            <br>
+            <h3>設定細部</h3>
+            如果您需要指定編譯的細節，我們建議您使用cmake-gui，如果您希望可以完全透過參數指定編譯參數，請到CMake官方網站位址《<a href="http://www.cmake.org">http://www.cmake.org</a>》，參考cmake相關的使用細節。<br>
+            <br>
+            <br>
+            <table><tr><td>
+            <p><i>
+            cd Somewhere/Temporary
+            mkdir CiosAudio<br>
+            <br>
+            cd CiosAudio<br>
+            <br>
+            cmake $CIOSAUDIOROOTDIR/Compile/MacOSX<br>
+            <br>
+            cd ..<br>
+            <br>
+            cmake-gui CiosAudio<br>
+            </i></p>
+            </td></tr></table>
+            如此便會出現下面的設定畫面：<br>
+            <img src="../images/MacOSX-cmake-gui-1.png">
+            <br>
+            <br>
+            接下來改變您所需要改變的設定：<br>
+            <img src="../images/MacOSX-cmake-gui-2.png">
+            <br>
+            按下《Configure》：<br>
+            <img src="../images/MacOSX-cmake-gui-3.png">
+            <br>
+            按下《Generate》：<br>
+            <img src="../images/MacOSX-cmake-gui-4.png">
+            <br>
+            <br>
+            然後：
+            <table><tr><td>
+            <p><i>
+            cd CiosAudio<br>
+            <br>
+            make<br>
+            <br>
+            make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <br>
+            <h3>修改內定的Namespace</h3>
+            CIOS Audio Core的內定Namespace是CiosAudio，您可以透過以下方式修改Namespace：
+            <br>
+            <table><tr><td>
+            <p><i>
+            cd Somewhere/Temporary
+            mkdir CiosAudio<br>
+            <br>
+            cd CiosAudio<br>
+            <br>
+            cmake CMAKE_CXX_FLAGS="-DCAC_NAMESPACE=MyCaAudio" $CIOSAUDIOROOTDIR/Compile/MacOSX<br>
+            <br>
+            cd ..<br>
+            <br>
+            cmake-gui CiosAudio<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h3>Utilities及FFmpeg的設定</h3>
+            如果您想要使用FFmpeg的功能，Utilities的功能必須打開。<br>
+            <br>
+            <h2>編譯使用CIOS Audio Core的應用程式</h2>
+            <br>
+            編譯應用程式必須與libCaCore.a鏈結，此外由於使用Apple Core Audio作為音訊系統的底層核心，您必須與以下四個Framework鏈結：<br>
+            <ul>
+            <li>CoreAudio</li>
+            <li>CoreServices</li>
+            <li>AudioUnit</li>
+            <li>AudioToolBox</li>
+            </ul>
+            <br>
+            <br>
+            此外如果有使用FFmpeg，您必須弄清楚您的FFmpeg需要跟哪些額外的函式庫鏈結，詳細請見《<a href="FFmpeg.html">FFmpeg函式庫編譯</a>》，一般而言有以下幾個：
+            <ul>
+            <li>avcodec</li>
+            <li>avformat</li>
+            <li>avutil</li>
+            <li>swresample</li>
+            <li>swscale</li>
+            <li>iconv</li>
+            <li>z</li>
+            <li>bz2</li>
+            <li>mp3lame</li>
+            <li>twolame</li>
+            <li>gsm</li>
+            </ul>
+            <br>
+            如果您不是那麼清楚需要跟哪些函式庫鏈結，那麼，多嘗試及多向FFmpeg使用族群發問，應該是個比較好的解決方式。
+            <br>
+            <h3>一般程式</h3>
+            <h4>使用函式庫</h4>
+            在您的程式編譯檔當中，加入include path及lib path的設定，並且加上-lCaCore的設定即可。<br>
+            <br>
+            <h4>箝入您的程式</h4>
+            您只要將以下目錄的所有hpp及cpp檔全部加入您的程式計畫檔中即可：
+            <table><tr><td>
+            <p><i>CiosAudio/*.hpp<br>
+            CiosAudio/*.cpp<br>
+            CiosAudio/Utilities/*.cpp<br>
+            CiosAudio/Utilities/MacOSX/*.cpp<br>
+            CiosAudio/Platforms/*.cpp<br>
+            CiosAudio/Platforms/MacOSX/*.hpp<br>
+            CiosAudio/Platforms/MacOSX/*.cpp<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            此外，記得加入FFmpeg所需要的函式庫以及路徑設定。
+            <br>
+            <h3>Qt</h3>
+            <h4>使用函式庫</h4>
+            在您的Qt程式當中，計畫檔的PRO檔中，加入下面這幾行即可：<br>
+            <table><tr><td>
+            <p><i>INCLUDEPATH += ${WHEREVER_CIOS_AUDIO_INCLUDE_PATH}<br>
+            LIBS += -L{WHEREVER_CIOS_AUDIO_LIB_PATH}<br>
+            LIBS += -lCaCore<br>
+            LIBS += -framework CoreAudio<br>
+            LIBS += -framework CoreServices<br>
+            LIBS += -framework AudioUnit<br>
+            LIBS += -framework AudioToolBox<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            此外，記得加入FFmpeg所需要的函式庫以及路徑設定。
+            <br>
+            <h4>箝入Qt的程式</h4>
+            在您的Qt程式當中，計畫檔的PRO檔中，加入下面這幾行即可：<br>
+            <table><tr><td>
+            <p><i>include ($${PWD}/CiosAudio/CiosAudio.pri)<br>
+            LIBS += -framework CoreAudio<br>
+            LIBS += -framework CoreServices<br>
+            LIBS += -framework AudioUnit<br>
+            LIBS += -framework AudioToolBox<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            此外，記得加入FFmpeg所需要的函式庫以及路徑設定。
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

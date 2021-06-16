@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-language" content="ru" />
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>CIOS Аудио Основные : 跨平台音訊輸出入設計介面</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li class="first active"><a href="../index.html">Домой</a></li>
+            <li><a href="documents.html">Документы</a></li>
+            <li><a href="downloads.html">Cкачать</a></li>
+            <li><a href="status.html">Cтатус</a></li>
+            <li><a href="faq.html">ЧЗВ</a></li>
+            <li><a href="mail.html">Почта</a></li>
+            <li><a href="apps.html">Приложений</a></li>
+            <li><a href="links.html">Cсылка</a></li>
+            <li><a href="license.html">Лицензия</a></li>
+            <li><a href="volunteer.html">Волонтёр</a></li>
+            <li><a href="contacts.html">Контакт</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <p class="larger">CIOS Аудио Основные（CIOS Audio Core）是個免費、跨平台可箝入的C++音訊輸出入設計介面。它允許你使用很簡單的C++程式來撰寫音訊，並且可以同時在許多平台上面運行，包含了Windows、Unix(ALSA/OSS)、Mac OS X、Android及iPhone OS。</p>
+              <p>CIOS Аудио Основные使用很簡單的C++介面類別來播放或錄音，並使用「音訊驅動介面」針對各作業系統平台撰寫底層驅動程式，應用程式在所有的作業系統平台上，僅需使用單一程式設計介面，即可輕鬆完成跨平台的音訊輸出入操作。</p>
+              <p>除了提供一般的函式庫（Unix libCaCore.a、Windows CaCore.lib）形式以外，CIOS Аудио Основные還可以直接以原始碼的形式很簡單地箝入C++應用程式，此外尚有專為Qt合併使用的簡單設計。整個函式庫僅含兩個檔案（CiosAudio.hpp及CaCore.lib或libCaCore.a），對於應用程式設計者來說，CIOS Audio Core是個極度簡單的介面。</p>
+              <p>「CIOS Аудио Основные」原始是設計用於「集智作業系統」當中的感知系統（Sensor Grid）的聲音串流體系當中，原始的設計較為複雜，這個版本為公開原始碼的版本，將複雜度及相依度全面減低，期使大部分的音訊處理程式均可以在一到十行的C++程式碼範圍內即可完成。</p>
+              <p>支援FFmpeg。將FFmpeg當成是音訊處理設備之一，如此大幅度簡化了複雜的音訊檔案處理機能，如此用戶可以在無需了解複雜的FFmpeg API的情形下，讀寫音訊檔案。</p>
+              <p>一般用戶被建議直接使用「CIOS Аудио Основные」的原始碼箝入應用程式當中，你只需要選取所需要的原始碼箝入您的程式當中一起編譯即可。絕大多數的元件都被很小心地分離開來，如此，彼此之間不會受到相互影響，您只需要選取所需要的音訊驅動介面即可。如果您不需要FFmpeg支援，或者是自己有使用FFmpeg或VLC的程式，那麼您可以選擇將FFMPEGLIB分離的方式來編譯。</p>
+              <p>此外，其他種類的程式語言也有與「CIOS Аудио Основные」做了功能綁定，請閱讀說明文件來尋找您所需的程式語言功能綁定。</p>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

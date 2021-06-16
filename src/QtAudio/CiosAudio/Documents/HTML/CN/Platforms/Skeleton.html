@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS音讯核心：躯壳音讯驱动介面（Skeleton Host API）</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下载</a></li>
+            <li><a href="../status.html">状态</a></li>
+            <li><a href="../faq.html">常见问题</a></li>
+            <li><a href="../mail.html">邮件列表</a></li>
+            <li><a href="../apps.html">应用程序</a></li>
+            <li><a href="../links.html">外部链结</a></li>
+            <li><a href="../license.html">版权</a></li>
+            <li><a href="../volunteer.html">志愿者</a></li>
+            <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>躯壳音讯驱动介面（Skeleton Host API）</h1>
+              <br>
+              Skeleton Host
+              API的作用是用来作为新的实验版本音讯驱动介面以及作为音讯的/dev/null作用，正常使用下，您并不需要这个音讯驱动介面，它实际上也没有被认真
+              地测试过。<br>
+              <br>
+              <br>
+              <h2>启用Skeleton模组</h2>
+              <h4>定义</h4>
+              如果您想要启用Skeleton模组，您的C++编译必须定义以下：<br>
+              <br>
+              SkeletonAPI
+              <h4>程序原始档</h4>
+              C++文件必须包含以下两个：<br>
+              <br>
+              <ol>
+                <li>CiosAudio/Platforms/Skeleton/CaSkeleton.hpp</li>
+                <li>CiosAudio/Platforms/Skeleton/CaSkeleton.cpp</li>
+              </ol>
+              <br>
+              <h4> Qt</h4>
+              如果您使用Qt，在以下设定档内：<br>
+              <p><i>CiosAudio/CiosAudio.pri</i></p>
+              将以下设定打开即可：<br>
+              <br>
+              DEFINES<span style=" color:#c0c0c0;"> </span>+=<span
+                style=" color:#c0c0c0;"> </span>SkeletonAPI
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              如果您不想要使用Skeleton，将这个定义关闭即可，内定是打开的。<br>
+              <br>
+              <h4> 链结</h4>
+              Skeleton不需要与任何函式库链结。<br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

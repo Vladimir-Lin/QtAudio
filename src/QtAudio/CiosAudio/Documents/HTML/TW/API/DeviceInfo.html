@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS Audio Core API : DeviceInfo</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>類別：DeviceInfo</h1>
+              <p>音訊設備資訊</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td align="center">類型</td>
+                    <td align="center">使用</td>
+                    <td align="center">成員</td>
+                    <td align="center">說明</td>
+                  </tr>
+                  <tr>
+                    <td>建構子</td>
+                    <td>public</td>
+                    <td><nobr>DeviceInfo(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>解構子</td>
+                    <td>public</td>
+                    <td><nobr>~DeviceInfo(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int structVersion</nobr></td>
+                    <td>結構版本。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>const char * name</nobr></td>
+                    <td>設備名稱。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaHostApiIndex hostApi</nobr></td>
+                    <td>音訊驅動介面編號。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaHostApiTypeId hostType</nobr></td>
+                    <td>音訊驅動介面種類。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int maxInputChannels</nobr></td>
+                    <td>最大輸入聲道數量。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>int maxOutputChannels</nobr></td>
+                    <td>最大輸出聲道數量。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaTime defaultLowInputLatency</nobr></td>
+                    <td>內定最低輸入延遲。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaTime defaultLowOutputLatency</nobr></td>
+                    <td>內定最低輸出延遲。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaTime defaultHighInputLatency</nobr></td>
+                    <td>內定最大輸入延遲。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>CaTime defaultHighOutputLatency</nobr></td>
+                    <td>內定最大輸出延遲。 </td>
+                  </tr>
+                  <tr>
+                    <td>資料</td>
+                    <td>public</td>
+                    <td><nobr>double defaultSampleRate</nobr></td>
+                    <td>內定取樣率。<br>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><b>說明</b></p>
+              <br>
+              <p><b>C/C++定義</b></p>
+              <br>
+              <span style=" color:#808000;">class</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">DeviceInfo</span>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">public</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">             </span><span style=" color:#800000;">structVersion</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">char</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">name</span><span style=" color:#c0c0c0;">                     </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaHostApiIndex</span><span style=" color:#c0c0c0;">  </span><span style=" color:#800000;">hostApi</span><span style=" color:#c0c0c0;">                  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaHostApiTypeId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">hostType</span><span style=" color:#c0c0c0;">                 </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">             </span><span style=" color:#800000;">maxInputChannels</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">             </span><span style=" color:#800000;">maxOutputChannels</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaTime</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">defaultLowInputLatency</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaTime</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">defaultLowOutputLatency</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaTime</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">defaultHighInputLatency</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CaTime</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">defaultHighOutputLatency</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">          </span><span style=" color:#800000;">defaultSampleRate</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">explicit</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">DeviceInfo</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">~</span><span style=" font-style:italic; color:#000000;">DeviceInfo</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

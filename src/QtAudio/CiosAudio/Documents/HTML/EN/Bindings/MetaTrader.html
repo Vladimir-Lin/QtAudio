@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Bindings : MetaTrader 4</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../documents.html">Documents</a></li>
+          <li><a href="../downloads.html">Downloads</a></li>
+          <li><a href="../status.html">Status</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../mail.html">Mailing list</a></li>
+          <li><a href="../apps.html">Applications</a></li>
+          <li><a href="../links.html">Links</a></li>
+          <li><a href="../license.html">License</a></li>
+          <li><a href="../volunteer.html">Volunteer</a></li>
+          <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>MetaTrader 4 binding CIOS Audio Core</h1>
+            <br>
+            MetaTrader 4 is a Forex trade platform, it was developed by Russian, MetaQuotes Software
+            Corp, and is most dominated Forex trading platforms now.<br>
+            <br>
+            Meta Quotes : <a href="http://www.metaquotes.net">http://www.metaquotes.net</a>
+            <br>
+            <br>
+            Among its products, MetaTrader 4 is most popular version, its address is : <a
+              href="http://www.metatrader4.com/">http://www.metatrader4.com</a><br>
+            <br>
+            MetaTrader automatic trading program is a language called MQL4,
+            it is actually a Javascript-Like language.
+            You may use MetaEditor to edit and compile the Expert Advisory.
+            In MQL4, it supports only wav and mp3 audio file.
+            We use a C wrapper to export into DLL, and provide MetaTrader
+            to handle a great amount of audio file formats support.
+            Therefore, if you successfully make a wonderful trading in FOREX market,
+            you may use CIOS Audio Core to play a long audio file to notify yourself
+            or someone else.
+            If your EA detects a major changes in FOREX market,
+            and your EA have to make a decision to stop loss or take profit,
+            you may play a crisis music to warn yourself or someone you asked to handle
+            such situtation.
+            <br>
+            <br>
+            <h2>Obtain MetaTrader 4 and account</h2>
+            <br>
+            Most FOREX trading providers will provide free MetaTrader and testing accounts.
+            If you wish to test CIOS Audio Core For MetaTrader,
+            please go to the following FOREX trading providers to obtain the MetaTrader 4:<br>
+            <ul>
+              <li><a href="http://www.forex.com">Forex.COM</a></li>
+              <li><a href="http://www.krcfx.com">KFCFX.COM</a></li>
+              <li><a href="http://www.fxcm.com">FXCM.COM</a></li>
+              <li><a href="http://www.easy-forex.com">Easy-Forex.COM</a></li>
+              <li><a href="http://www.nordfx.com">NordFX</a></li>
+              <li><a href="http://www.windsorbrokers.com/">Windsor
+                  Brokers</a></li>
+            </ul>
+            <br>
+            <h2>Source code</h2>
+            The source code of CIOS Audio Core for MetaTrader 4 Binding are located at:<br>
+            <ul>
+              <li>Bindings/MetaTrader/CaAudio</li>
+              <li>Bindings/MetaTrader/MT4</li>
+            </ul>
+            Inside Bindings/MetaTrader/MT4 directory, there are MT4 MQL4 files.<br>
+            <ul>
+              <li>Bindings/MetaTrader/MT4/MQL4/Experts/CaPlay.mq4 (Example)</li>
+              <li>Bindings/MetaTrader/MT4/MQL4/Include/CaAudio.mqh (MQL4 Header)</li>
+            </ul>
+            <br>
+            There are two ways to compile CaAudio:<br>
+            <ul>
+              <li>Compile CaAudio.sln</li>
+              <li>Use CMake<br>
+              </li>
+            </ul>
+            The way to compile by using CMake:<br>
+            <p>cmake ${CIOSAUDIODIR}/Bindings/MetaTrader/CaAudio</p>
+            And then open up CaAudio.sln with VS and compile.<br>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

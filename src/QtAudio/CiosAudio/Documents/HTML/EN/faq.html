@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>CIOS Audio Core : Frequently Asked Questions</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="documents.html">Documents</a></li>
+            <li><a href="downloads.html">Download</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li class="first active">FAQ</li>
+            <li><a href="mail.html">Mailing list</a></li>
+            <li><a href="apps.html">Applications</a></li>
+            <li><a href="links.html">Links</a></li>
+            <li><a href="license.html">License</a></li>
+            <li><a href="volunteer.html">Volunteers</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Frequently Asked Questions</h1>
+            <p><b>The origin of the name "CIOS Audio Core"?</b></p>
+            <p>Anwser : The primary project of CIOS Audio Core is CIOS, with full name is Collective Intelligence Operating System.
+            It is an operating system by itself, having its own kernel.
+            However, it is also designed to live on the other operating systems.
+            The most important concept of CIOS is through Mind-Meld mode or Grand link mode
+            to accerelate the knowledge learning process.
+            By exchanging knowledge between machines and human,
+            CIOS was bestowed with actual anthropomorphic intelligence.<br>
+            <br>
+            The functions of CIOS Audio Core is to provide CIOS audio streams,
+            therefore it is not surprise to call it "CIOS Audio Core".
+            It is a subsystem of CIOS underlying mechanism about sensor grids.
+            <br>
+            <br>
+            Because CIOS runs on multiple platforms,
+            the requirement of CIOS Audio Core is actually must cross-platforms.
+            Therefore, CIOS Audio Core can be an independant open source project.
+            Finally, CIOS Audio Core was separated from CIOS project as a standalone project.
+            <br>
+            <p><b>Why CIOS Audio Core does not provide DLL or SO files?</b></p>
+            <p>Answer : Because CIOS Audio Core uses threads to be the internal playback and recording
+            method. And it can be used in many applications and platforms at the same time.
+            The author considerred providing a DLL or SO file is a very dangerous way to
+            completely screw up the stability of the target system.
+            It is highly possible some other applications misuse the Host APIs
+            and lock up the whole system, using DLL or SO is very possible
+            to lead the system into a complete dead-lock and CPU hug.<br>
+            <br>
+            Although CIOS Audio Core is a thread safed audio processing interface,
+            in the near future, DLL or SO will not be provided, we do only static linked.
+            Actually, we strongly suggest you use the source code and compile into your program only.
+            CIOS Audio Core does capable of DLLed or SOed,
+            actually, the original author did have ones.
+            Yet, finally, the author decided not to public distribute them.
+            You may try, but the author strongly suggest you DO NOT.
+            <br>
+            <p><b>Is CIOS Audio Core related with text-to-speech and voice recognition?</b></p>
+            <p>Answer : The most early version of CIOS Audio Core was a completely mixed up
+            version with text-to-speech and voice recognition.
+            Later, the related developments added a whole bunch of functionalities,
+            a theoretical analysis was done. All components in this part of module was
+            divided into
+            Phonemes system,
+            Language Formula system,
+            Pure meaning system,
+            Conditional meaning system,
+            Machine understanding system,
+            Human vocal output system,
+            Voice recognition system,
+            Acoustic recognition system,
+            all of these systems are dismantled into standalone systems.
+            Meanwhile, CIOS Audio Core was separated from CIOS project,
+            trying to avoid a completely mixed up stuffs in CIOS subsystem.<br>
+            <br>
+            The relationship of CIOS Audio Core with the other subsystems,
+            Universal Phonemes Table,
+            Language Formula,
+            Human Text To Speech,
+            Human Voice Recognition,
+            Voice Activity Detection,
+            Acoustic recognition system,
+            and Input method.
+            These applications and subsystems are using CIOS Audio Core
+            as the core of audio streaming interface,
+            this is one of the reasons why this component was called "Audio Core".
+            <br>
+            <p><b>Can CIOS Audio Core transmit audio streams via network?</b></p>
+            <p>Answer : Yes.<br>
+            <br>
+            The original version of Host APIs did have one, but it is not open source.
+            If you are in need of network audio streaming,
+            there are many other options, such as Audio Over UDP, you can create one by yourself.
+            Because CIOS Audio Core is embedded with FFmpeg,
+            the module itself has compression and decompression functionalities,
+            it is not very difficult.
+            <br>
+            <br>
+            The reason of not releasing audio over network Host API,
+            the author had considerred this very carefully.
+            Audio over network is a function that potentially violation of personal privacy.
+            In the future versions, CIOS Audio Core will not have any function or module
+            related with Audio over network except Jack audio and Pulse audio.
+            If you want one, you will have to create one by yourself.
+            <br>
+            <p><b>There are license issues about FFmpeg, is there any other alternatives?</b></p>
+            <p>Answer : Yes. Actually, there are two other options, libav and VideoLAN VLC.<br>
+            <br>
+            If you are willing to help creating a VLC version of Host API,
+            the author is willing to add your addition to the official release.
+            The author has limit resources and energy,
+            the plan does not include VLC supports.
+            It is best to have a volunteer and devote himself or herself to create an open source version of VLC Host APIs.
+            <br>
+            <p><b>Skeleton Host API seems useless?</b></p>
+            <p>Answer : Yes.<br>
+            <br>
+            Skeleton Host API acts like /dev/null under Unix system, it does NOTHING at all.<br>
+            <br>
+            However, it can act as an audio emulator if you like.<br>
+            <br>
+            For developer purposes, a newly developing Host APIs requires a template.
+            You can simply copy Skeleton.hpp and Skeleton.cpp into your developement directory,
+            and modify the name to be your new Host API.
+            <br>
+            <p><b>Why not use Doxygen as CIOS Audio Core document system?</b></p>
+            <p>Answer : The author does not believe in having comments aside source code can explain the design clearly.
+            Therefore, the documents are insisted to use TeX, HTML and Open Office to be creators.
+            Explain all detials in all aspects if possible.
+            If the implementation goes wrong, there is a document for clarification.
+            <br>
+            <br>
+            The original author still insists the oldest way to do programming.
+            Write the basic codes, concept and flows on the papers,
+            and design all things by whatever written on these papers.
+            Doxygen does not help much to design a well planned program.
+            <br>
+            <br>
+            Actually, pens and papers are still the best and successful programming method so far.
+            <br>
+            <p><b>Can a developer fork CIOS Audio Core?</b></p>
+            <p>Answer : Yes, please do so.  As long as you follow LGPLv3.
+            The original author does not care about any fork version,
+            the rules are very loose.
+            <br>
+            <br>
+            If you do not wish to open your own private Host APIs,
+            please read the development API documents.
+            There are ways to avoid it.
+            Within APIs, there is a function called ReplaceHostApiInitializer,
+            it is used to set up Initializer, and enable you to switch
+            the system into your own private Host APIs.
+            By isolating private Host API and the library,
+            you can still have the ownership of your Host APIs privacy and follow the LGPLv3 rules.
+            <br>
+            <br>
+            The author does not have strong desire to ask you open source your own code
+            if you use CIOS Audio Core as a part of your own development project.
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>Bindings : MetaTrader 4</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>MetaTrader 4 binding CIOS Audio Core</h1>
+              <br>
+              MetaTrader 4是外匯交易的專用平台，由俄羅斯MetaQuotes Software
+              Corp所開發，是目前市佔率最高的外匯交易平台。<br>
+              <br>
+              官方網站：<a href="http://www.metaquotes.net">http://www.metaquotes.net</a>
+              <br>
+              <br>
+              其產品線當中，MetaTrader 4是目前使用率最高的版本，官方網址為：<a
+                href="http://www.metatrader4.com/">http://www.metatrader4.com</a><br>
+              <br>
+              其中智能自動交易是一種稱為MQ4的語言，它實際上是一種Javascript-Like的語言，您可以使用
+              MetaEditor來編輯自動交易程式。MQ4當中，僅支援wav格式的音效檔案，我們利用C
+              Wrapper來輸出成DLL，並且供應MetaTrader可以播放大批音訊格式檔案。如此，當您成功完成一筆重大交易
+              時，可以播放一段時間相當長的音樂來提示。或是偵測到外匯市場有重大變化，必須做出是否平倉停損時，可以播放危機時刻一類的
+              音樂來警告。<br>
+              <br>
+              <h2>獲取MetaTrader 4軟體及模擬交易帳號</h2>
+              <br>
+              大部分的外匯交易商都會提供免費的MetaTrader 4軟體及模擬交易帳號，如果您希望測試CIOS Audio
+              Core For MetaTrader的功能，請到以下的交易商下載MetaTrader 4軟體：<br>
+              <ul>
+                <li><a href="http://www.forex.com">Forex.COM</a></li>
+                <li><a href="http://www.krcfx.com">KFCFX.COM</a></li>
+                <li><a href="http://www.fxcm.com">FXCM.COM</a></li>
+                <li><a href="http://www.easy-forex.com">Easy-Forex.COM</a></li>
+                <li><a href="http://www.nordfx.com">NordFX</a></li>
+                <li><a href="http://www.windsorbrokers.com/">Windsor
+                    Brokers</a></li>
+              </ul>
+              <br>
+              <h2>原始碼</h2>
+              CIOS Audio Core的MetaTrader 4 Binding原始碼目錄位於<br>
+              <ul>
+                <li>Bindings/MetaTrader/CaAudio</li>
+                <li>Bindings/MetaTrader/MT4</li>
+              </ul>
+              其中，Bindings/MetaTrader/MT4目錄當中，包含了MT4的MQL4檔案。<br>
+              <ul>
+                <li>Bindings/MetaTrader/MT4/MQL4/Experts/CaPlay.mq4
+                  （使用範例）</li>
+                <li>Bindings/MetaTrader/MT4/MQL4/Include/CaAudio.mqh
+                  （MQL4標頭檔）</li>
+              </ul>
+              <br>
+              編譯CaAudio的方式有兩種：<br>
+              <ul>
+                <li>直接打開CaAudio.sln</li>
+                <li>使用CMake<br>
+                </li>
+              </ul>
+              其中使用CMake的方式如下：<br>
+              <p>cmake ${CIOSAUDIODIR}/Bindings/MetaTrader/CaAudio</p>
+              接下來打開產生的CaAudio.sln編譯即可。<br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

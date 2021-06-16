@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Compilation : Install CMake</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../documents.html">Documents</a></li>
+          <li><a href="../downloads.html">Download</a></li>
+          <li><a href="../status.html">Status</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../mail.html">Mailing list</a></li>
+          <li><a href="../apps.html">Applications</a></li>
+          <li><a href="../links.html">Links</a></li>
+          <li><a href="../license.html">License</a></li>
+          <li><a href="../volunteer.html">Volunteer</a></li>
+          <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Compilation : Install CMake</h1>
+            CIOS Audio Core use CMake as compilation tool.
+            Before you compile CIOS Audio Core,
+            you need to go to CMake official site, and download cmake for your platform.<br>
+            <br>
+            Official CMake site : <a href="http://www.cmake.org">http://www.cmake.org</a><br>
+            <br>
+            <br>
+            <h3>Cross compile target is ARM</h3>
+            If your are target platform is Android, iPhone OS or Banana Pi,
+            normally your CPU should be ARMv7.<br>
+            <br>
+            ARM version normally uses cross compiler,
+            therefore your need to have a cmake of your compile host,
+            not compile target.
+            <br>
+            <br>
+            <h2>Windows</h2>
+            On Windows, there are two methods to install CMake.
+            Installer and zip file, just pick one you like.<br>
+            <br>
+            If you are using zip file uncompression,
+            just open CMake, and place all files into your favor directory,
+            and set up the include and library path into environment settings.<br>
+            <br>
+            Compile CMake by yourself is not necessary.<br>
+            <br>
+            <h2>Mac OS X</h2>
+            On Mac OS X, just pick Mac OSX 64/32-bit Universal dmg file,
+            after download, just follow the normal procedure to install a reqular Mac OS X application.
+            <br>
+            <br>
+            <h2>Linux</h2>
+            There are many Linux distributions,
+            and having a very complex dependency.
+            We recommented you use the distribution packager to install cmake,
+            try not to compile cmake yourself.<br>
+            <br>
+            <h3>Fedora</h3>
+            <p><i>sudo yum install cmake</i></p>
+            <br>
+            <h3>Debian</h3>
+            <p><i>sudo apt-get install cmake</i></p>
+            <br>
+            <h3>Ubuntu</h3>
+            <p><i>sudo apt-get install cmake</i></p>
+            <br>
+            <h2>FreeBSD</h2>
+            <p><i>pkg install cmake</i></p>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-language" content="ru" />
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>CIOS Аудио Основные : Cкачать</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../index.html">Домой</a></li>
+            <li><a href="documents.html">Документы</a></li>
+            <li class="first active">Cкачать</li>
+            <li><a href="status.html">Cтатус</a></li>
+            <li><a href="faq.html">ЧЗВ</a></li>
+            <li><a href="mail.html">Почта</a></li>
+            <li><a href="apps.html">Приложений</a></li>
+            <li><a href="links.html">Cсылка</a></li>
+            <li><a href="license.html">Лицензия</a></li>
+            <li><a href="volunteer.html">Волонтёр</a></li>
+            <li><a href="contacts.html">Контакт</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>下載</h1>
+              <p>您可以透過下列的檔案下載原始碼及文件，每個檔案當中都包含了完整的各平台支援。</p>
+              <br>
+              <br>
+              目前的版本是1.5.11 Beta版。 <br>
+              <br>
+              <h2>穩定版本</h2>
+              <ul>
+              <li>正在測試當中</li>
+              </ul>
+              <br>
+              <h2>稍早的釋放版本</h4>
+              <ul>
+              <li>尚未釋放</li>
+              </ul>
+              <br>
+              <h2>開發版本（Beta）</h4>
+              目前的Beta版已經實作完整，所有音訊驅動介面均可成功編譯，但並未全部通過完整測試，細部依然有相當數量需要修正。<br>
+              <br>
+              已經確認可正常播放及錄音的音訊驅動介面 :
+              <ul>
+                <li>Windows Direct Sound（可錄音、播放、輸出音量控制，穩定性甚高。）</li>
+                <li>Windows Multimedia Extensions（可錄音、播放、輸出音量控制，穩定性甚高。）</li>
+                <li>Windows Audio Session API（可錄音、播放，穩定性甚高。）</li>
+                <li>Windows Driver Model - Kernel Streaming（可播放，錄音不甚穩定。）</li>
+                <li>Advanced Linux Sound Architecture（可播放、錄音，不穩定，細節依然需要修正）</li>
+                <li>JACK Audio Connection Kit（可播放，不穩定，細節依然需要修正）</li>
+                <li>Open Sound System（可播放、錄音，不穩定，細節依然需要修正）</li>
+                <li>AudioScience HPI（無法測試，但可以編譯）</li>
+                <li>Apple Core Audio（可錄音、播放、輸出音量控制， 穩定性甚高。）</li>
+                <li>FFmpeg（可壓縮、解壓縮、重新取樣，穩定性甚高。）</li>
+              </ul>
+              <br>已經測試的列表可以在這裡找到《<a href="hostapi.html">音訊驅動介面支援狀態列表</a>》。
+              <br>
+              <p>檔案列表</p>
+              <table>
+              <tr><td>項目</td><td>下載處</td></tr>
+              <tr><td>原始碼</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CiosAudio-1.5.11-beta-2014-1219.tar.gz">CIOS Audio Core 1.5.11 Beta / 2014-1219 (CiosAudio-1.5.11-beta-2014-1219.tar.gz)</a></td></tr>
+              <tr><td>原始碼</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CiosAudio-1.5.11-beta-2014-1219.zip">CIOS Audio Core 1.5.11 Beta / 2014-1219 (CiosAudio-1.5.11-beta-2014-1219.zip)</a></td></tr>
+              <tr><td>範例程式（Windows x64）</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CaPlay-1.5.11-beta-win32-x64-2014-1219.zip">CIOS Audio Play 1.5.11 (Example code) / 2014-1219 (CaPlay-1.5.11-beta-win32-x64-2014-1219.zip)</a> : 解開後，直接可於DOS下播放FFmpeg支援的音訊檔。</td></tr>
+              <tr><td>範例程式（Windows x86）</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CaPlay-1.5.11-beta-win32-x86-2014-1219.zip">CIOS Audio Play 1.5.11 (Example code) / 2014-1219 (CaPlay-1.5.11-beta-win32-x86-2014-1219.zip)</a> : 解開後，直接可於DOS下播放FFmpeg支援的音訊檔。</td></tr>
+              <tr><td>編譯好的Mac OS X x64 CIOS Audio Core and Player</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CiosAudio-Mac-x64-1.5.11-beta-2014-1219.tar.gz">Compiled CIOS Audio Core and Player 1.5.11 For Mac OS X x64 / 2014-1219 (CiosAudio-Mac-x64-1.5.11-beta-2014-1219.tar.gz)</a></td></tr>
+              <tr><td>編譯好的Windows靜態函式庫</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CaCore-1.5.11-beta-win32-2014-1219.zip">CIOS Audio Core Windows Library 1.5.11 Beta / 2014-1219 (CaCore-1.5.11-beta-win32-2014-1219.zip,x86/x64/header)</a></td></tr>
+              <tr><td>FFmpeg於Windows上函式庫與DLL</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/FFmpeg-Library-Windows-For-CiosAudio.tar.gz">FFmpeg-Library-Windows-For-CiosAudio.tar.gz</a></td></tr>
+              <tr><td>FFmpeg於Mac OS X上靜態函式庫</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/FFmpeg-Library-MacOSX-For-CiosAudio.tar.gz">FFmpeg-Library-MacOSX-For-CiosAudio.tar.gz</a></td></tr>
+              </table>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

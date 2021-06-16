@@ -1,0 +1,49 @@
+% \documentclass{article} 
+\documentclass[UTF8]{ctexart}
+% traditional chinese document
+  \usepackage{amsmath}
+  \usepackage{amssymb}
+  \usepackage{graphicx}
+  \usepackage{epstopdf}
+  \usepackage{latexsym}
+  
+  \title{CIOS Audio Core / Debugger}
+  \author{Brian Lin / foxman}
+
+\begin{document}
+\maketitle
+CIOS Audio Core Debug Facility\\
+\\
+Developer must implement an inherit class of Debugger to output debug messages.\\
+\\
+class Debugger\\
+\{
+\\
+  public:\\
+\\
+    explicit             Debugger (void) ;\\
+    virtual             ~Debugger (void) ;\\
+\\
+    virtual void         printf   (const char * format,...) ;\\
+    virtual const char * Error    (CaError errorCode) ;\\
+\\
+  protected:\\
+\\
+  private:\\
+\\
+\}
+;\\
+\\
+\\
+void Debugger::printf(const char * format,...) ;\\
+\\
+This function acts like regular good old printf in C.\\
+\\
+\\
+const char * Debugger::Error(CaError errorCode) ;\\
+\\
+This function returns string message of errorCode.\\
+\\
+
+
+\end{document} 

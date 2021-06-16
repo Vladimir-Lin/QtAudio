@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS音訊核心：音訊驅動介面支援狀態列表</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="documents.html">文件</a></li>
+            <li><a href="downloads.html">下載</a></li>
+            <li><a href="status.html">狀態</a></li>
+            <li><a href="faq.html">常見問題</a></li>
+            <li><a href="mail.html">郵件列表</a></li>
+            <li><a href="apps.html">應用程式</a></li>
+            <li><a href="links.html">外部鏈結</a></li>
+            <li><a href="license.html">版權</a></li>
+            <li><a href="volunteer.html">志願者</a></li>
+            <li><a href="contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1><center>音訊驅動介面支援狀態列表</center></h1>
+            <br>
+            <p>如果你做了測試，並且希望能夠將測試狀況回報，請郵寄至linfoxman (at) users.sourceforge.net。</p>
+            <br>
+            音訊驅動介面支援功能列表：
+            <table>
+            <tr><td><nobr>音訊驅動介面</nobr></td><td><nobr>播放</nobr></td><td><nobr>錄音</nobr></td><td><nobr>全雙工</nobr></td><td><nobr>音量控制</nobr></td><td><nobr>重新取樣</nobr></td></tr>
+            <tr><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td></tr>
+            <tr><td>Open Sound System</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td></tr>
+            <tr><td>JACK Audio Connection Kit</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td><td>✘</td></tr>
+            <tr><td>Direct Sound</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td></tr>
+            <tr><td>Windows Multimedia Extensions</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td></tr>
+            <tr><td>Windows Audio Session API</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td></tr>
+            <tr><td>Windows Driver Model Kernel Streaming</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td><td>✘</td></tr>
+            <tr><td>Core Audio</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td></tr>
+            <tr><td>iPhone OS Core Audio</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td></tr>
+            <tr><td>FFmpeg</td><td>☑</td><td>☑</td><td>✘</td><td>✘</td><td>☑</td></tr>
+            <tr><td>Skeleton</td><td>☑</td><td>☑</td><td>✘</td><td>✘</td><td>✘</td></tr>
+            </table>
+            <br>
+            <br>
+            目前的測試狀況：
+            <table align="center">
+            <tr><td><nobr>作業系統</nobr></td><td><nobr>版本</nobr></td><td><nobr>架構</nobr></td><td><nobr>音訊驅動介面</nobr></td><td><nobr>實作完成</nobr></td><td><nobr>作者測試</nobr></td><td><nobr>播放</nobr></td><td><nobr>錄音</nobr></td><td><nobr>全雙工</nobr></td><td><nobr>外部測試報告</nobr></td></tr>
+            <tr><td>Windows</td><td>7</td><td>x64</td><td>Direct Sound</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x64</td><td>Windows Multimedia Extensions</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x64</td><td>Windows Audio Session API</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x64</td><td>Windows Driver Model Kernel Streaming</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x64</td><td>FFmpeg</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x86</td><td>Direct Sound</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x86</td><td>Windows Multimedia Extensions</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x86</td><td>Windows Audio Session API</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x86</td><td>Windows Driver Model Kernel Streaming</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Windows</td><td>7</td><td>x86</td><td>FFmpeg</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Mac OS X</td><td>10.9.5</td><td>x64</td><td>Core Audio</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Mac OS X</td><td>10.9.5</td><td>x64</td><td>FFmpeg</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>iPhone OS</td><td>5.0</td><td>ARMv7/32</td><td>iPhone OS Core Audio</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>iPhone OS</td><td>5.0</td><td>ARMv7/32</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Android</td><td>4.0.1</td><td>ARMv7/32</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Android</td><td>4.0.1</td><td>ARMv7/32</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x64</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x64</td><td>Open Sound System</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x64</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x64</td><td>FFmpeg</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x86</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x86</td><td>Open Sound System</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x86</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>x86</td><td>FFmpeg</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>ARMv7/32</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>ARMv7/32</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Ubuntu)</td><td>14.10</td><td>ARMv7/32</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x64</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x64</td><td>Open Sound System</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x64</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x64</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x86</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x86</td><td>Open Sound System</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x86</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Fedora)</td><td>20</td><td>x86</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x64</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x64</td><td>Open Sound System</td><td>☑</td><td>☑</td><td>☑</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x64</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x64</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x86</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x86</td><td>Open Sound System</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x86</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>7.7.0</td><td>x86</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>14.10</td><td>ARMv7/32</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>14.10</td><td>ARMv7/32</td><td>Open Sound System</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>14.10</td><td>ARMv7/32</td><td>JACK Audio Connection Kit</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>Linux(Debian)</td><td>14.10</td><td>ARMv7/32</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>FreeBSD</td><td>10.1</td><td>x64</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>FreeBSD</td><td>20</td><td>x64</td><td>Open Sound System</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>FreeBSD</td><td>10.1</td><td>x64</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            <tr><td>FreeBSD</td><td>10.1</td><td>x86</td><td>Advanced Linux Sound Architecture</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>FreeBSD</td><td>20</td><td>x64</td><td>Open Sound System</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>尚無報告</td></tr>
+            <tr><td>FreeBSD</td><td>10.1</td><td>x86</td><td>FFmpeg</td><td>☑</td><td>☐</td><td>☐</td><td>☐</td><td>✘</td><td>尚無報告</td></tr>
+            </table>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

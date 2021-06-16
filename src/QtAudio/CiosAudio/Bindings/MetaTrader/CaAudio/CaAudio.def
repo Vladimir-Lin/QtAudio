@@ -1,0 +1,8 @@
+LIBRARY CaAudio
+
+EXPORTS
+    CaDevices
+    CaSetDevice
+    CaGetDeviceId
+    CaDeviceName
+    CaPlay

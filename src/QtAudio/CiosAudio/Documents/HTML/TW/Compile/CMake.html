@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>編譯：CMake安裝</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首頁</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下載</a></li>
+          <li><a href="../status.html">狀態</a></li>
+          <li><a href="../faq.html">常見問題</a></li>
+          <li><a href="../mail.html">郵件列表</a></li>
+          <li><a href="../apps.html">應用程式</a></li>
+          <li><a href="../links.html">外部鏈結</a></li>
+          <li><a href="../license.html">版權</a></li>
+          <li><a href="../volunteer.html">志願者</a></li>
+          <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>編譯：CMake</h1>
+            「CIOS音訊核心」使用CMake作為編譯工具，在您開始編譯「CIOS音訊核心」之前，您需要前往CMake官方網站，下載您的平台版本。<br>
+            <br>
+            CMake官方網站位址：<a href="http://www.cmake.org">http://www.cmake.org</a><br>
+            <br>
+            <br>
+            <h3>目標平台為ARM</h3>
+            如果你的目標平台是Android、iPhone OS或是Banana Pi，那麼一般而言您的CPU應當是ARMv7。<br>
+            <br>
+            ARM的版本通常使用Cross Compiler，因此您需要選擇您的編譯主機的CMake版本。
+            <br>
+            <br>
+            <h2>Windows平台</h2>
+            Windows平台上，CMake提供了兩種方式安裝，一種是Installer，另一種是zip檔，您可以依據自己的習慣選用合適自己的安裝方式。<br>
+            <br>
+            如果您使用zip檔，只要將CMake解開，擺到自己慣用的目錄，並且將路徑設定到環境變數上即可。<br>
+            <br>
+            自行編譯CMake基本上是沒有必要的。<br>
+            <br>
+            <h2>Mac OS X平台</h2>
+            Mac OS X平台選擇《Mac OSX 64/32-bit Universal》的dmg檔即可，下載完成後，依Mac OS X的安裝方式即可。
+            <br>
+            <br>
+            <h2>Linux平台</h2>
+            Linux平台發行版本較多，相依性較為複雜，建議您使用發行版本本身的套件，盡可能不要自行編譯。<br>
+            <br>
+            <h3>Fedora</h3>
+            <p><i>sudo yum install cmake</i></p>
+            <br>
+            <h3>Debian</h3>
+            <p><i>sudo apt-get install cmake</i></p>
+            <br>
+            <h3>Ubuntu</h3>
+            <p><i>sudo apt-get install cmake</i></p>
+            <br>
+            <h2>FreeBSD平台</h2>
+            <p><i>pkg install cmake</i></p>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Compilation : Windows</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../documents.html">Documents</a></li>
+          <li><a href="../downloads.html">Download</a></li>
+          <li><a href="../status.html">Status</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../mail.html">Mailing list</a></li>
+          <li><a href="../apps.html">Applications</a></li>
+          <li><a href="../links.html">Links</a></li>
+          <li><a href="../license.html">License</a></li>
+          <li><a href="../volunteer.html">Volunteer</a></li>
+          <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Compilation on Windows</h1>
+            It is easy to compile the CIOS Audio Core when the environment is ready:<br>
+            <br>
+            <table><tr><td>
+            <p><i>
+            mkdir BuildCiosAudioCore<br>
+            cd BuildCiosAudioCore<br>
+            cmake $CIOSAUDIOROOTDIR\Compile\Windows<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            This will generate "CiosAudio.sln".<br>
+            <br>
+            <h3>x64</h3>
+            <br>
+            <table><tr><td>
+            <p><i>
+            cmake -G "Visual Studio 10 Win64" $CIOSAUDIOROOTDIR\Compile\Windows<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <br>
+            Open CiosAudio.sln with Visual Studio and compile,
+            "CaCore.lib" will be generated.
+            <br>
+            <br>
+            <h2>Modify settings</h2>
+            <br>
+            <table><tr><td>
+            <p><i>
+            mkdir BuildCiosAudioCore<br>
+            cd BuildCiosAudioCore<br>
+            cmake $CIOSAUDIOROOTDIR\Compile\Windows<br>
+            cd ..<br>
+            cmake-gui BuildCiosAudioCore<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <img src="../images/Windows-cmake-gui-1.png">
+            <br>
+            <br>
+            Configure<br>
+            <br>
+            <img src="../images/Windows-cmake-gui-2.png">
+            <br>
+            <br>
+            Generate<br>
+            <br>
+            <img src="../images/Windows-cmake-gui-3.png">
+            <br>
+            <br>
+            <br>
+            Open CiosAudio.sln with Visual Studio and compile,
+            "CaCore.lib" will be generated.
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

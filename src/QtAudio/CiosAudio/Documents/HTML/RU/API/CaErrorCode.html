@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>CIOS Audio Core API : CaErrorCode</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">首頁</a></li>
+          <li><a href="../documents.html">文件</a></li>
+          <li><a href="../downloads.html">下載</a></li>
+          <li><a href="../status.html">狀態</a></li>
+          <li><a href="../faq.html">常見問題</a></li>
+          <li><a href="../mail.html">郵件列表</a></li>
+          <li><a href="../apps.html">應用程式</a></li>
+          <li><a href="../links.html">外部鏈結</a></li>
+          <li><a href="../license.html">版權</a></li>
+          <li><a href="../volunteer.html">志願者</a></li>
+          <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Enumeration : CaErrorCode</h1>
+            <i><b>CaErrorCode</b></i>是個<b>列舉型態</b>，通常用來反應所呼叫的函式回應是否正確，大於或等於零的返回值通常都是正確的值，其值的定義如下：
+            <table>
+            <tr><td>名稱</td><td>值</td><td>說明</td></tr>
+            <tr><td>NoError</td><td>0</td><td>沒有任何錯誤時的返回值</td></tr>
+            <tr><td>NotInitialized</td><td>-10000</td><td></td></tr>
+            <tr><td>UnanticipatedHostError</td><td>-10001</td><td></td></tr>
+            <tr><td>InvalidChannelCount</td><td>-10002</td><td></td></tr>
+            <tr><td>InvalidSampleRate</td><td>-10003</td><td></td></tr>
+            <tr><td>InvalidDevice</td><td>-10004</td><td></td></tr>
+            <tr><td>InvalidFlag</td><td>-10005</td><td></td></tr>
+            <tr><td>SampleFormatNotSupported</td><td>-10006</td><td></td></tr>
+            <tr><td>BadIODeviceCombination</td><td>-10007</td><td></td></tr>
+            <tr><td>InsufficientMemory</td><td>-10008</td><td></td></tr>
+            <tr><td>BufferTooBig</td><td>-10009</td><td></td></tr>
+            <tr><td>BufferTooSmall</td><td>-10010</td><td></td></tr>
+            <tr><td>NullCallback</td><td>-10011</td><td></td></tr>
+            <tr><td>BadStreamPtr</td><td>-10012</td><td></td></tr>
+            <tr><td>TimedOut</td><td>-10013</td><td></td></tr>
+            <tr><td>InternalError</td><td>-10014</td><td></td></tr>
+            <tr><td>DeviceUnavailable</td><td>-10015</td><td></td></tr>
+            <tr><td>IncompatibleHostApiSpecificStreamInfo</td><td>-10016</td><td></td></tr>
+            <tr><td>StreamIsStopped</td><td>-10017</td><td></td></tr>
+            <tr><td>StreamIsNotStopped</td><td>-10018</td><td></td></tr>
+            <tr><td>InputOverflowed</td><td>-10019</td><td></td></tr>
+            <tr><td>OutputUnderflowed</td><td>-10020</td><td></td></tr>
+            <tr><td>HostApiNotFound</td><td>-10021</td><td></td></tr>
+            <tr><td>InvalidHostApi</td><td>-10022</td><td></td></tr>
+            <tr><td>CanNotReadFromACallbackStream</td><td>-10023</td><td></td></tr>
+            <tr><td>CanNotWriteToACallbackStream</td><td>-10024</td><td></td></tr>
+            <tr><td>CanNotReadFromAnOutputOnlyStream</td><td>-10025</td><td></td></tr>
+            <tr><td>CanNotWriteToAnInputOnlyStream</td><td>-10026</td><td></td></tr>
+            <tr><td>IncompatibleStreamHostApi</td><td>-10027</td><td></td></tr>
+            <tr><td>BadBufferPtr</td><td>-10028</td><td></td></tr>
+            </table>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

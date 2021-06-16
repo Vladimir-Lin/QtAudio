@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Compilation : Things to know about the compilation</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../documents.html">Documents</a></li>
+          <li><a href="../downloads.html">Download</a></li>
+          <li><a href="../status.html">Status</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../mail.html">Mailing list</a></li>
+          <li><a href="../apps.html">Applications</a></li>
+          <li><a href="../links.html">Links</a></li>
+          <li><a href="../license.html">License</a></li>
+          <li><a href="../volunteer.html">Volunteer</a></li>
+          <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Things to know about the compilation</h1>
+            <br>
+            <br>
+            <h2>Modify namespace</h2>
+            <br>
+            The default CIOS Audio Core namespace is "CiosAudio".
+            <br>
+            <br>
+            In case you need to modify this namespace, there are two defines:
+            <br>
+            <ul>
+            <li>DONT_USE_NAMESPACE</li>
+            <li>CAC_NAMESPACE</li>
+            </ul>
+            <br>
+            If you do not want to use namespace, add the following DEFINE:
+            <p><i>#define DONT_USE_NAMESPACE</i></p>
+            <br>
+            If you like to set up a namespace other than CiosAudio, add the following DEFINE:
+            <br>
+            <p><i>#define CAC_NAMESPACE MyOwnNameSpace</i></p>
+            <br>
+            <h2>Debugger setting</h2>
+            <br>
+            Because audio process did not actually consume a lot of
+            CPU resources, the debug code in CIOS Audio Core does not
+            actually affect the whole efficiency.
+            We recommented you to keep these debug code,
+            therefore the default settings is to enable debug messages.
+            <br>
+            <br>
+            For your own reasons, you do not wish to have
+            any debug messages appear,
+            just add the following DEFINE:
+            <br>
+            <p><i>#define REMOVE_DEBUG_MESSAGE</i></p>
+            <br>
+            <h2>Utilities</h2>
+            <br>
+            The utilites CIOS Audio Core provided are mostly Thread and Mutex.
+            If you do have your own Thread and Mutex system,
+            and you do not need FFmpeg, you might want to disable it.
+            <br>
+            <br>
+            To enable utilities and FFmpeg, you must add the following DEFINE:
+            <br>
+            <p><i>#define CAUTILITIES</i></p>
+            <br>
+            <h2>FFmpeg</h2>
+            <br>
+            If you want FFmpeg functionalities, you will have to add the following DEFINE:
+            <br>
+            <p><i>#define FFMPEGLIB</i></p>
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS音讯核心：下载</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../index.html">首页</a></li>
+            <li><a href="documents.html">文件</a></li>
+            <li class="first active">下载</li>
+            <li><a href="status.html">状态</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="mail.html">邮件列表</a></li>
+            <li><a href="apps.html">应用程序</a></li>
+            <li><a href="links.html">外部链结</a></li>
+            <li><a href="license.html">版权</a></li>
+            <li><a href="volunteer.html">志愿者</a></li>
+            <li><a href="contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>下载</h1>
+              <p>您可以透过下列的文件下载源代码及文件，每个文件当中都包含了完整的各平台支持。</p>
+              <br>
+              <br>
+              目前的版本是1.5.11 Release Candidate版。 <br>
+              <br>
+              <h2>开发版本（Release Candidate）</h4>
+              目前的Release Candidate（2015/02/13）版已经实作完整，所有音讯驱动介面均可成功编译。<br>
+              <br>
+              已经确认可正常播放及录音的音讯驱动介面：
+              <ul>
+                <li>Windows Direct Sound（可录音、播放、输出音量控制，稳定性甚高。）</li>
+                <li>Windows Multimedia Extensions（可录音、播放、输出音量控制，稳定性甚高。）</li>
+                <li>Windows Audio Session API（可录音、播放、音量控制、重新取样，稳定性甚高。）</li>
+                <li>Windows Driver Model - Kernel Streaming（可录音、播放，稳定性甚高。）</li>
+                <li>Advanced Linux Sound Architecture（可录音、播放，稳定。）</li>
+                <li>JACK Audio Connection Kit（可录音、播放，稳定。）</li>
+                <li>Open Sound System（可录音、播放、音量控制，稳定性尚可。）</li>
+                <li>Apple Core Audio（可录音、播放、输出音量控制， 稳定性甚高。）</li>
+                <li>FFmpeg（可压缩、解压缩、重新取样，稳定性甚高。）</li>
+              </ul>
+              <br>已经测试的列表可以在这裡找到《<a href="hostapi.html">音讯驱动介面支持状态列表</a>》。
+              <br>
+              <p>文件列表</p>
+              <table>
+              <tr><td>项目</td><td>下载处</td></tr>
+              <tr><td>源代码(tar.gz)</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CiosAudio-1.5.11-rc-2015-0213.tar.gz">CIOS Audio Core 1.5.11 Release Candidatea / 2015-0213</a></td></tr>
+              <tr><td>源代码(zip)</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/CiosAudio-1.5.11-rc-2015-0213.zip">CIOS Audio Core 1.5.11 Release Candidate / 2015-0213</a></td></tr>
+              <tr><td>示范程序（Windows x64）</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/bin/CaPlay-1.5.11-rc-win32-x64-2015-0213.zip">CIOS Audio Play 1.5.11 (Example code) / 2015-0213</a><br>解开后，直接可于DOS下播放FFmpeg支持的音讯档。</td></tr>
+              <tr><td>示范程序（Windows x86）</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/bin/CaPlay-1.5.11-rc-win32-x86-2015-0213.zip">CIOS Audio Play 1.5.11 (Example code) / 2015-0213</a><br>解开后，直接可于DOS下播放FFmpeg支持的音讯档。</td></tr>
+              <tr><td>编译好的Mac OS X x64 CIOS Audio Core and Player</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/bin/CiosAudio-Mac-x64-1.5.11-rc-2015-0213.tar.gz">Compiled CIOS Audio Core and Player 1.5.11 For Mac OS X x64 / 2015-0213</a></td></tr>
+              <tr><td>编译好的Windows静态函式库</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/lib/CaCore-1.5.11-rc-win32-2015-0213.zip">CIOS Audio Core Windows Library 1.5.11 Release Candidate / 2015-0213 (x86/x64/header)</a></td></tr>
+              <tr><td>FFmpeg于Windows上函式库与DLL</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/lib/FFmpeg-Library-Windows-For-CiosAudio.tar.gz">FFmpeg-Library-Windows-For-CiosAudio.tar.gz</a></td></tr>
+              <tr><td>FFmpeg于Mac OS X上静态函式库</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/lib/FFmpeg-Library-MacOSX-For-CiosAudio.tar.gz">FFmpeg-Library-MacOSX-For-CiosAudio.tar.gz</a></td></tr>
+              <tr><td>FFmpeg于Android上静态函式库</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/lib/FFmpeg-android-15-arena.tar.gz">FFmpeg-android-15-arena.tar.gz</a></td></tr>
+              <tr><td>CIOS Audio Bindings for MetaTrader 4</td><td><a href="https://sourceforge.net/projects/ciosaudio/files/bindings/CiosAudio-MT4-1.5.11-rc-2015-0213.zip">CiosAudio-MT4-1.5.11-rc-2015-0213.zip</a></td></tr>
+              </table>
+              <br>
+              <h2>稳定版本</h2>
+              <ul>
+              <li>正在测试当中</li>
+              </ul>
+              <br>
+              <h2>稍早的释放版本</h4>
+              <ul>
+              <li>尚未释放</li>
+              </ul>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

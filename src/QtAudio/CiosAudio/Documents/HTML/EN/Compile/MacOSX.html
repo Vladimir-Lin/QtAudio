@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Compilation : Apple Mac OS X</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../documents.html">Documents</a></li>
+          <li><a href="../downloads.html">Download</a></li>
+          <li><a href="../status.html">Status</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../mail.html">Mailing list</a></li>
+          <li><a href="../apps.html">Applications</a></li>
+          <li><a href="../links.html">Links</a></li>
+          <li><a href="../license.html">License</a></li>
+          <li><a href="../volunteer.html">Volunteer</a></li>
+          <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>Compilation on Apple Mac OS X</h1>
+            <h2>Compile CIOS Audio Core library</h2>
+            It is easy to compile the CIOS Audio Core when the environment is ready:<br>
+            <table><tr><td>
+            <p><i>
+            mkdir BuildCiosAudioCore<br>
+            <br>
+            cd BuildCiosAudioCore<br>
+            <br>
+            cmake $CIOSAUDIOROOTDIR/Compile/MacOSX<br>
+            <br>
+            make<br>
+            <br>
+            sudo make install<br>
+            </i></p>
+            </td></tr></table>
+            This will install CiosAudio.hpp to "/usr/local/include",
+            and libCaCore.a to "/usr/local/lib".<br>
+            <br>
+            <h3>Modify settings</h3>
+            If you like to modify the settings,
+            we suggest you use "cmake-gui".
+            If you need to use parameters by command line,
+            please go to CMake official site <a href="http://www.cmake.org">http://www.cmake.org</a> and read related documents
+            <br>
+            <br>
+            <br>
+            <table><tr><td>
+            <p><i>
+            cd Somewhere/Temporary
+            mkdir CiosAudio<br>
+            <br>
+            cd CiosAudio<br>
+            <br>
+            cmake $CIOSAUDIOROOTDIR/Compile/MacOSX<br>
+            <br>
+            cd ..<br>
+            <br>
+            cmake-gui CiosAudio<br>
+            </i></p>
+            </td></tr></table>
+            The interface appears like the following:<br>
+            <img src="../images/MacOSX-cmake-gui-1.png">
+            <br>
+            <br>
+            Then, change what you need:<br>
+            <img src="../images/MacOSX-cmake-gui-2.png">
+            <br>
+            Press Configure:<br>
+            <img src="../images/MacOSX-cmake-gui-3.png">
+            <br>
+            Press Generate:<br>
+            <img src="../images/MacOSX-cmake-gui-4.png">
+            <br>
+            <br>
+            Then, issue the commands:
+            <table><tr><td>
+            <p><i>
+            cd CiosAudio<br>
+            <br>
+            make<br>
+            <br>
+            make install<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <br>
+            <h3>Modify default Namespace</h3>
+            The default namespace of CIOS Audio Core is CiosAudio.
+            You can modify namespace by the following methods:
+            <br>
+            <table><tr><td>
+            <p><i>
+            cd Somewhere/Temporary
+            mkdir CiosAudio<br>
+            <br>
+            cd CiosAudio<br>
+            <br>
+            cmake CMAKE_CXX_FLAGS="-DCAC_NAMESPACE=MyCaAudio" $CIOSAUDIOROOTDIR/Compile/MacOSX<br>
+            <br>
+            cd ..<br>
+            <br>
+            cmake-gui CiosAudio<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            <h3>Utilities and FFmpeg</h3>
+            If you want to enable FFmpeg, you will have to enable Utilities too.<br>
+            <br>
+            <h2>Compile CIOS Audio Core applications</h2>
+            <br>
+            Applications must link with "libCaCore.a".
+            And because we use Apple Core Audio as the underlying mechanism,
+            you must link with the following four frameworks:<br>
+            <ul>
+            <li>CoreAudio</li>
+            <li>CoreServices</li>
+            <li>AudioUnit</li>
+            <li>AudioToolBox</li>
+            </ul>
+            <br>
+            <br>
+            If you are using FFmpeg,
+            you must understand your FFmpeg link with what extra libraries,
+            details please refer <a href="FFmpeg.html">Compiling FFmpeg</a>.
+            In most cases, the following libraries are to be linked:
+            <ul>
+            <li>avcodec</li>
+            <li>avformat</li>
+            <li>avutil</li>
+            <li>swresample</li>
+            <li>swscale</li>
+            <li>iconv</li>
+            <li>z</li>
+            <li>bz2</li>
+            <li>mp3lame</li>
+            <li>twolame</li>
+            <li>gsm</li>
+            </ul>
+            <br>
+            If you do not actually know which libraries are required to be linked,
+            ask the FFmpeg user groups, it will be a better solution.
+            <br>
+            <h3>Regular C++ program</h3>
+            <h4>Using library</h4>
+            In your Makefile, add include path and lib path, and "-lCaCore":<br>
+            <br>
+            <h4>Embed into your C++ program</h4>
+            Just add the following hpp and cpp in the directory into your project file:
+            <table><tr><td>
+            <p><i>CiosAudio/*.hpp<br>
+            CiosAudio/*.cpp<br>
+            CiosAudio/Utilities/*.cpp<br>
+            CiosAudio/Utilities/MacOSX/*.cpp<br>
+            CiosAudio/Platforms/*.cpp<br>
+            CiosAudio/Platforms/MacOSX/*.hpp<br>
+            CiosAudio/Platforms/MacOSX/*.cpp<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            And, remember to add the library and include path for FFmpeg.
+            <br>
+            <h3>Qt</h3>
+            <h4>Using library</h4>
+            In your Qt program PRO, add the following:<br>
+            <table><tr><td>
+            <p><i>INCLUDEPATH += ${WHEREVER_CIOS_AUDIO_INCLUDE_PATH}<br>
+            LIBS += -L{WHEREVER_CIOS_AUDIO_LIB_PATH}<br>
+            LIBS += -lCaCore<br>
+            LIBS += -framework CoreAudio<br>
+            LIBS += -framework CoreServices<br>
+            LIBS += -framework AudioUnit<br>
+            LIBS += -framework AudioToolBox<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            And, remember to add the library and include path for FFmpeg.
+            <br>
+            <h4>Embed into Qt program</h4>
+            In your Qt program PRO, add the following:<br>
+            <table><tr><td>
+            <p><i>include ($${PWD}/CiosAudio/CiosAudio.pri)<br>
+            LIBS += -framework CoreAudio<br>
+            LIBS += -framework CoreServices<br>
+            LIBS += -framework AudioUnit<br>
+            LIBS += -framework AudioToolBox<br>
+            </i></p>
+            </td></tr></table>
+            <br>
+            And, remember to add the library and include path for FFmpeg.
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

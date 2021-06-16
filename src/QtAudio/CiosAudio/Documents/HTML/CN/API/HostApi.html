@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS Audio Core API : HostApi</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下载</a></li>
+            <li><a href="../status.html">状态</a></li>
+            <li><a href="../faq.html">常见问题</a></li>
+            <li><a href="../mail.html">邮件列表</a></li>
+            <li><a href="../apps.html">应用程序</a></li>
+            <li><a href="../links.html">外部链结</a></li>
+            <li><a href="../license.html">版权</a></li>
+            <li><a href="../volunteer.html">志愿者</a></li>
+            <li><a href="../contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>类别：HostApi</h1>
+              <p>音讯驱动介面</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td align="center">类型</td>
+                    <td align="center">使用</td>
+                    <td align="center">成员</td>
+                    <td align="center">说明</td>
+                  </tr>
+                  <tr>
+                    <td>建构子</td>
+                    <td>public</td>
+                    <td><nobr>HostApi(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>解构子</td>
+                    <td>public</td>
+                    <td><nobr>~HostApi(void)</nobr></td>
+                    <td><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>列举</td>
+                    <td>public</td>
+                    <td><nobr>Encoding</nobr></td>
+                    <td>编码列表。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>public</td>
+                    <td><nobr>unsigned long baseDeviceIndex</nobr></td>
+                    <td>这个音讯驱动介面的开始设备编号。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>public</td>
+                    <td><nobr>HostApiInfo info</nobr></td>
+                    <td>音讯驱动介面资讯。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>public</td>
+                    <td><nobr>DeviceInfo ** deviceInfos</nobr></td>
+                    <td>音讯驱动介面列表。 </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaError Open (<br>
+                        Stream ** stream ,<br>
+                        const StreamParameters * inputParameters ,<br>
+                        const StreamParameters * outputParameters ,<br>
+                        double sampleRate ,<br>
+                        CaUint32 framesPerCallback ,<br>
+                        CaStreamFlags streamFlags ,<br>
+                        Conduit * streamCallback ) = 0</nobr></td>
+                    <td>开启音讯串流。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual void Terminate (void) = 0</nobr></td>
+                    <td>结束使用音讯驱动介面。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaError isSupported (<br>
+                        const StreamParameters * inputParameters ,<br>
+                        const StreamParameters * outputParameters ,<br>
+                        double sampleRate ) = 0</nobr></td>
+                    <td>是否支持串流格式。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual Encoding encoding (void) const = 0</nobr></td>
+                    <td>音讯驱动设备名称编码。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual bool hasDuplex (void) const = 0</nobr></td>
+                    <td>是否有全双工功能。 </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>void setDebugger (Debugger * debug)</nobr></td>
+                    <td>设定除错物件。 </td>
+                  </tr>
+                  <tr>
+                    <td>函式</td>
+                    <td>public</td>
+                    <td><nobr>virtual CaError ToHostDeviceIndex (<br>
+                        CaDeviceIndex * hostApiDevice ,<br>
+                        CaDeviceIndex device )</nobr></td>
+                    <td>将设备编号转换到音讯驱动介面当中的设备编号。<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>资料</td>
+                    <td>protected</td>
+                    <td><nobr>Debugger * debugger</nobr></td>
+                    <td>除错物件。 </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><b>说明</b></p>
+              音讯驱动介面必须继承这个类别来实作实际的音讯输出入操作。<br>
+              <br>
+              <p><b>C/C++定义</b></p>
+              <br>
+              <span style=" color:#808000;">class</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">HostApi</span>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">public</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">typedef</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">enum</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#800080;">NATIVE</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#800080;">UTF8</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">1</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#800080;">UTF16</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">2</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">}</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#800080;">Encoding</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">unsigned</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">long</span><span style=" color:#c0c0c0;">   </span><span style=" color:#800000;">baseDeviceIndex</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">HostApiInfo</span><span style=" color:#c0c0c0;">     </span><span style=" color:#800000;">info</span><span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">DeviceInfo</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">deviceInfos</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">explicit</span><span style=" color:#c0c0c0;">         </span><span style=" color:#800080;">HostApi</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;">         </span><span style=" color:#000000;">~</span><span style=" font-style:italic; color:#000000;">HostApi</span><span style=" color:#c0c0c0;">     </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaError</span><span style=" color:#c0c0c0;">  </span><span style=" font-style:italic; color:#000000;">Open</span><span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">(</span><span style=" color:#800080;">Stream</span><span style=" color:#c0c0c0;">                </span><span style=" color:#000000;">**</span><span style=" color:#c0c0c0;"> </span>stream<span style=" color:#c0c0c0;">            </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">StreamParameters</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>inputParameters<span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">StreamParameters</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>outputParameters<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;">                   </span>sampleRate<span style=" color:#c0c0c0;">        </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#800080;">CaUint32</span><span style=" color:#c0c0c0;">                 </span>framesPerCallback<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#800080;">CaStreamFlags</span><span style=" color:#c0c0c0;">            </span>streamFlags<span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#800080;">Conduit</span><span style=" color:#c0c0c0;">                </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>streamCallback<span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">Terminate</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaError</span><span style=" color:#c0c0c0;">  </span><span style=" font-style:italic; color:#000000;">isSupported</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">StreamParameters</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>inputParameters<span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;">  </span><span style=" color:#800080;">StreamParameters</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>outputParameters<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                                  </span><span style=" color:#808000;">double</span><span style=" color:#c0c0c0;"> </span>sampleRate<span style=" color:#c0c0c0;">                          </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">Encoding</span><span style=" color:#c0c0c0;"> </span><span style=" font-style:italic; color:#000000;">encoding</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;">     </span><span style=" font-style:italic; color:#000000;">hasDuplex</span><span style=" color:#c0c0c0;">   </span><span style=" color:#000000;">(</span><span style=" color:#808000;">void</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">const</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">void</span><span style=" color:#c0c0c0;">             </span><span style=" color:#000000;">setDebugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#800080;">Debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>debug<span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">virtual</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CaError</span><span style=" color:#c0c0c0;">  </span><span style=" font-style:italic; color:#000000;">ToHostDeviceIndex</span><span style=" color:#c0c0c0;">               </span><span style=" color:#000000;">(</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                       </span><span style=" color:#800080;">CaDeviceIndex</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>hostApiDevice<span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">                       </span><span style=" color:#800080;">CaDeviceIndex</span><span style=" color:#c0c0c0;">   </span>device<span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">protected</span><span style=" color:#000000;">:</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">Debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800000;">debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">;</span></pre>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">};</span><i><br></i><br></pre>
+              <span style=" color:#808000;">typedef</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaError</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">HostApiInitializer</span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">HostApi</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">**,</span><span style=" color:#800080;">CaHostApiIndex</span><span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <br>
+              <span style=" color:#808000;">extern</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">HostApiInitializer</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">**</span><span style=" color:#c0c0c0;">
+              </span>caHostApiInitializers<span style=" color:#c0c0c0;">
+              </span><span style=" color:#000000;">;</span> <br>
+              <span style=" color:#808000;">extern</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#808000;">void</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">ReplaceHostApiInitializer</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span
+                style=" color:#800080;">HostApiInitializer</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">**</span><span style=" color:#c0c0c0;">
+              </span>replacement<span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;<br>
+                <br>
+              </span> <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

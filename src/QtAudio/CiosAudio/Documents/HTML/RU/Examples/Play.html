@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-TW">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音訊,
+      跨平台">
+    <title>範例程式：播放音訊檔</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">首頁</a></li>
+            <li><a href="../documents.html">文件</a></li>
+            <li><a href="../downloads.html">下載</a></li>
+            <li><a href="../status.html">狀態</a></li>
+            <li><a href="../faq.html">常見問題</a></li>
+            <li><a href="../mail.html">郵件列表</a></li>
+            <li><a href="../apps.html">應用程式</a></li>
+            <li><a href="../links.html">外部鏈結</a></li>
+            <li><a href="../license.html">版權</a></li>
+            <li><a href="../volunteer.html">志願者</a></li>
+            <li><a href="../contacts.html">聯繫</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>範例程式：播放音訊檔</h1>
+              「CIOS音訊核心」播放音訊檔的方式極為簡單，僅需一行程式。<br>
+              <p><i> #include "CiosAudio.hpp"<br>
+                  <br>
+                  int main(int argc,char * argv[])<br>
+                  {<br>
+                  &nbsp;&nbsp;if (argc&lt;2) return 0 ;<br>
+                  &nbsp;&nbsp;<font color="#cc0000"><b>CiosAudio</b></font>::<font
+                    color="#006600"><b>MediaPlay</b></font>(argv[1]) ;<br>
+                  &nbsp;&nbsp;return 1 ;<br>
+                  }<br>
+                  <br>
+                </i></p>
+              <br>
+              您必須要在編譯的設定上，加上
+              <ul>
+                <li>CAUTILITIES</li>
+                <li>FFMPEGLIB</li>
+              </ul>
+              <br>
+              一般是在編譯時加上"-DCAUTILITIES -DFFMPEGLIB"。<br>
+              <br>
+              這兩個定義。也可以直接在#include "CiosAudio.hpp"之前直接加上<br>
+              <p><i> #define CAUTILITIES 1<br>
+                  #define FFMPEGLIB 1<br>
+                  #include "CiosAudio.hpp" </i></p>
+              <br>
+              編譯時需要連結的函式庫，每個平台均不相同，請見《<a href="../Compile/Common.html">一
+                般編譯須知</a>》。 <br>
+              <br>
+              <h2>平行播放</h2>
+              如果您希望播放音訊檔是不會阻塞主程式的程序，您必須使用Thread。您可以自行寫一個線緒程式，或是繼承使用CIOS
+              Audio Core當中附帶的Thread類別。 <br>
+              <p><i> #include "CiosAudio.hpp"<br>
+                  <br>
+                  namespace CiosAudio {<br>
+                  <br>
+                  class MyThread : Thread<br>
+                  {<br>
+                  &nbsp;&nbsp;public:<br>
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;int started ;<br>
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;explicit MyThread(void) ;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;virtual ~MyThread(void) ;<br>
+                  <br>
+                  &nbsp;&nbsp;protected:<br>
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;virtual void run (int
+                  Type,ThreadData * Data) ;<br>
+                  <br>
+                  };<br>
+                  <br>
+                  MyThread::MyThread(void)<br>
+                  &nbsp;&nbsp;:Thread()<br>
+                  {<br>
+                  &nbsp;&nbsp;started = 0 ;<br>
+                  }<br>
+                  <br>
+                  MyThread::~MyThread(void)<br>
+                  {<br>
+                  }<br>
+                  <br>
+                  void MyThread::run(int Type,ThreadData * Data)<br>
+                  {<br>
+                  &nbsp;&nbsp;if ( 1001 != Type ) return ;<br>
+                  &nbsp;&nbsp;started = 1 ;<br>
+                  &nbsp;&nbsp;MediaPlay(Data-&gt;Arguments) ;<br>
+                  &nbsp;&nbsp;started = 0 ;<br>
+                  }<br>
+                  <br>
+                  }<br>
+                  <br>
+                  int main(int argc,char * argv[])<br>
+                  {<br>
+                  &nbsp;&nbsp;if (argc&lt;2) return 0 ;<br>
+                  &nbsp;&nbsp;CiosAudio::MyThread myThread ;<br>
+                  &nbsp;&nbsp;myThread.start(1001,argv[1]);<br>
+                  &nbsp;&nbsp;do {<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;Timer::Sleep(1000) ;<br>
+                  &nbsp;&nbsp;} while ( 1 == myThread.started ) ;<br>
+                  &nbsp;&nbsp;return 1 ;<br>
+                  }<br>
+                  <br>
+                </i></p>
+              <h3> CaPlay當中的範例</h3>
+              <br>
+              <span style=" color:#000000;"></span>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;"></span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#000000;">at</span><span style=" color:#c0c0c0;">       </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">-</span><span style=" color:#000080;">1</span><span style=" color:#c0c0c0;">                                        </span><span style=" color:#000000;">;<br></span><span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#000000;">deviceId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">-</span><span style=" color:#000080;">1</span><span style=" color:#c0c0c0;">                                        </span><span style=" color:#000000;">;</span>
+<span style=" color:#808000;">int</span><span style=" color:#c0c0c0;">                   </span><span style=" color:#000000;">decodeId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">-</span><span style=" color:#000080;">1</span><span style=" color:#c0c0c0;">                                        </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#808000;">bool</span><span style=" color:#c0c0c0;">                  </span><span style=" color:#000000;">debug</span><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">false</span><span style=" color:#c0c0c0;">                                     </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#800080;">CiosAudio</span><span style=" color:#000000;">::</span><span style=" color:#800080;">Debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">*</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;">                                      </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#808000;">while</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">at</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&lt;</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">argc</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                                        </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">strcmp</span><span style=" color:#000000;">(</span><span style=" color:#000000;">argv</span><span style=" color:#000000;">[</span><span style=" color:#000000;">at</span><span style=" color:#000000;">],</span><span style=" color:#008000;">"--output"</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                  </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">at</span><span style=" color:#000000;">++</span><span style=" color:#c0c0c0;">                                                                   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">deviceId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">atoi</span><span style=" color:#000000;">(</span><span style=" color:#000000;">argv</span><span style=" color:#000000;">[</span><span style=" color:#000000;">at</span><span style=" color:#000000;">])</span><span style=" color:#c0c0c0;">                                              </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">at</span><span style=" color:#000000;">++</span><span style=" color:#c0c0c0;">                                                                   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">else</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">strcmp</span><span style=" color:#000000;">(</span><span style=" color:#000000;">argv</span><span style=" color:#000000;">[</span><span style=" color:#000000;">at</span><span style=" color:#000000;">],</span><span style=" color:#008000;">"--decode"</span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                  </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">at</span><span style=" color:#000000;">++</span><span style=" color:#c0c0c0;">                                                                   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">decodeId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">atoi</span><span style=" color:#000000;">(</span><span style=" color:#000000;">argv</span><span style=" color:#000000;">[</span><span style=" color:#000000;">at</span><span style=" color:#000000;">])</span><span style=" color:#c0c0c0;">                                              </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">at</span><span style=" color:#000000;">++</span><span style=" color:#c0c0c0;">                                                                   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">else</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">strcmp</span><span style=" color:#000000;">(</span><span style=" color:#000000;">argv</span><span style=" color:#000000;">[</span><span style=" color:#000000;">at</span><span style=" color:#000000;">],</span><span style=" color:#008000;">"--debug"</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                  </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">at</span><span style=" color:#000000;">++</span><span style=" color:#c0c0c0;">                                                                   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">debug</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">true</span><span style=" color:#c0c0c0;">                                                           </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">else</span><span style=" color:#c0c0c0;">                                                                   </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#808000;">if</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">debug</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">&amp;&amp;</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000080;">NULL</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">==</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                                   </span><span style=" color:#000000;">{</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">      </span><span style=" color:#000000;">debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span style=" color:#c0c0c0;"> </span><span style=" color:#808000;">new</span><span style=" color:#c0c0c0;"> </span><span style=" color:#800080;">CiosAudio</span><span style=" color:#000000;">::</span><span style=" color:#800080;">Debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">                               </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">                                                                      </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#800080;">CiosAudio</span><span style=" color:#000000;">::</span><span style=" color:#000000;">MediaPlay</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">(</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">argv</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">[</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">at</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">]</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">deviceId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">decodeId</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">,</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">debugger</span><span style=" color:#c0c0c0;"> </span><span style=" color:#000000;">)</span><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">    </span><span style=" color:#000000;">at</span><span style=" color:#000000;">++</span><span style=" color:#c0c0c0;">                                                                   </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#c0c0c0;">  </span><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">                                                                        </span><span style=" color:#000000;">;</span></pre>
+              <pre style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">}</span><span style=" color:#c0c0c0;">                                                                          </span><span style=" color:#000000;">;</span></pre>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

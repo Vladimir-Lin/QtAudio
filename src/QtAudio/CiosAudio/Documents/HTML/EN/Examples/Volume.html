@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS">
+    <title>Examples : Volume Control</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../documents.html">Documents</a></li>
+            <li><a href="../downloads.html">Download</a></li>
+            <li><a href="../status.html">Status</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../mail.html">Mailing list</a></li>
+            <li><a href="../apps.html">Applications</a></li>
+            <li><a href="../links.html">Links</a></li>
+            <li><a href="../license.html">License</a></li>
+            <li><a href="../volunteer.html">Volunteers</a></li>
+            <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Examples : Volume Control</h1>
+              <br>
+              There are several levels of volume control, such as system
+              level, exlcusive level and application level.&nbsp; In a
+              nutshell, CIOS Audio Core do only application level volume
+              control.&nbsp; Please do not use CIOS Audio Core as a
+              system wide volume controller.<br>
+              <br>
+              Not all Host APIs support output volume control and
+              input volume control, some of them support only output
+              volume control.<br>
+              <br>
+              <h2>Determine if there is a volume controller</h2>
+              As a matter of face, some Host APIs do not support volume
+              control.&nbsp; Therefore, you will have to find out which
+              one can do volume control :<br>
+              <h4>Stream</h4>
+              <span style=" color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#808000;">bool</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">hasVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#808000;">void</span><span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000080;">0</span><span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">;</span><br>
+              <br>
+              Stream is the actual implementation of volume control in
+              Host API, all Host API must inherit this function and
+              implement it even if volume control can not actually
+              function.&nbsp; However, we do not suggest you use this
+              function directly. <br>
+              <h4>Core</h4>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#808000;">bool</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">hasVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              We suggest you use this function to determine if there
+              exists a volume control function.<br>
+              <br>
+              <h2>Volume control functions</h2>
+              There are four volume control functions:<br>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">MinVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">MaxVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">Volume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">,</span><span style="
+                color:#808000;">int</span><span style=" color:#c0c0c0;">
+              </span>atChannel<span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">=</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">-</span><span
+                style=" color:#000080;">1</span><span style="
+                color:#000000;">)</span><span style=" color:#c0c0c0;"> </span><span
+                style=" color:#000000;">;</span><br>
+              <span style=" color:#c0c0c0;"> </span><span style="
+                color:#808000;">virtual</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                font-style:italic; color:#000000;">setVolume</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">(</span><span style=" color:#800080;">Stream</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">*</span><span style=" color:#c0c0c0;"> </span>stream<span
+                style=" color:#000000;">,</span><span style="
+                color:#c0c0c0;"></span><span style=" color:#800080;">CaVolume</span><span
+                style=" color:#c0c0c0;"> </span>volume<span style="
+                color:#000000;">,</span><span style=" color:#c0c0c0;"></span><span
+                style=" color:#808000;">int</span><span style="
+                color:#c0c0c0;"> </span>atChannel<span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">=</span><span
+                style=" color:#c0c0c0;"> </span><span style="
+                color:#000000;">-</span><span style=" color:#000080;">1</span><span
+                style=" color:#000000;">)</span><span style="
+                color:#c0c0c0;"> </span><span style=" color:#000000;">;</span>
+              <pre style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br></pre>
+              All volume control in CIOS Audio Core are linear.&nbsp;
+              Some Host APIs control volume based on dB, for example,
+              Apple Core Audio.&nbsp; Within CIOS Audio Core, all units
+              are converted into linear volume unit.&nbsp; In general,
+              volume ranges between 0.0~10000.0, double precision.&nbsp;
+              However, you should not always assume they are fixed
+              values.&nbsp; The author will try his best to control the
+              range of volume, keep it always between 0.0~10000.0.&nbsp;
+              However, there is no hard rules to completely define the
+              values and ensure all the other implementation will follow
+              this suggestion.<br>
+              <br>
+              <h2>Example</h2>
+              Volume control takes effect only after the stream is
+              started.&nbsp; Any changes before stream is started is
+              invalid.<br>
+              <br>
+              Core * core ;<br>
+              Stream * stream ;<br>
+              ...<br>
+              Initialize core<br>
+              Inialize stream<br>
+              Start stream<br>
+              ....<br>
+              if ( <i>core-&gt;hasVolume ( stream )</i> ) {<br>
+              &nbsp; double minv = core-&gt;MinVolume(stream) ;<br>
+              &nbsp; double maxv = core-&gt;MaxVolume(stream) ;<br>
+              &nbsp; double volume = core-&gt;Volume(stream) ; //
+              average volume<br>
+              &nbsp; double v1 = core-&gt;Volume(stream,0) ; // left
+              channel volume<br>
+              &nbsp; double v2 = core-&gt;Volume(stream,1) ; // right
+              channel volume<br>
+              &nbsp; ...<br>
+              &nbsp; convert into your own volume measurement<br>
+              &nbsp; ...<br>
+              &nbsp; core-&gt;setVolume(stream,volume) ; // average
+              volume<br>
+              &nbsp; core-&gt;setVolume(stream,v1,0) ; // left channel
+              volume<br>
+              &nbsp; core-&gt;setVolume(stream,v2,1) ; // right channel
+              volume<br>
+              &nbsp; ...<br>
+              }<br>
+              ....<br>
+              Stop stream<br>
+              Close stream<br>
+              Terminate core<br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS, 音讯,
+      跨平台">
+    <title>CIOS音讯核心：常见问题</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../index.html">首页</a></li>
+            <li><a href="documents.html">文件</a></li>
+            <li><a href="downloads.html">下载</a></li>
+            <li><a href="status.html">状态</a></li>
+            <li class="first active">常见问题</li>
+            <li><a href="mail.html">邮件列表</a></li>
+            <li><a href="apps.html">应用程序</a></li>
+            <li><a href="links.html">外部链结</a></li>
+            <li><a href="license.html">版权</a></li>
+            <li><a href="volunteer.html">志愿者</a></li>
+            <li><a href="contacts.html">联络</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+            <h1>常见问题</h1>
+            <p><b>CIOS Audio Core的名称由来？</b></p>
+            <p>答：「CIOS音讯核心」的主计画是CIOS，全称为Collective Intelligence Operating System，它本身也可以是一个作业系统，有自己的作业系统核心，但是它也被设计成可以在其他作业系统下运作，CIOS的最主要设计理念，是可以透过Mind-Meld或是Grand link模式来加快知识蒐集整合的功能，透过这种方式，赋予机器实际的「拟人智能」。<br>
+            <br>
+            CIOS Audio Core的主要功能，即为供应所有的CIOS机器人系统下的音讯输出入串流核心，也因此被称为「CIOS音讯核心」，它是CIOS体系下，感知系统（Sensor Grid）当中的一个次系统。<br>
+            <br>
+            由于在跨平台运作的要求下，CIOS Audio Core实际上必须本身也跨所有的作业系统平台，因此CIOS Audio Core实际上也可以是个独立的开源计画，由此，CIOS Audio Core因而被独立出来作为独立计画。
+            <br>
+            <p><b>为什麽CIOS Audio Core并不提供DLL或SO文件？</b></p>
+            <p>答：由于「CIOS音讯核心」内部使用Thread作为播放音讯的主要方式，它可以同时被很多平台及应用程序所使用，原作者认为CIOS Audio Core提供DLL或SO文件是个不适合的方式，因为使用DLL有可能因为某个应用程序误用或是输出入介面锁死，而导致其他应用程序被影响。<br>
+            <br>
+            虽然CIOS Audio Core是个Thread Safe的音讯处理介面，在短期未来的版本，应该都不会提供DLL或SO文件的编译方式，而只使用静态连结的方式。CIOS Audio Core确实可以被编译成DLL或SO文件，原作者实际上也曾经尝试使用DLL或SO文件，但最终决定不供应DLL或SO档，使用者可以自行尝试，但原作者强烈建议您不要这样做。
+            <br>
+            <p><b>CIOS Audio Core是否与TTS（人类语音输出）及语音辨识有关？</b></p>
+            <p>答：「CIOS音讯核心」最早的版本与人类语音输出及语音辨识完全混和在一起，后期由于功能不断地增加，理论上的分析及细化设计的缘故，世界通用音素表、语言方程系统、语言名称、纯粹含意系统、理解系统、人类语音输出、语音辨识、声效辨识等等，全部被解离，解离的同时，「CIOS音讯核心」也被独立出来，尽量不与其他部分混和在一起。<br>
+            <br>
+            与其他部分的关联性，基本上为世界通用音素表、语言方程系统、人类语音输出、语音辨识、声效辨识、输入法等等次系统，均使用「CIOS音讯核心」作为「音讯串流」的核心系统，这也是它被称为Audio Core的缘故之一。
+            <br>
+            <p><b>CIOS Audio Core是否可以透过网路传输音讯？</b></p>
+            <p>答：是的。<br>
+            <br>
+            原作者有一个版本的音讯驱动介面是有这个模组，但并未公开释放。有需求者可以自行撰写，由于实际上已经箝入FFmpeg，本身已经具备语音压缩功能，这种网路传输功能实现的困难度并不高。<br>
+            <br>
+            原作者不释放的原因，怕有人利用这种功能来窃听，侵犯他人隐私权，「CIOS音讯核心」日后公开流通的释放版本亦不会加入这种功能。
+            <br>
+            <p><b>FFmpeg似乎有版权的问题，是否有其他的选择？</b></p>
+            <p>答：是的。<br>
+            <br>
+            如果有志愿者愿意撰写VLC版本的音讯驱动介面，原作者愿意将您的实作加入正式发行的版本当中，原作者个人精力有限，预定将不会主动增加VLC的支持，需要有外界志愿者愿意主动撰写并释出。
+            <br>
+            <p><b>音讯驱动介面Skeleton Host API似乎半点作用都没有？</b></p>
+            <p>答：是的。<br>
+            <br>
+            Skeleton Host API类似于Unix系统下的/dev/null，是一个空心大老倌。<br>
+            <br>
+            它的作用，除了「消音」以外，作为没有实际声音输入或输出的系统底下，可以作为模拟器。<br>
+            <br>
+            此外，一般新开发的音讯驱动介面，都可以使用Skeleton Host API作为样版来开始做开发样版，您只要将Skeleton Host API当中的Skeleton.hpp及Skeleton.cpp，複製到你的开发目录下，然后把名称修改掉即可。
+            <br>
+            <p><b>「CIOS音讯核心」为何不使用Doxygen作为文件撰写工具？</b></p>
+            <p>答：原作者不相信在程序旁加上注解可以解释清楚设计细节及原则，因此主要只使用TeX、HTML及Open Office作为文件撰写工具，尽可能将各个细节解释清楚，实作方面若有出错，可先检查文件。<br>
+            <br>
+            原作者目前依然坚持使用最古老的方式撰写程序，即先用笔纸在纸上写好结构与设计思维，然后再依据设计思维来实作，Doxygen这一类的工具对于设计良好结构的程序并无太大帮助。<br>
+            <br>
+            事实上，使用纸笔撰写程序也是目前最成功的程序设计方法。
+            <br>
+            <p><b>开发者是否可以进行「CIOS音讯核心」的Fork版本？</b></p>
+            <p>答：是的，只要你遵守LGPLv3的规定即可。原作者并不介意任何的Fork版本，规则上亦比较鬆弛。<br>
+            <br>
+            如果您不希望公开私有的音讯驱动介面，请细读开发API文件，
+            API当中有方法可以使用ReplaceHostApiInitializer设定Initializer，
+            让您可以切换到私有的音讯驱动介面，使用Library与私有的音讯驱动介面隔离的方法，
+            你可以在遵守LGPLv3的规定下，依然保有私有的音讯驱动介面所有权。
+            <br>
+            <br>
+            原作者并没有强烈的意愿要求开发者及使用者必须公开自行开发的源代码。
+            <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="Description" content="">
+    <meta name="KeyWords" content="audio, library, portable,
+      open-source, DirectSound, sound, music, ALSA, synthesis, OSS,
+      ">
+    <title>CIOS Audio Core : Skeleton Host API</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="leftcol" class="column">
+        <div id="mainnav" class="nav">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../documents.html">Documents</a></li>
+            <li><a href="../downloads.html">Download</a></li>
+            <li><a href="../status.html">Status</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../mail.html">Mailing list</a></li>
+            <li><a href="../apps.html">Applications</a></li>
+            <li><a href="../links.html">Links</a></li>
+            <li><a href="../license.html">License</a></li>
+            <li><a href="../volunteer.html">Volunteer</a></li>
+            <li><a href="../contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="rightcol" class="column">
+        <div id="banner_right">
+          <div style="clear:both;"> </div>
+          <div id="main">
+            <div id="content">
+              <h1>Skeleton Host API</h1>
+              <br>
+              The function of Skeleton Host
+              API is used to be an expertimental version Host API for development
+              and acts as a /dev/null audio device.
+              In most cases, you do not need this Host API.
+              It was never actually heavy tested.<br>
+              <br>
+              <br>
+              <h2>Enable Skeleton module</h2>
+              <h4>DEFINEs</h4>
+              If you want to enable Skeleton module, your C++ compiler must add the following DEFINEs:<br>
+              <br>
+              SkeletonAPI
+              <h4>Source files</h4>
+              C++ files must include the following two:<br>
+              <br>
+              <ol>
+                <li>CiosAudio/Platforms/Skeleton/CaSkeleton.hpp</li>
+                <li>CiosAudio/Platforms/Skeleton/CaSkeleton.cpp</li>
+              </ol>
+              <br>
+              <h4> Qt</h4>
+              If you are using Qt, in the following file:<br>
+              <p><i>CiosAudio/CiosAudio.pri</i></p>
+              Enable the following setting:<br>
+              <br>
+              DEFINES<span style=" color:#c0c0c0;"> </span>+=<span
+                style=" color:#c0c0c0;"> </span>SkeletonAPI
+              If you don't want to use Skeleton, just disable the define, default is enable.<br>
+              <br>
+              <h4>Libraries</h4>
+              Skeleton does not need to link with any library.<br>
+              <br>
+              <br>
+            </div>
+            <!-- end of content div -->
+            <div id="footer"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
